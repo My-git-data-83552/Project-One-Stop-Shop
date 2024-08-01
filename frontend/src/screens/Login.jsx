@@ -1,4 +1,3 @@
-import Navigation_bar from "../components/Navigation_bar";
 import bg from '../productImages/loginBackgroundImage.jpg';
 import React, { useState } from "react";
 import { Link, useNavigate } from 'react-router-dom'
@@ -31,7 +30,6 @@ export default function Login() {
         height: "100vh",
         width: "100vw",
     }}>
-      <Navigation_bar />
         <div className="row">
         <div className="col-6"></div>
         <div className="col-5 mt-5 shadow-lg p-3 " style={{ backgroundColor: "beige", borderRadius: "5%" }}>

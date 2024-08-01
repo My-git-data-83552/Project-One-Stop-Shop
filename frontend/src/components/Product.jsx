@@ -1,49 +1,54 @@
-import React from 'react';
-import laptop1 from '../productImages/laptop1.jpg'
-import laptop2 from '../productImages/laptop2.jpg'
-import laptop3 from '../productImages/laptop4.jpg'
+import React, { useState, useEffect } from 'react';
+import { getAllProducts } from '../services/ProductService';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Link } from 'react-router-dom';
+import laptop1 from '../productImages/laptop1.jpg'
+import laptop2 from '../productImages/laptop2.jpg'
+import laptop3 from '../productImages/laptop3.jpg'
+import laptop4 from '../productImages/laptop4.jpg'
+import card from '../productImages/card.jpg'
+
+
 
 export default function Product() {
-  const laptops = [
-    {
-      image: laptop1,
-      name: 'Laptop 1',
-      description: 'This is a description for Laptop 1.',
-      price: '999.99',
-    },
-    {
-        image: laptop2,
-      name: 'Laptop 2',
-      description: 'This is a description for Laptop 2.',
-      price: '799.99',
-    },
-    {
-        image: laptop3,
-      name: 'Laptop 3',
-      description: 'This is a description for Laptop 3.',
-      price: '599.99',
-    },
-  ];
+  const [products, setProducts] = useState([]);
+  const [error, setError] = useState('');
+
+  useEffect(() => {
+    const fetchProducts = async () => {
+      try {
+        const data = await getAllProducts();
+        setProducts(data);
+      } catch (error) {
+        setError('Error fetching products');
+      }
+    };
+
+    fetchProducts();
+  }, []);
 
   return (
     <div className="container">
-      <h1 className="text-center my-4">Laptops available to Buy</h1>
+      <h1 className="text-center my-4">Products available to Buy   </h1>
+      <Link to='/addProduct' className="btn btn-dark mt-3 mb-3 d-flex justify-content-around" style={{backgroundColor:''}}>Add New Product</Link>
+      <hr />
+      {error && <div className="alert alert-danger">{error}</div>}
       <div className="container">
         <div className="row">
-          {laptops.map((laptop, index) => (
-            <div className="col-md-4" key={index}>
-              <div className="card mb-4">
-                <img
-                  src={laptop.image}
-                  className="card-img-top"
-                  alt={laptop.name}
-                />
+          {products.map((product) => (
+            <div className="col-md-4"  key={product.id}>
+              <div className="card mb-4"style={{backgroundColor:"white"}}>
+              <Link to={`/product/${product.id}`}>
+                  <img
+                    src={laptop4} 
+                    className="card-img-top"
+                    alt={product.productName}
+                  />
+                </Link>
                 <div className="card-body">
-                  <h5 className="card-title">{laptop.name}</h5>
-                  <p className="card-text">{laptop.description}</p>
-                  <p className="card-text text-muted">${laptop.price}</p>
+                  <h5 className="card-title">{product.productName}</h5>
+                  <p className="card-text">{product.description}</p>
+                  <p className="card-text text-muted">${product.price}</p>
                   <Link to='/buy' className='btn btn-primary me-3'>Buy Now</Link>
                   <Link to='/addToCart' className='btn btn-warning'>Add to Cart</Link>            
                 </div>
@@ -55,5 +60,3 @@ export default function Product() {
     </div>
   );
 };
-
-

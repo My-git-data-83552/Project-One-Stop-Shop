@@ -1,10 +1,11 @@
 import { Link } from "react-router-dom"
+import logo from "../logo.png"
 
 export default function navigation_bar() {
     return (
 <nav class="navbar navbar-expand-lg bg-info-subtle">
   <div class="container-fluid">
-    <img src="../amazon-logo.png" style={{width:"50px"}} />
+    <img src={logo} style={{width:"50px"}} />
     <a class="nav-link" aria-disabled="true" style={{color:"black"}}>OneStopShop</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse"  aria-disabled="true">
       <span class="navbar-toggler-icon"></span>
@@ -12,22 +13,24 @@ export default function navigation_bar() {
     <div class="collapse navbar-collapse" id="navbarScroll">
       <ul class="navbar-nav me-auto my-2 my-lg-0 navbar-nav-scroll" >
         <li class="nav-item">
-          {/* <a class="nav-link active" aria-current="page" href="#">Home</a> */}
-            <Link to='/home' className='nav-link' aria-current='page' href='#' >HOME</Link>
+         <Link to='/home' className='nav-link' aria-current='page' href='#' >HOME</Link>
         </li>
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="true">
-            Link
+            Categories
           </a>
           <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="#">Action</a></li>
-            <li><a class="dropdown-item" href="#">Another action</a></li>
-            <li><hr class="dropdown-divider" /></li>
-            <li><a class="dropdown-item" href="#">Something else here</a></li>
+            <li><a class="dropdown-item" href="#">Gaming</a></li>
+            <li><a class="dropdown-item" href="#">Business</a></li>
+            <li><a class="dropdown-item" href="#">Student</a></li>
+            <li><a class="dropdown-item" href="#">Work Stations</a></li>
           </ul>
         </li>
         <li class="nav-item">
             <Link to='/login' className='nav-link' aria-current='page' href='#' >Login</Link>
+        </li>
+        <li class="nav-item">
+         <Link to='/address' className='nav-link' aria-current='page' href='#' >Address</Link>
         </li>
         <li class="nav-item">
           {/* <a class="btn btn-outline-danger" href="#">Logout</a> */}

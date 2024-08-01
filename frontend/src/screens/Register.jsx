@@ -47,28 +47,27 @@ export default function Register() {
     };
 
     return (
-        <div 
+        <div className="container-fluid"
             style={{
                 backgroundImage: `url(${bg})`, 
                 backgroundSize: "cover",
                 backgroundPosition: "center",
                 height: "100vh",
                 width: "100vw",
-                display: "flex",
-                justifyContent: "center",
-                alignItems: "center",
             }}>
-            <div className="col-5" style={{
+                <div className="row">
+                    <div className="col-1"></div>
+            <div className="col-5 mt-5" style={{
                 backgroundColor: "beige", 
                 padding: "20px",
                 borderRadius: "8px"
             }}>                 
                 <form style={{ width: "100%" }} onSubmit={onRegister}>
-                    <h1 className="mb-3" style={{ color: "black" }}>Register Here!</h1>   
+                    <h1 className="mb-3" style={{ color: "brown" }}>Register Here!</h1>   
                     <div className="mb-3">
-                        <label htmlFor="firstName" className="form-label" style={{ marginBottom: "5px" }}>First Name</label>
                         <input 
                             type="text" 
+                            placeholder="First Name"
                             className="form-control" 
                             id="firstName" 
                             value={firstName}
@@ -76,9 +75,9 @@ export default function Register() {
                         />
                     </div>
                     <div className="mb-3">
-                        <label htmlFor="lastName" className="form-label" style={{ marginBottom: "5px" }}>Last Name</label>
-                        <input 
+                       <input 
                             type="text" 
+                            placeholder="Last Name"
                             className="form-control" 
                             id="lastName" 
                             value={lastName}
@@ -86,9 +85,9 @@ export default function Register() {
                         />
                     </div>
                     <div className="mb-3">
-                        <label htmlFor="email" className="form-label" style={{ marginBottom: "5px" }}>Email Address</label>
                         <input 
-                            type="email" 
+                            type="email"                             
+                            placeholder="Email"
                             className="form-control" 
                             id="email" 
                             value={email}
@@ -96,9 +95,9 @@ export default function Register() {
                         />
                     </div>
                     <div className="mb-3">
-                        <label htmlFor="password" className="form-label" style={{ marginBottom: "5px" }}>Password</label>
-                        <input 
-                            type="password" 
+                         <input 
+                            type="password"                              
+                            placeholder="Password"
                             className="form-control" 
                             id="password" 
                             value={password}
@@ -106,9 +105,9 @@ export default function Register() {
                         />
                     </div>
                     <div className="mb-3">
-                        <label htmlFor="confirmPassword" className="form-label" style={{ marginBottom: "5px" }}>Confirm Password</label>
                         <input 
-                            type="password" 
+                            type="password"                              
+                            placeholder="Confirm Password"
                             className="form-control" 
                             id="confirmPassword" 
                             value={confirmPassword}
@@ -116,7 +115,6 @@ export default function Register() {
                         />
                     </div>
                     <div className="mb-3">
-                        <label htmlFor="phone" className="form-label" style={{ marginBottom: "5px" }}>Mobile Number</label>
                         <input 
                             type="text" 
                             className="form-control" 
@@ -132,6 +130,8 @@ export default function Register() {
                         <p>Already have an Account? <Link to='/login' className="text-primary">Login here</Link></p>
                     </div>
                 </form>               
+            </div>
+            <div className="col-6"></div>
             </div>
         </div>
     );
