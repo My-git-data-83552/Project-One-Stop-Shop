@@ -32,7 +32,7 @@ export default function Login() {
     }}>
         <div className="row">
         <div className="col-6"></div>
-        <div className="col-5 mt-5 shadow-lg p-3 " style={{ backgroundColor: "beige", borderRadius: "5%" }}>
+        <div className="col-5 mt-5 shadow-lg p-3 " style={{ backgroundColor: "lightcyan", borderRadius: "5%" }}>
             <h1 className="mb-4 mt-4">Welcome Back!</h1>
           <form>
             <div class="mb-3">

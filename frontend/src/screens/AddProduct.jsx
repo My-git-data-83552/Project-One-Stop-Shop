@@ -11,7 +11,7 @@ export default function AppProduct() {
         description: '',
         price: 0,
         quantity: 0,
-        categoryId: '', // Adjusted to store category ID
+        categoryId: '',
     });
 
     const [categories, setCategories] = useState([]);

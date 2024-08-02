@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import com.onestopshop.daos.CategoryRepository;
 import com.onestopshop.entities.Category;
+import com.onestopshop.exceptionhandling.ResourceNotFoundException;
 
 @Service
 public class CategoryServiceImpl implements CategoryService {
@@ -33,5 +34,11 @@ public class CategoryServiceImpl implements CategoryService {
     @Override
     public void deleteCategory(Long id) {
         categoryRepository.deleteById(id);
+    }
+    
+    @Override
+    public Category updateCategory(Long id) {
+    Category category=categoryRepository.findById(id).orElseThrow(()->new ResourceNotFoundException("Category not Found"));
+    	return categoryRepository.save(category);
     }
 }

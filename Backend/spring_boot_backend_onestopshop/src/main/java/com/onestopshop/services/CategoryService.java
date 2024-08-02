@@ -10,4 +10,5 @@ public interface CategoryService {
     Optional<Category> getCategoryById(Long id);
     Category saveCategory(Category category);
     void deleteCategory(Long id);
+    Category updateCategory(Long id);
 }

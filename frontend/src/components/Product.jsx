@@ -36,8 +36,8 @@ export default function Product() {
       <div className="container">
         <div className="row">
           {products.map((product) => (
-            <div className="col-md-4"  key={product.id}>
-              <div className="card mb-4"style={{backgroundColor:"white"}}>
+            <div className="col-md-4 "  key={product.id}>
+              <div className="card mb-4 shadow-lg p-3 mb-5 bg-body-tertiary rounded"style={{backgroundColor:"white"}}>
               <Link to={`/product/${product.id}`}>
                   <img
                     src={laptop4} 
