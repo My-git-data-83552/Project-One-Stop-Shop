@@ -51,7 +51,7 @@ export default function EditCategory() {
         <div className="col-4">
           <h1 className="mb-4">Add Category</h1>
           <form onSubmit={handleSubmit}>
-            <label about="categoryName" class="col-form-label">
+            <label about="categoryName" className="col-form-label">
               Category Name
             </label>
             <input

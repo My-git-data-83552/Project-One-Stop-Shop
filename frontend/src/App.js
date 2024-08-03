@@ -15,6 +15,8 @@ import CategoryList from './components/Categories.jsx';
 import { Product } from './screens/Product.jsx';
 import Categories from './screens/Category.jsx';
 import EditCategory from './screens/EditCategory.jsx';
+import { Products } from './screens/Products.jsx';
+import { EditProduct } from './screens/EditProduct.jsx';
 
 function App() {
   return (
@@ -31,7 +33,10 @@ function App() {
         <Route path="/product" element={<Product />} />        
         <Route path="/category" element={<Categories />} />   
         <Route path="/addCategory" element={<AddCategory />} />
-        <Route path="/editCategory/:id" element={<EditCategory />} />            
+        <Route path="/editCategory/:id" element={<EditCategory />} />   
+        <Route path="/products" element={<Products />} />  
+        <Route path="/editProduct/:id" element={<EditProduct />} />  
+
       </Routes>
       <ToastContainer/>
 

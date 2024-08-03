@@ -4,6 +4,7 @@ import { getCategories } from '../services/CategoryService';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import bg from "../productImages/addProduct.jpg";
 import Navigation_bar from "../components/Navigation_bar"
+import { Link } from 'react-router-dom';
 
 export default function AppProduct() {
     const [product, setProduct] = useState({
@@ -145,7 +146,8 @@ export default function AppProduct() {
                                 ))}
                             </select>
                         </div>
-                        <button type="submit" className="btn btn-primary">Add Product</button>
+                        <button type="submit" className="btn btn-primary mt-3" style={{width:'120px'}}>Add Product</button>
+                        <Link to='/Products' className='btn btn-warning ms-5 mt-3' style={{width:'120px'}}>Go Back</Link>
                     </form>
                 </div>
                 <div className='col-md-3'></div>

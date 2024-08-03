@@ -30,10 +30,9 @@ export default function Product() {
   return (
     <div className="container">
       <h1 className="text-center my-4">Products available to Buy   </h1>
-      <Link to='/addProduct' className="btn btn-dark mt-3 mb-3 d-flex justify-content-around" style={{backgroundColor:''}}>Add New Product</Link>
-      <hr />
       {error && <div className="alert alert-danger">{error}</div>}
       <div className="container">
+        <hr />
         <div className="row">
           {products.map((product) => (
             <div className="col-md-4 "  key={product.id}>

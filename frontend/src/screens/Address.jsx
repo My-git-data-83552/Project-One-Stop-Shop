@@ -3,7 +3,7 @@ import { addAddress } from "../services/AddressService";
 import { Link } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import bg from '../productImages/addProduct.jpg';
+import bg from "../productImages/addProduct.jpg";
 
 export default function Address() {
   const [userId, setUserId] = useState("");
@@ -69,21 +69,26 @@ export default function Address() {
   const countries = ["India"];
 
   return (
-    <div className="container-fluid"style={{
-        backgroundImage: `url(${bg})`, 
+    <div
+      className="container-fluid"
+      style={{
+        backgroundImage: `url(${bg})`,
         backgroundSize: "cover",
         backgroundPosition: "center",
         height: "100vh",
         width: "100vw",
-    }}>
-        <br />
+      }}
+    >
+      <br />
       <h2 className="mb-2">Add Address</h2>
       <div className="row">
         <div className="col-2"></div>
         <div className="col-8">
           <form onSubmit={handleSubmit}>
             <div className="form-group">
-              <label className="label label-primary" htmlFor="userId">User ID</label>
+              <label className="label label-primary" htmlFor="userId">
+                User ID
+              </label>
               <input
                 type="text"
                 className="form-control"
@@ -91,6 +96,7 @@ export default function Address() {
                 placeholder="Enter User ID"
                 value={userId}
                 onChange={(e) => setUserId(e.target.value)}
+                style={{backgroundColor:"transparent" , borderColor:"lightgray" }}
                 required
               />
             </div>
@@ -103,6 +109,7 @@ export default function Address() {
                 placeholder="Enter Address Line 1"
                 value={addressLine1}
                 onChange={(e) => setAddressLine1(e.target.value)}
+                style={{backgroundColor:"transparent" , borderColor:"lightgray" }}
                 required
               />
             </div>
@@ -115,11 +122,12 @@ export default function Address() {
                 placeholder="Enter Address Line 2 (optional)"
                 value={addressLine2}
                 onChange={(e) => setAddressLine2(e.target.value)}
+                style={{backgroundColor:"transparent" , borderColor:"lightgray" }}                                
               />
             </div>
 
             <div className="d-flex justify-content-between mt-3">
-              <div className="form-group" style={{width:'45%'}}>
+              <div className="form-group" style={{ width: "45%" }}>
                 <label htmlFor="city">City</label>
                 <input
                   type="text"
@@ -128,10 +136,11 @@ export default function Address() {
                   placeholder="Enter City"
                   value={city}
                   onChange={(e) => setCity(e.target.value)}
+                  style={{backgroundColor:"transparent" , borderColor:"lightgray" }}
                   required
                 />
               </div>
-              <div className="form-group" style={{width:'45%'}}>
+              <div className="form-group" style={{ width: "45%" }}>
                 <label htmlFor="zipCode">Zip Code</label>
                 <input
                   type="text"
@@ -140,12 +149,13 @@ export default function Address() {
                   placeholder="Enter Zip Code"
                   value={zipCode}
                   onChange={(e) => setZipCode(e.target.value)}
+                  style={{backgroundColor:"transparent" , borderColor:"lightgray" }}
                   required
                 />
               </div>
-              </div>
-              <div className="d-flex justify-content-between mt-3">
-              <div className="mb-3 text-left" style={{width:'45%'}}>
+            </div>
+            <div className="d-flex justify-content-between mt-3">
+              <div className="mb-3 text-left" style={{ width: "45%" }}>
                 <label htmlFor="state" className="form-label">
                   State
                 </label>
@@ -154,6 +164,7 @@ export default function Address() {
                   className="form-select"
                   value={state}
                   onChange={(e) => setState(e.target.value)}
+                  style={{backgroundColor:"transparent" , borderColor:"lightgray" }}
                   required
                 >
                   <option value="">Select State</option>
@@ -164,28 +175,33 @@ export default function Address() {
                   ))}
                 </select>
               </div>
-              
-              <div className="mb-3" style={{width:'45%'}}>
-              <label htmlFor="country" className="form-label">
-                Country
-              </label>
-              <select
-                id="country"
-                className="form-select"
-                value={country}
-                onChange={(e) => setCountry(e.target.value)}
-                required
-              >
-                <option value="">Select Country</option>
-                {countries.map((country, index) => (
-                  <option key={index} value={country}>
-                    {country}
-                  </option>
-                ))}
-              </select>
+
+              <div className="mb-3" style={{ width: "45%" }}>
+                <label htmlFor="country" className="form-label">
+                  Country
+                </label>
+                <select
+                  id="country"
+                  className="form-select"
+                  value={country}
+                  onChange={(e) => setCountry(e.target.value)}
+                  style={{backgroundColor:"transparent" , borderColor:"lightgray" }}
+                  required
+                >
+                  <option value="">Select Country</option>
+                  {countries.map((country, index) => (
+                    <option key={index} value={country}>
+                      {country}
+                    </option>
+                  ))}
+                </select>
+              </div>
             </div>
-            </div>           
-            <button type="submit" className="btn btn-dark" style={{position:'relative', alignContent:'center'}}>
+            <button
+              type="submit"
+              className="btn btn-dark"
+              style={{ position: "relative", alignContent: "center" }}
+            >
               Add Address
             </button>
             {error && <div className="alert alert-danger mt-3">{error}</div>}
@@ -196,9 +212,17 @@ export default function Address() {
       <div className="row">
         <div className="col-4"></div>
         <div className="col-4 d-grid">
-            <Link to='/payment' className="btn btn-primary mt-3">Proceed to Payment</Link><br />
-            <Link to='/cart' className="btn btn-warning mt-1">View Shopping Cart</Link><br />
-            <Link to='/home' className="btn btn-danger mt-1">Cancel</Link>          
+          <Link to="/payment" className="btn btn-primary mt-3">
+            Proceed to Payment
+          </Link>
+          <br />
+          <Link to="/cart" className="btn btn-warning mt-1">
+            View Shopping Cart
+          </Link>
+          <br />
+          <Link to="/home" className="btn btn-danger mt-1">
+            Cancel
+          </Link>
         </div>
         <div className="col-4"></div>
       </div>

@@ -4,6 +4,7 @@ import bg from "../productImages/addProduct.jpg";
 import Navigation_bar from "../components/Navigation_bar";
 import { addCategories } from "../services/CategoryService";
 import { toast } from "react-toastify";
+import { Link } from "react-router-dom";
 
 export default function AddCategory() {
     const [category,setCategory] = useState({
@@ -40,7 +41,7 @@ export default function AddCategory() {
         <div className="col-4">
           <h1 className="mb-4">Add Category</h1>
           <form onSubmit={handleSubmit}>
-            <label about="categoryName" class="col-form-label">Category Name</label>
+            <label about="categoryName" className="col-form-label">Category Name</label>
             <input
               type="text"
               onChange={(e)=>{setCategory(e.target.value)}}
@@ -54,7 +55,8 @@ export default function AddCategory() {
               type="submit"
               className="btn btn-primary mt-4"              
             />
-          </form>
+             <Link to='/Category' className='btn btn-warning ms-3 mt-4'>Go Back</Link>    
+          </form>                         
         </div>
         <div className="col-4"></div>
       </div>

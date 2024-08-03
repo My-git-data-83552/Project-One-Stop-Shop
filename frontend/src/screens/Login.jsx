@@ -35,38 +35,38 @@ export default function Login() {
         <div className="col-5 mt-5 shadow-lg p-3 " style={{ backgroundColor: "lightcyan", borderRadius: "5%" }}>
             <h1 className="mb-4 mt-4">Welcome Back!</h1>
           <form>
-            <div class="mb-3">
-              <label for="exampleInputEmail1" class="form-label">
+            <div className="mb-3">
+              <label for="exampleInputEmail1" className="form-label">
                 Email address
               </label>
               <input
                 type="email"
                 onChange={(e)=>{setEmail(e.target.value)}}
-                class="form-control transparent-input"
+                className="form-control transparent-input"
                 placeholder="abc@email.com"
                 id="exampleInputEmail1"
                 aria-describedby="emailHelp"
               />
-              <div id="emailHelp" class="form-text">
+              <div id="emailHelp" className="form-text">
                 We'll never share your email with anyone else.
               </div>
             </div>
-            <div class="mb-4">
-              <label for="exampleInputPassword1" class="form-label">
+            <div className="mb-4">
+              <label for="exampleInputPassword1" className="form-label">
                 Password
               </label>
               <input
                 type="password"                
                 onChange={(e)=>{setPassword(e.target.value)}}
-                class="form-control" 
+                className="form-control" 
                 placeholder="*****************"
                 id="exampleInputPassword1"
               />
             </div>
             <p>Don't have an Account? 
             <Link to='/register' className="ms-2">Register here</Link></p>
-            <div class="d-grid gap-2">
-              <button onClick={onLogin} class="btn btn-primary mb-3" type="button">
+            <div className="d-grid gap-2">
+              <button onClick={onLogin} className="btn btn-primary mb-3" type="button">
                 Login
               </button>
               <Link className="btn btn-warning mb-4" to="/home" type="button" >
