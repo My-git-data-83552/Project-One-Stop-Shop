@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from "react";
 import Navigation_bar from "../components/Navigation_bar";
-import { getCategories } from "../services/CategoryService";
+import { deleteCategory, getCategories } from "../services/CategoryService";
 import bg from "../productImages/addProduct.jpg";
 import { Link } from "react-router-dom";
+import { toast } from "react-toastify";
 
 const Categories = () => {
   const [categories, setCategories] = useState([]);
@@ -20,6 +21,18 @@ const Categories = () => {
     };
     fetchCategories();
 }, []);
+
+  const handleDelete=async (id)=>{
+    try{
+        await deleteCategory(id);
+        window.location.reload();
+        toast.success('Deletion Successful!!!')        
+      }
+      catch(error){
+        toast.error('Could not Delete...');
+      }
+    }
+  
 
   return (
     <div className="container-fluid" style={{
@@ -52,7 +65,7 @@ const Categories = () => {
                 <td>
                   {/* Placeholder for action buttons */}
                   <Link to={`/editCategory/${category.id}`} className="btn btn-dark me-4" style={{width:"100px"}}>EDIT</Link>
-                  <Link to={`/deleteCategory/${category.id}`} className="btn btn-danger" style={{width:"100px"}}>DELETE</Link>
+                  <Link onClick={()=>{handleDelete(category.id)}} className="btn btn-danger" style={{width:"100px"}}>DELETE</Link>
                 </td>
               </tr>
             ))}

@@ -1,5 +1,4 @@
 import axios from "axios";
-import { toast } from "react-toastify";
 
 const BASE_URL = "http://localhost:8080/api/products";
 const CATEGORY_URL = "http://localhost:8080/api/categories";
@@ -66,6 +65,17 @@ export const editProduct = async (id,product) => {
     return response.data;
   } catch (error) {
     console.error("Error updating product:", error.response ? error.response.data : error.message);
-    toast.error("Could not Update Data...");
+    throw error;
   }
 };
+
+export const deleteProduct = async (id)=>{
+  try{
+    const response = await axios.delete(`${BASE_URL}/${id}`);
+    return response.data;
+  }
+  catch(error){
+    console.log(error);
+    throw error;
+  }
+}

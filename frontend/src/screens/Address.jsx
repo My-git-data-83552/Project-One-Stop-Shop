@@ -79,8 +79,7 @@ export default function Address() {
         width: "100vw",
       }}
     >
-      <br />
-      <h2 className="mb-2">Add Address</h2>
+      <h2 className="mb-1">Add Address</h2>
       <div className="row">
         <div className="col-2"></div>
         <div className="col-8">
@@ -96,7 +95,10 @@ export default function Address() {
                 placeholder="Enter User ID"
                 value={userId}
                 onChange={(e) => setUserId(e.target.value)}
-                style={{backgroundColor:"transparent" , borderColor:"lightgray" }}
+                style={{
+                  backgroundColor: "transparent",
+                  borderColor: "lightgray",
+                }}
                 required
               />
             </div>
@@ -109,7 +111,10 @@ export default function Address() {
                 placeholder="Enter Address Line 1"
                 value={addressLine1}
                 onChange={(e) => setAddressLine1(e.target.value)}
-                style={{backgroundColor:"transparent" , borderColor:"lightgray" }}
+                style={{
+                  backgroundColor: "transparent",
+                  borderColor: "lightgray",
+                }}
                 required
               />
             </div>
@@ -122,7 +127,10 @@ export default function Address() {
                 placeholder="Enter Address Line 2 (optional)"
                 value={addressLine2}
                 onChange={(e) => setAddressLine2(e.target.value)}
-                style={{backgroundColor:"transparent" , borderColor:"lightgray" }}                                
+                style={{
+                  backgroundColor: "transparent",
+                  borderColor: "lightgray",
+                }}
               />
             </div>
 
@@ -136,7 +144,10 @@ export default function Address() {
                   placeholder="Enter City"
                   value={city}
                   onChange={(e) => setCity(e.target.value)}
-                  style={{backgroundColor:"transparent" , borderColor:"lightgray" }}
+                  style={{
+                    backgroundColor: "transparent",
+                    borderColor: "lightgray",
+                  }}
                   required
                 />
               </div>
@@ -149,7 +160,10 @@ export default function Address() {
                   placeholder="Enter Zip Code"
                   value={zipCode}
                   onChange={(e) => setZipCode(e.target.value)}
-                  style={{backgroundColor:"transparent" , borderColor:"lightgray" }}
+                  style={{
+                    backgroundColor: "transparent",
+                    borderColor: "lightgray",
+                  }}
                   required
                 />
               </div>
@@ -164,7 +178,10 @@ export default function Address() {
                   className="form-select"
                   value={state}
                   onChange={(e) => setState(e.target.value)}
-                  style={{backgroundColor:"transparent" , borderColor:"lightgray" }}
+                  style={{
+                    backgroundColor: "transparent",
+                    borderColor: "lightgray",
+                  }}
                   required
                 >
                   <option value="">Select State</option>
@@ -185,7 +202,10 @@ export default function Address() {
                   className="form-select"
                   value={country}
                   onChange={(e) => setCountry(e.target.value)}
-                  style={{backgroundColor:"transparent" , borderColor:"lightgray" }}
+                  style={{
+                    backgroundColor: "transparent",
+                    borderColor: "lightgray",
+                  }}
                   required
                 >
                   <option value="">Select Country</option>
@@ -197,14 +217,18 @@ export default function Address() {
                 </select>
               </div>
             </div>
-            <button
-              type="submit"
-              className="btn btn-dark"
-              style={{ position: "relative", alignContent: "center" }}
-            >
-              Add Address
-            </button>
-            {error && <div className="alert alert-danger mt-3">{error}</div>}
+            <div className="d-flex justify-content-start">
+              <button
+                type="submit"
+                className="btn btn-dark"
+                style={{
+                  position: "relative",
+                }}
+              >
+                Add Address
+              </button>
+              {error && <div className="alert alert-danger">{error}</div>}
+            </div>
           </form>
         </div>
         <div className="col-2"></div>
@@ -212,11 +236,13 @@ export default function Address() {
       <div className="row">
         <div className="col-4"></div>
         <div className="col-4 d-grid">
-          <Link to="/payment" className="btn btn-primary mt-3">
+          <Link
+            to="/payment"
+            className="btn btn-primary"
+          >
             Proceed to Payment
           </Link>
-          <br />
-          <Link to="/cart" className="btn btn-warning mt-1">
+          <Link to="/cart" className="btn btn-warning mt-4">
             View Shopping Cart
           </Link>
           <br />

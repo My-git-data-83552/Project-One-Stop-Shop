@@ -12,9 +12,9 @@ export default function Login() {
   const navigate = useNavigate()
 
   const onLogin = async () => {
-    if (email.length == 0) {
+    if (email.length === 0) {
       toast.error('Please enter email')
-    } else if (password.length == 0) {
+    } else if (password.length === 0) {
       toast.error('Please enter password')
     } else {
       // call login API and check its success

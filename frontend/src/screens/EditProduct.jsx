@@ -9,7 +9,7 @@ import { toast } from "react-toastify";
 export const EditProduct = () => {
   const { id } = useParams();
   const [product, setProduct] = useState({
-    id: "",
+    id: "", // Ensure this matches the backend field name
     productName: "",
     description: "",
     price: "",
@@ -25,16 +25,32 @@ export const EditProduct = () => {
 
   useEffect(() => {
     const fetchProduct = async () => {
-      const response = await getProductById(id);
-      setProduct(response);
+      try {
+        const response = await getProductById(id);
+        // Ensure the id is set in the product state
+        setProduct({
+          id: response.id,
+          productName: response.productName,
+          description: response.description,
+          price: response.price,
+          quantity: response.quantity,
+          category: response.category,
+        });
+      } catch (error) {
+        console.error("Error fetching product:", error.response ? error.response.data : error.message);
+      }
     };
     fetchProduct();
   }, [id]);
 
   useEffect(() => {
     const fetchCategories = async () => {
-      const response = await getCategories();
-      setCategories(response);
+      try {
+        const response = await getCategories();
+        setCategories(response);
+      } catch (error) {
+        console.error("Error fetching categories:", error.response ? error.response.data : error.message);
+      }
     };
     fetchCategories();
   }, []);
@@ -53,6 +69,7 @@ export const EditProduct = () => {
     e.preventDefault();
     try {
       const productToUpdate = {
+        id: product.id, // Ensure the ID is included in the payload
         productName: product.productName,
         description: product.description,
         price: product.price,
@@ -88,42 +105,9 @@ export const EditProduct = () => {
         <div className="col-md-3"></div>
         <div className="col-md-6">
           <form onSubmit={handleSubmit}>
-          <div className="form-group">
+            <div className="form-group">
               <label htmlFor="productId">Product ID</label>
               <input
-                type="text"
-                className="form-control mb-3"
-                id="productId"
-                name="productId"
-                value={product.id}
-                onChange={handleChange}
-                placeholder="Product ID"
-                style={{
-                  backgroundColor: "transparent",
-                  borderColor: "lightgray",
-                }}                
-              />
-            </div>
-            <div className="form-group">
-              <label htmlFor="productName">Product Name</label>
-              <input
-                type="text"
-                className="form-control mb-3"
-                id="productName"
-                name="productName"
-                value={product.productName}
-                onChange={handleChange}
-                placeholder="Product Name"
-                style={{
-                  backgroundColor: "transparent",
-                  borderColor: "lightgray",
-                }}
-                required
-              />
-            </div>
-            <div className="form-group">
-              <label htmlFor="description">Description</label>
-             <input
                 type="text"
                 className="form-control mb-3"
                 id="productId"
@@ -139,13 +123,47 @@ export const EditProduct = () => {
               />
             </div>
             <div className="form-group">
+              <label htmlFor="productName">Product Name</label>
+              <input
+                type="text"
+                className="form-control mb-3"
+                id="productName"
+                name="productName"
+                value={product.productName || ""}
+                onChange={handleChange}
+                placeholder="Product Name"
+                style={{
+                  backgroundColor: "transparent",
+                  borderColor: "lightgray",
+                }}
+                required
+              />
+            </div>
+            <div className="form-group">
+              <label htmlFor="description">Description</label>
+              <input
+                type="text"
+                className="form-control mb-3"
+                id="description"
+                name="description"
+                value={product.description || ""}
+                onChange={handleChange}
+                placeholder="Description"
+                style={{
+                  backgroundColor: "transparent",
+                  borderColor: "lightgray",
+                }}
+                required
+              />
+            </div>
+            <div className="form-group">
               <label htmlFor="price">Price</label>
               <input
                 type="number"
                 className="form-control mb-3"
                 id="price"
                 name="price"
-                value={product.price}
+                value={product.price || ""}
                 onChange={handleChange}
                 placeholder="Price"
                 style={{
@@ -162,7 +180,7 @@ export const EditProduct = () => {
                 className="form-control mb-3"
                 id="quantity"
                 name="quantity"
-                value={product.quantity}
+                value={product.quantity || ""}
                 onChange={handleChange}
                 placeholder="Quantity"
                 style={{
@@ -178,7 +196,7 @@ export const EditProduct = () => {
                 className="form-select mb-3"
                 id="categoryId"
                 name="categoryId"
-                value={product.category.id}
+                value={product.category.id || ""}
                 onChange={handleChange}
                 style={{
                   backgroundColor: "transparent",
