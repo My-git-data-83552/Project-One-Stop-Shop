@@ -8,11 +8,10 @@ import laptop3 from '../productImages/laptop3.jpg'
 import laptop4 from '../productImages/laptop4.jpg'
 import card from '../productImages/card.jpg'
 
-
-
 export default function Product() {
   const [products, setProducts] = useState([]);
   const [error, setError] = useState('');
+  const [msg, setMsg] = useState('');
 
   useEffect(() => {
     const fetchProducts = async () => {
@@ -23,23 +22,22 @@ export default function Product() {
         setError('Error fetching products');
       }
     };
-
     fetchProducts();
   }, []);
 
   return (
     <div className="container">
-      <h1 className="text-center my-4">Products available to Buy   </h1>
+      <h1 className="text-center my-4">Products available to Buy</h1>
       {error && <div className="alert alert-danger">{error}</div>}
       <div className="container">
         <hr />
         <div className="row">
           {products.map((product) => (
-            <div className="col-md-4 "  key={product.id}>
-              <div className="card mb-4 shadow-lg p-3 mb-5 bg-body-tertiary rounded"style={{backgroundColor:"white"}}>
-              <Link to={`/product/${product.id}`}>
+            <div className="col-md-4" key={product.id}>
+              <div className="card mb-4 shadow-lg p-3 mb-5 bg-body-tertiary rounded" style={{backgroundColor: "white"}}>
+                <Link to={`/product/${product.id}`}>
                   <img
-                    src={laptop4} 
+                    src={laptop4}
                     className="card-img-top"
                     alt={product.productName}
                   />
@@ -47,9 +45,18 @@ export default function Product() {
                 <div className="card-body">
                   <h5 className="card-title">{product.productName}</h5>
                   <p className="card-text">{product.description}</p>
-                  <p className="card-text text-muted">${product.price}</p>
-                  <Link to='/buy' className='btn btn-primary me-3'>Buy Now</Link>
-                  <Link to='/addToCart' className='btn btn-warning'>Add to Cart</Link>            
+                  <p className="card-text text-muted">₹{product.price}</p>
+                  {product.quantity === 0 && (
+                    <div>
+                      <p style={{color: "red"}}>Out of Stock</p>
+                    </div>
+                  )}
+                  {product.quantity > 0 && (
+                    <div>
+                      <Link to='/buy' className='btn btn-primary me-3'>Buy Now</Link>
+                      <Link to='/addToCart' className='btn btn-warning'>Add to Cart</Link>
+                    </div>
+                  )}
                 </div>
               </div>
             </div>
