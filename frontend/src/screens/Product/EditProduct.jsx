@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
-import bg from "../productImages/addProduct.jpg";
-import Navigation_bar from "../components/Navigation_bar";
-import { editProduct, getProductById } from "../services/ProductService";
-import { getCategories } from "../services/CategoryService";
+import bg from "../../productImages/addProduct.jpg";
+import Navigation_bar from "../../components/Navigation_bar";
+import { editProduct, getProductById } from "../../services/ProductService";
+import { getCategories } from "../../services/CategoryService";
 import { toast } from "react-toastify";
 
 export const EditProduct = () => {

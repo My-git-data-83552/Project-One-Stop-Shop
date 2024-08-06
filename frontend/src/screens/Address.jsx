@@ -221,9 +221,7 @@ export default function Address() {
               <button
                 type="submit"
                 className="btn btn-dark"
-                style={{
-                  position: "relative",
-                }}
+                style={{borderRadius:'100px'}}
               >
                 Add Address
               </button>
@@ -238,15 +236,15 @@ export default function Address() {
         <div className="col-4 d-grid">
           <Link
             to="/payment"
-            className="btn btn-primary"
+            className="btn btn-primary" style={{borderRadius:'100px'}}
           >
             Proceed to Payment
           </Link>
-          <Link to="/cart" className="btn btn-warning mt-4">
+          <Link to="/cart" className="btn btn-warning mt-4" style={{borderRadius:'100px'}}>
             View Shopping Cart
           </Link>
           <br />
-          <Link to="/home" className="btn btn-danger mt-1">
+          <Link to="/home" className="btn btn-danger mt-1" style={{borderRadius:'100px'}}>
             Cancel
           </Link>
         </div>

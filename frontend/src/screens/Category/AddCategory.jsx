@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
-import bg from "../productImages/addProduct.jpg";
-import Navigation_bar from "../components/Navigation_bar";
-import { addCategories } from "../services/CategoryService";
+import bg from "../../productImages/addProduct.jpg";
+import Navigation_bar from "../../components/Navigation_bar";
+import { addCategories } from "../../services/CategoryService";
 import { toast } from "react-toastify";
 import { Link } from "react-router-dom";
 
@@ -53,9 +53,9 @@ export default function AddCategory() {
             />
             <input
               type="submit"
-              className="btn btn-primary mt-4"              
+              className="btn btn-primary mt-4"  style={{borderRadius:'100px'}}             
             />
-             <Link to='/Category' className='btn btn-warning ms-3 mt-4'>Go Back</Link>    
+             <Link to='/Category' className='btn btn-warning ms-3 mt-4' style={{borderRadius:'100px'}}>Go Back</Link>    
           </form>                         
         </div>
         <div className="col-4"></div>

@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
-import { deleteProduct, getAllProducts } from "../services/ProductService";
+import { deleteProduct, getAllProducts } from "../../services/ProductService";
 import { toast } from "react-toastify";
-import bg from "../productImages/addProduct.jpg";
+import bg from "../../productImages/addProduct.jpg";
 import { Link, useNavigate } from "react-router-dom";
-import Navigation_bar from "../components/Navigation_bar";
+import Navigation_bar from "../../components/Navigation_bar";
 
 export const Products = () => {
   const [products, setProducts] = useState([]);
@@ -53,7 +53,7 @@ export const Products = () => {
         <Link
           to="/addProduct"
           className="btn btn-dark mt-3 mb-3 d-flex justify-content-around"
-          style={{ backgroundColor: "" }}
+          style={{borderRadius:'100px'}}
         >
           Add New Product
         </Link>
@@ -83,13 +83,13 @@ export const Products = () => {
                 <td>
                   <Link
                     to={`/editProduct/${product.id}`}
-                    className="btn btn-warning me-3"
+                    className="btn btn-warning me-3" style={{borderRadius:'100px'}}
                   >
                     Edit
                   </Link>
                   <Link
                     onClick={() => handleDelete(product.id)}
-                    className="btn btn-danger"
+                    className="btn btn-danger" style={{borderRadius:'100px'}}
                   >
                     Delete
                   </Link>

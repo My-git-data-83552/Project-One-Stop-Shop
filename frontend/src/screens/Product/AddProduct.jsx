@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from 'react';
-import { addProduct } from '../services/ProductService';
-import { getCategories } from '../services/CategoryService';
+import { addProduct } from '../../services/ProductService';
+import { getCategories } from '../../services/CategoryService';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import bg from "../productImages/addProduct.jpg";
-import Navigation_bar from "../components/Navigation_bar"
+import bg from "../../productImages/addProduct.jpg";
+import Navigation_bar from "../../components/Navigation_bar"
 import { Link } from 'react-router-dom';
 
-export default function AppProduct() {
+export default function AddProduct() {
     const [product, setProduct] = useState({
         productName: '',
         description: '',

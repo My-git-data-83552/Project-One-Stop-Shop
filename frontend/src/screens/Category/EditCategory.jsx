@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import { editCategories, getCategoryById } from "../services/CategoryService";
-import bg from "../productImages/addProduct.jpg";
-import Navigation_bar from "../components/Navigation_bar";
+import { editCategories, getCategoryById } from "../../services/CategoryService";
+import bg from "../../productImages/addProduct.jpg";
+import Navigation_bar from "../../components/Navigation_bar";
 import { toast } from "react-toastify";
 
 export default function EditCategory() {

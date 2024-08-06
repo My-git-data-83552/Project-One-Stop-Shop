@@ -9,14 +9,16 @@ import Logout from './screens/Logout';
 import Address from './screens/Address';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import AddProduct from './screens/AddProduct';
-import AddCategory from './screens/AddCategory.jsx';
+import AddProduct from './screens/Product/AddProduct';
+import AddCategory from './screens/Category/AddCategory.jsx';
 import CategoryList from './components/Categories.jsx';
-import { Product } from './screens/Product.jsx';
-import Categories from './screens/Category.jsx';
-import EditCategory from './screens/EditCategory.jsx';
-import { Products } from './screens/Products.jsx';
-import { EditProduct } from './screens/EditProduct.jsx';
+import { Product } from './screens/Product/Product.jsx';
+import Categories from './screens/Category/Category.jsx';
+import EditCategory from './screens/Category/EditCategory.jsx';
+import { Products } from './screens/Product/Products.jsx';
+import { EditProduct } from './screens/Product/EditProduct.jsx';
+import { AddFeaturedProducts } from './screens/FeaturedProducts/AddFeaturedProducts.jsx';
+import FeaturedProducts from './screens/FeaturedProducts/FeaturedProducts.jsx';
 
 function App() {
   return (
@@ -36,7 +38,8 @@ function App() {
         <Route path="/editCategory/:id" element={<EditCategory />} />   
         <Route path="/products" element={<Products />} />  
         <Route path="/editProduct/:id" element={<EditProduct />} />  
-
+        <Route path="/addFeaturedProducts" element={<AddFeaturedProducts />} />  
+        <Route path="/featuredProducts" element={<FeaturedProducts />} />  
       </Routes>
       <ToastContainer/>
 

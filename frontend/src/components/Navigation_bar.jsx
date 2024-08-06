@@ -11,16 +11,11 @@ export default function Navigation_bar() {
     <button className="navbar-toggler" type="button" data-bs-toggle="collapse"  aria-disabled="true">
       <span className="navbar-toggler-icon"></span>
     </button>
-    <div className="collapse navbar-collapse" id="navbarScroll">
-      <ul className="navbar-nav me-auto my-2 my-lg-0 navbar-nav-scroll" >
+    <div className="collapse navbar-collapse " id="navbarScroll">
+      <ul className="navbar-nav me-auto my-2 my-lg-0 navbar-nav-scroll " >
         <li className="nav-item">
          <Link to='/home' className='nav-link' aria-current='page' href='#' >OneStopShop</Link>
-        </li>
-        <li className="nav-item dropdown">
-        <Link to='/category' className='nav-link' aria-current='page' href='#' >Categories</Link>
-       
-              
-            </li>
+        </li>        
         <li className="nav-item">
             <Link to='/login' className='nav-link' aria-current='page' href='#' >Login</Link>
         </li>
@@ -33,15 +28,21 @@ export default function Navigation_bar() {
         <li className="nav-item">
          <Link to='/category' className='nav-link' aria-current='page' href='#' >Category</Link>
         </li> 
+        <li className="nav-item">
+         <Link to='/featuredProducts' 
+         className='nav-link' 
+         style={{borderRadius:'100px'}}
+         aria-current='page' href='#' >Featured Products</Link>
+        </li> 
       </ul>
       <form className="d-flex" role="search">
         <input className="form-control me-2" type="search" placeholder="Looking for something?" style={{width:"300px"}} aria-label="Search" />
-        <button className="btn btn-dark" type="submit">Search</button>
+        <button className="btn btn-dark" type="submit" style={{borderRadius:'100px'}}>Search</button>
 
-      </form>
-      
+      </form>      
       <li className="nav-item">
-          <Link to='/logout' className='btn btn-outline-danger' aria-current='page' href='#' >Logout</Link>
+          <Link to='/logout' className='btn btn-outline-danger' aria-current='page' href='#' 
+          style={{borderRadius:'100px'}}>Logout</Link>
         </li> 
     </div>
   </div>

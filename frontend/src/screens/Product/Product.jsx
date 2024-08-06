@@ -1,4 +1,4 @@
-import NaviBar from '../components/Navigation_bar';
+import NaviBar from '../../components/Navigation_bar';
 
 export const Product=()=>{
 

@@ -1,16 +1,31 @@
-import slide1 from "../productImages/slide2.jpeg";
-import slide2 from "../productImages/slide3.jpeg";
-import slide3 from "../productImages/slide4.jpeg";
+import { useEffect, useState } from "react";
+import { FetchFeaturedProducts } from "../services/FeaturedProductsService";
 
 export const FeaturedProduct = () => {
+  const [featuredProducts, setFeaturedProducts] = useState([]);
+  const [error, setError] = useState(null);
+
+  useEffect(() => {
+    const fetchFeaturedProducts = async () => {
+      try {
+        const data = await FetchFeaturedProducts();
+        setFeaturedProducts(data);
+      } catch (error) {
+        console.log(error);
+        setError("Error while fetching the featured products");
+      }
+    };
+    fetchFeaturedProducts();
+  }, []);
+
   return (
     <div
       id="carouselExampleAutoplaying"
-      className="carousel slide mt-4"
+      className="carousel slide mt-1"
       data-bs-ride="carousel"
       style={{
-        width: "88%",
-        borderRadius: "10px",
+        width: "100%",
+        borderRadius: "2px",
         height: "100%",
         marginLeft: "auto",
         marginRight: "auto",
@@ -38,45 +53,22 @@ export const FeaturedProduct = () => {
           aria-label="Slide 3"
         ></button>
       </div>
-      <div className="carousel-inner" style={{ borderRadius: "50px" }}>
-        <div className="carousel-item active">
+      <div className="carousel-inner" style={{ borderRadius: "2px" }}>
+
+        {featuredProducts.map((featuredProduct)=>(
+          <div className="carousel-item active">
           <img
-            src={slide1}
+            src={`http://localhost:8080/api/featuredProducts/${featuredProduct.fileName}`}
             className="d-block w-100"
-            alt="..."
-            style={{ width: "500px", height: "500px" }}
+            style={{ width: "100%", height: "40rem" }}
           />
           <div className="carousel-caption d-none d-md-block">
-            <h5>Title-1</h5>
-            <p>Some representative placeholder content for the second slide.</p>
+            <h5>{featuredProduct.title}</h5>
+            <p>{featuredProduct.description}</p>
           </div>
         </div>
-        <div className="carousel-item">
-          <img
-            src={slide2}
-            className="d-block w-100"
-            alt="..."
-            style={{ width: "500px", height: "500px" }}
-          />
-          <div className="carousel-caption d-none d-md-block">
-            <h5>Title-2</h5>
-            <p>Some representative placeholder content for the second slide.</p>
-          </div>
-        </div>
-       
-        <div className="carousel-item">
-          <img
-            src={slide3}
-            className="d-block w-100"
-            alt="..."
-            style={{ width: "500px", height: "500px" }}
-          />
-          <div className="carousel-caption d-none d-md-block">
-            <h5>Title-3</h5>
-            <p>Some representative placeholder content for the second slide.</p>
-          </div>
-        </div>
-      </div>
+        ))}
+      </div> 
       <button
         className="carousel-control-prev"
         type="button"
