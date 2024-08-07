@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.onestopshop.dtos.CategoryDTO;
 import com.onestopshop.entities.Category;
 import com.onestopshop.services.CategoryService;
 
@@ -39,8 +40,8 @@ public class CategoryController {
     }
 
     @PostMapping
-    public ResponseEntity<Category> createCategory(@RequestBody Category category) {
-        return ResponseEntity.ok(categoryService.saveCategory(category));
+    public ResponseEntity<Category> createCategory(@RequestBody CategoryDTO dto) {
+        return ResponseEntity.ok(categoryService.saveCategory(dto));
     }
 
     @DeleteMapping("/{id}")
@@ -50,6 +51,7 @@ public class CategoryController {
     }
     
     @PutMapping("/{id}")
+    @CrossOrigin(origins = "http://localhost:3000")
     public ResponseEntity<?> putMethodName(@PathVariable Long id, @RequestBody Category entity) {        
         return ResponseEntity.ok(categoryService.updateCategory(id));
     }

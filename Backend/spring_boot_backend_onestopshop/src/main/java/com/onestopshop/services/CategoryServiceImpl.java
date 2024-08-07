@@ -3,18 +3,26 @@ package com.onestopshop.services;
 import java.util.List;
 import java.util.Optional;
 
+import javax.transaction.Transactional;
+
+import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.onestopshop.daos.CategoryRepository;
+import com.onestopshop.dtos.CategoryDTO;
 import com.onestopshop.entities.Category;
 import com.onestopshop.exceptionhandling.ResourceNotFoundException;
 
 @Service
+@Transactional
 public class CategoryServiceImpl implements CategoryService {
 
     @Autowired
     private CategoryRepository categoryRepository;
+    
+    @Autowired
+    private ModelMapper modelMapper;
 
     @Override
     public List<Category> getAllCategories() {
@@ -27,7 +35,8 @@ public class CategoryServiceImpl implements CategoryService {
     }
 
     @Override
-    public Category saveCategory(Category category) {
+    public Category saveCategory(CategoryDTO dto) {
+    	Category category= modelMapper.map(dto, Category.class);
         return categoryRepository.save(category);
     }
 

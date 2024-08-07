@@ -67,7 +67,7 @@ export default function EditCategory() {
               style={{ backgroundColor: "transparent" }}
               required
             />
-            <input type="submit" className="btn btn-primary mt-4" />
+            <input type="submit" className="btn btn-primary mt-4"  style={{borderRadius:'20px'}}/>
           </form>
         </div>
         <div className="col-4"></div>

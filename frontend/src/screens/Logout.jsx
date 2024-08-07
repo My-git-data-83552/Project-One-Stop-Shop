@@ -7,8 +7,7 @@ export default function Logout(){
         <div 
         className="container-fluid"
          style={{
-            // backgroundImage: `url(${bg})`, 
-            backgroundImage:'https://user-images.githubusercontent.com/5574267/130804494-a9d2d69c-f170-4576-b2e1-0bb7f13dd92d.gif',
+            backgroundImage: `url(${bg})`,
             backgroundSize: "cover",
             backgroundPosition: "center",
             height: "100vh",
@@ -17,8 +16,12 @@ export default function Logout(){
             <br />
             <h1>Logout Success!!!</h1>    
             <hr />
-            <Link to='/login' className="btn btn-light me-4">Login Again?</Link>
-            <Link to='/home' className="btn btn-primary">Keep Browsing</Link>
+            <Link to='/login' className="btn btn-light me-4" style={{
+                borderRadius:'20px'
+            }}>Login Again?</Link>
+            <Link to='/home' className="btn btn-primary" style={{
+                borderRadius:'20px'
+            }}>Keep Browsing</Link>
             
         </div>
     )

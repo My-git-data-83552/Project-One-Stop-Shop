@@ -9,4 +9,5 @@ public interface AddressService {
     Address addAddress(Address address);
     List<Address> getAllAddresses();
     Optional<Address> getAddressById(Long id);
+    List<Address> getAddressByUserId(Long userId);
 }

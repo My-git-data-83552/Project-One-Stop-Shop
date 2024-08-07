@@ -7,7 +7,13 @@ import java.util.stream.Collectors;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 import com.onestopshop.dtos.AddressDTO;
 import com.onestopshop.dtos.AddressResponseDTO;
@@ -15,6 +21,7 @@ import com.onestopshop.entities.Address;
 import com.onestopshop.entities.User;
 import com.onestopshop.services.AddressService;
 import com.onestopshop.services.UserService;
+
 
 @RestController
 @RequestMapping("/api/addresses")
@@ -26,10 +33,10 @@ public class AddressController {
 
     @Autowired
     private UserService userService;
+    
     @CrossOrigin(origins = "http://localhost:3000") 
     @PostMapping
     public ResponseEntity<Address> addAddress(@RequestBody AddressDTO addressDTO) {
-        // Retrieve the user from the UserService
         Optional<User> userOptional = userService.getUserById(addressDTO.getUserId());
         if (userOptional.isEmpty()) {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
@@ -86,4 +93,10 @@ public class AddressController {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
     }
+    
+    @GetMapping("/user/{userId}")    
+    public ResponseEntity<?> getAddressByUserId(@PathVariable Long userId) {
+      return ResponseEntity.ok(addressService.getAddressByUserId(userId));      
+    }
+    
 }

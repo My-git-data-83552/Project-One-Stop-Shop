@@ -7,7 +7,6 @@ import Navigation_bar from "../../components/Navigation_bar";
 
 export const Products = () => {
   const [products, setProducts] = useState([]);
-  const nav = useNavigate();
 
   useEffect(() => {
     const fetchProducts = async () => {
@@ -66,8 +65,8 @@ export const Products = () => {
             <tr>
               <th>Sr. No.</th>
               <th>Product Name</th>
-              <th>Quantity</th>
-              <th>Category Name</th>
+              <th>Brand</th>
+              <th>Quantity Name</th>
               <th>Price</th>
               <th>Actions</th>
             </tr>
@@ -77,8 +76,8 @@ export const Products = () => {
               <tr key={product.id}>
                 <td>{product.id}</td>
                 <td>{product.productName}</td>
-                <td>{product.quantity}</td>
-                <td>{product.category.name}</td>
+                <td>{product.brand}</td>
+                <td>{product.quantity}</td>                
                 <td>{product.price}</td>
                 <td>
                   <Link

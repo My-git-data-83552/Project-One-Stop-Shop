@@ -22,6 +22,9 @@ export default function Product() {
         setError('Error fetching products');
       }
     };
+
+    
+
     fetchProducts();
   }, []);
 

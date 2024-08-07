@@ -9,7 +9,7 @@ import { Link } from 'react-router-dom';
 export default function AddProduct() {
     const [product, setProduct] = useState({
         productName: '',
-        description: '',
+        brand: '',
         price: 0,
         quantity: 0,
         categoryId: '',
@@ -86,15 +86,15 @@ export default function AddProduct() {
                             />
                         </div>
                         <div className="form-group">
-                            <label htmlFor="description">Description</label>
+                            <label htmlFor="brand">Brand</label>
                             <input
                                 type="text"
                                 className="form-control mb-3"
-                                id="description"
-                                name="description"
-                                value={product.description}
+                                id="brand"
+                                name="brand"
+                                value={product.brand}
                                 onChange={handleChange}
-                                placeholder="Description"
+                                placeholder="Brand"
                                 style={{backgroundColor:"transparent" , borderColor:"lightgray" }}
                                 required
                             />
@@ -147,9 +147,9 @@ export default function AddProduct() {
                                 ))}
                             </select>
                         </div>
-                        <button type="submit" className="btn btn-primary mt-3" style={{width:'120px'}}>Add Product</button>
-                        <Link to='/Products' className='btn btn-warning ms-5 mt-3' style={{width:'120px'}}>Go Back</Link>
-                        <Link to='/addSpecification' className='btn btn-primary ms-5 mt-3' style={{width:'120px'}}>Add Specs</Link>
+                        <button type="submit" className="btn btn-primary mt-3" style={{width:'120px',borderRadius:'20px'}}>Add Product</button>
+                        <Link to='/Products' className='btn btn-warning ms-5 mt-3' style={{width:'120px',borderRadius:'20px'}}>Go Back</Link>
+                        <Link to='/addSpecification' className='btn btn-primary ms-5 mt-3' style={{width:'120px',borderRadius:'20px'}}>Add Specs</Link>
                         </form>
                 </div>
                 <div className='col-md-3'></div>

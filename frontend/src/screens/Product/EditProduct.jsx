@@ -215,14 +215,14 @@ export const EditProduct = () => {
             <button
               type="submit"
               className="btn btn-primary mt-3"
-              style={{ width: "120px" }}
+              style={{borderRadius:'20px'}}
             >
               Edit Product
             </button>
             <Link
               to="/Products"
               className="btn btn-warning ms-5 mt-3"
-              style={{ width: "120px" }}
+              style={{borderRadius:'20px'}}
             >
               Go Back
             </Link>
