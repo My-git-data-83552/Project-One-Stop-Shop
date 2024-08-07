@@ -19,6 +19,7 @@ import { Products } from './screens/Product/Products.jsx';
 import { EditProduct } from './screens/Product/EditProduct.jsx';
 import { AddFeaturedProducts } from './screens/FeaturedProducts/AddFeaturedProducts.jsx';
 import FeaturedProducts from './screens/FeaturedProducts/FeaturedProducts.jsx';
+import AddSpecification from './screens/Specification/AddSpecification.jsx';
 
 function App() {
   return (
@@ -40,6 +41,7 @@ function App() {
         <Route path="/editProduct/:id" element={<EditProduct />} />  
         <Route path="/addFeaturedProducts" element={<AddFeaturedProducts />} />  
         <Route path="/featuredProducts" element={<FeaturedProducts />} />  
+        <Route path="/addSpecification" element={<AddSpecification />} /> 
       </Routes>
       <ToastContainer/>
 

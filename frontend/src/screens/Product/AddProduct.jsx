@@ -13,6 +13,7 @@ export default function AddProduct() {
         price: 0,
         quantity: 0,
         categoryId: '',
+        specificationId:'',
     });
 
     const [categories, setCategories] = useState([]);
@@ -148,7 +149,8 @@ export default function AddProduct() {
                         </div>
                         <button type="submit" className="btn btn-primary mt-3" style={{width:'120px'}}>Add Product</button>
                         <Link to='/Products' className='btn btn-warning ms-5 mt-3' style={{width:'120px'}}>Go Back</Link>
-                    </form>
+                        <Link to='/addSpecification' className='btn btn-primary ms-5 mt-3' style={{width:'120px'}}>Add Specs</Link>
+                        </form>
                 </div>
                 <div className='col-md-3'></div>
             </div>

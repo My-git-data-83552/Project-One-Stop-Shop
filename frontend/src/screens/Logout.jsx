@@ -7,7 +7,8 @@ export default function Logout(){
         <div 
         className="container-fluid"
          style={{
-            backgroundImage: `url(${bg})`, 
+            // backgroundImage: `url(${bg})`, 
+            backgroundImage:'https://user-images.githubusercontent.com/5574267/130804494-a9d2d69c-f170-4576-b2e1-0bb7f13dd92d.gif',
             backgroundSize: "cover",
             backgroundPosition: "center",
             height: "100vh",

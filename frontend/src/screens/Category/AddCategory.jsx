@@ -41,13 +41,13 @@ export default function AddCategory() {
         <div className="col-4">
           <h1 className="mb-4">Add Category</h1>
           <form onSubmit={handleSubmit}>
-            <label about="categoryName" className="col-form-label">Category Name</label>
+            <label about="name" className="col-form-label">Category Name</label>
             <input
               type="text"
               onChange={(e)=>{setCategory(e.target.value)}}
               className="form-control"
-              name="categoryName"
-              id="categoryName"
+              name="name"
+              id="name"
               placeholder="Category Name"
               style={{backgroundColor:"transparent"}}
             />
