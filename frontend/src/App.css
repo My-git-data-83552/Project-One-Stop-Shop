@@ -11,6 +11,14 @@
   pointer-events: none;
 }
 
+.hoverEffect {
+  background-color:  transparent
+}
+
+.hoverEffect:hover {
+  background-color: olive
+}
+
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
     animation: App-logo-spin infinite 20s linear;

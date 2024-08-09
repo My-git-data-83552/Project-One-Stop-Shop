@@ -3,6 +3,7 @@ import { DeleteFeaturedProduct, FetchFeaturedProducts } from "../../services/Fea
 import { Link } from "react-router-dom";
 import bg from "../../productImages/addProduct.jpg";
 import { toast } from "react-toastify";
+import SideBar from "../../components/SideBar";
 
 const FeaturedProducts = () => {
   const [featuredProducts, setFeaturedProducts] = useState([]);
@@ -46,6 +47,7 @@ const FeaturedProducts = () => {
         width: "100vw",
       }}
     >
+      <SideBar>
       <br />
       <h1>Featured Products</h1>
       <hr />
@@ -71,15 +73,15 @@ const FeaturedProducts = () => {
         <tbody>
           {featuredProducts.map((featuredProduct, index) => (
             <tr key={index}>
-              <td>{index + 1}</td>
-              <td>{featuredProduct.title}</td>
-              <td>{featuredProduct.description}</td>
-              <td>
+              <td className="col">{index + 1}</td>
+              <td className="col-3">{featuredProduct.title}</td>
+              <td className="col-5">{featuredProduct.description}</td>
+              <td className="col">
                 <a href={`http://localhost:8080/api/featuredProducts/${featuredProduct.fileName}`} target="_blank" rel="noopener noreferrer">
                     View Image
                   </a>
               </td>
-              <td>
+              <td className="col">
                 <Link className="btn btn-primary btn-sm me-3" to={`/featuredProduct/${featuredProduct.id}`} style={{borderRadius:'100px', width:'60px'}}>Edit</Link>
                 <Link className="btn btn-danger btn-sm" onClick={() => handleDelete(featuredProduct.id)} style={{borderRadius:'100px', width:'60px'}}>Delete</Link>
               </td>
@@ -93,7 +95,7 @@ const FeaturedProducts = () => {
       <Link className="btn btn-warning mt-4 me-4" to="/home" style={{borderRadius:'100px', width:'100px'}}>
         Go Back
       </Link>
-      
+      </SideBar>
     </div>
   );
 };

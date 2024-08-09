@@ -2,6 +2,7 @@ import bg from "../productImages/loginBackgroundImage.jpg";
 import React, { useState } from "react";
 import { toast } from "react-toastify";
 import { Link, useNavigate } from "react-router-dom";
+import SideBar from "../components/SideBar";
 
 export default function Login() {
   const [email, setEmail] = useState("");
@@ -31,6 +32,7 @@ export default function Login() {
         width: "100vw",
       }}
     >
+      <SideBar>
       <div className="row">
         <div className="col-6"></div>
         <div
@@ -97,6 +99,7 @@ export default function Login() {
         </div>
         <div className="col-1 mb-5"></div>
       </div>
+      </SideBar>
     </div>
   );
 }

@@ -4,6 +4,7 @@ import { deleteCategory, getCategories } from "../../services/CategoryService";
 import bg from "../../productImages/addProduct.jpg";
 import { Link } from "react-router-dom";
 import { toast } from "react-toastify";
+import SideBar from "../../components/SideBar";
 
 const Categories = () => {
   const [categories, setCategories] = useState([]);
@@ -42,7 +43,7 @@ const Categories = () => {
       height: "100vh",
       width: "100vw",
   }}>
-      <Navigation_bar />
+      <SideBar>
       <div className="container mt-3 col-6">        
         <h1 className="mb-4">Category List</h1>
         <Link to="/addCategory" className="btn btn-light"  style={{borderRadius:'100px'}}>Add Category</Link>
@@ -72,6 +73,7 @@ const Categories = () => {
           </tbody>
         </table>
       </div>
+      </SideBar>
     </div>
   );
 };

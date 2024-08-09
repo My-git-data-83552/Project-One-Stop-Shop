@@ -12,3 +12,13 @@ export const LoginService = async (username, password) => {
       return { status: "error", message: error.response?.data || "Login failed" };
     }
   };
+
+  export const RegisterService=async(user)=>{
+    try {
+        
+      const response = await axios.post(`${API_URL}/register`, { user});
+      return { status: "success", data: response.data };
+    } catch (error) {
+      return { status: "error", message: error.response?.data || "Login failed" };
+    }
+  };

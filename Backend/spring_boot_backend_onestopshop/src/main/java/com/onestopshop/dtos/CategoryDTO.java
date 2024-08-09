@@ -6,9 +6,7 @@ import lombok.*;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-@ToString
 public class CategoryDTO {
-    private Long id;
     private String name;
 //  private List<Product> categoriesList;
 }

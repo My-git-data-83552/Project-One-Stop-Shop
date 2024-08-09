@@ -19,7 +19,6 @@ import lombok.ToString;
 @Setter
 @Entity
 @Table(name = "categories")
-@ToString
 public class Category extends BaseEntity {
 
     @Column(name = "name", nullable = false, unique = true)

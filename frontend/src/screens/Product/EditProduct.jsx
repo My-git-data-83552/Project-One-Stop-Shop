@@ -5,6 +5,7 @@ import Navigation_bar from "../../components/Navigation_bar";
 import { editProduct, getProductById } from "../../services/ProductService";
 import { getCategories } from "../../services/CategoryService";
 import { toast } from "react-toastify";
+import SideBar from "../../components/SideBar";
 
 export const EditProduct = () => {
   const { id } = useParams();
@@ -99,7 +100,7 @@ export const EditProduct = () => {
         width: "100vw",
       }}
     >
-      <Navigation_bar />
+      <SideBar>
       <h1 className="mb-4">Edit Product</h1>
       <div className="row">
         <div className="col-md-3"></div>
@@ -230,6 +231,7 @@ export const EditProduct = () => {
         </div>
         <div className="col-md-3"></div>
       </div>
+      </SideBar>
     </div>
   );
 };

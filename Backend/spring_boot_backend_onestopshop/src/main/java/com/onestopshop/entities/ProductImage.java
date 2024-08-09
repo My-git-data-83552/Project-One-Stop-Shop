@@ -21,7 +21,7 @@ public class ProductImage extends BaseEntity {
 	private String fileName;
 	
 	@Column(name = "is_cover_image")
-	private boolean isCover;
+	private boolean cover;
 	
 	@ManyToOne
 	private Product product;

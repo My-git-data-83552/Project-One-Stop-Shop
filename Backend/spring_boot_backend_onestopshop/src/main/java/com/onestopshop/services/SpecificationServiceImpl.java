@@ -22,10 +22,10 @@ public class SpecificationServiceImpl implements SpecificationService {
     private ModelMapper modelMapper;
 
     @Override
-    public SpecificationDTO addSpecification(SpecificationDTO specificationDTO) {
-        Specification specification = modelMapper.map(specificationDTO, Specification.class);
+    public Specification addSpecification(SpecificationDTO dto) {
+        Specification specification = modelMapper.map(dto, Specification.class);
         Specification savedSpecification = specificationRepository.save(specification);
-        return modelMapper.map(savedSpecification, SpecificationDTO.class);
+        return savedSpecification;
     }
 
     @Override

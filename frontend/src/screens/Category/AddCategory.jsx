@@ -5,6 +5,7 @@ import Navigation_bar from "../../components/Navigation_bar";
 import { addCategories } from "../../services/CategoryService";
 import { toast } from "react-toastify";
 import { Link } from "react-router-dom";
+import SideBar from "../../components/SideBar";
 
 export default function AddCategory() {
     const [category,setCategory] = useState({
@@ -35,11 +36,12 @@ export default function AddCategory() {
         width: "100vw",
       }}
     >
-      <Navigation_bar />
+      <SideBar>
       <div className="row">
         <div className="col-4"></div>
         <div className="col-4">
-          <h1 className="mb-4">Add Category</h1>
+          <br />
+          <h1 className="mb-4">Add Category</h1> <hr />
           <form onSubmit={handleSubmit}>
             <label about="name" className="col-form-label">Category Name</label>
             <input
@@ -49,7 +51,9 @@ export default function AddCategory() {
               name="name"
               id="name"
               placeholder="Category Name"
-              style={{backgroundColor:"transparent"}}
+              style={{backgroundColor:"transparent",
+                borderColor:'lightgray'
+              }}
             />
             <input
               type="submit"
@@ -60,6 +64,7 @@ export default function AddCategory() {
         </div>
         <div className="col-4"></div>
       </div>
+      </SideBar>
     </div>
   );
 }

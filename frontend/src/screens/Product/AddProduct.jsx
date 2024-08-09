@@ -4,7 +4,8 @@ import { getCategories } from '../../services/CategoryService';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import bg from "../../productImages/addProduct.jpg";
 import Navigation_bar from "../../components/Navigation_bar"
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import SideBar from '../../components/SideBar';
 
 export default function AddProduct() {
     const [product, setProduct] = useState({
@@ -19,6 +20,8 @@ export default function AddProduct() {
     const [categories, setCategories] = useState([]);
     const [message, setMessage] = useState('');
     const [error, setError] = useState('');
+
+    const nav=useNavigate();
 
     useEffect(() => {
         const fetchCategories = async () => {
@@ -41,19 +44,11 @@ export default function AddProduct() {
         }));
     };
 
-    const handleSubmit = async (e) => {
+    const handleSubmit=(e)=>{
         e.preventDefault();
-        try {
-            const newProduct = await addProduct(product);
-            console.log('Product added:', newProduct);
-            setMessage('Product added successfully!');
-            setError('');
-        } catch (error) {
-            console.error('Error adding product:', error);
-            setMessage('');
-            setError('Error adding product. Please try again.');
-        }
-    };
+        // console.log(product);
+        nav('/addSpecification', { state: { product } });
+    }
 
     return (
         <div className="container-fluid" style={{
@@ -63,7 +58,8 @@ export default function AddProduct() {
             height: "100vh",
             width: "100vw",
         }}>
-            <Navigation_bar/>
+            <br />
+            <SideBar>
             <h1 className="mb-4">Add Product</h1>
             {message && <div className="alert alert-success">{message}</div>}
             {error && <div className="alert alert-danger">{error}</div>}
@@ -82,7 +78,7 @@ export default function AddProduct() {
                                 onChange={handleChange}
                                 placeholder="Product Name"
                                 style={{backgroundColor:"transparent" , borderColor:"lightgray" }}
-                                required
+                                // required
                             />
                         </div>
                         <div className="form-group">
@@ -96,7 +92,7 @@ export default function AddProduct() {
                                 onChange={handleChange}
                                 placeholder="Brand"
                                 style={{backgroundColor:"transparent" , borderColor:"lightgray" }}
-                                required
+                                // required
                             />
                         </div>
                         <div className="form-group">
@@ -110,7 +106,7 @@ export default function AddProduct() {
                                 onChange={handleChange}
                                 placeholder="Price"
                                 style={{backgroundColor:"transparent" , borderColor:"lightgray" }}
-                                required
+                                // required
                             />
                         </div>
                         <div className="form-group">
@@ -124,7 +120,7 @@ export default function AddProduct() {
                                 onChange={handleChange}
                                 placeholder="Quantity"
                                 style={{backgroundColor:"transparent" , borderColor:"lightgray" }}
-                                required
+                                // required
                             />
                         </div>
                         <div className="form-group">
@@ -137,7 +133,7 @@ export default function AddProduct() {
                                 value={product.categoryId}
                                 onChange={handleChange}
                                 style={{backgroundColor:"transparent" , borderColor:"lightgray" }}
-                                required
+                                // required
                             >
                                 <option value="" disabled>Select Category</option>
                                 {categories.map((category) => (
@@ -149,11 +145,13 @@ export default function AddProduct() {
                         </div>
                         <button type="submit" className="btn btn-primary mt-3" style={{width:'120px',borderRadius:'20px'}}>Add Product</button>
                         <Link to='/Products' className='btn btn-warning ms-5 mt-3' style={{width:'120px',borderRadius:'20px'}}>Go Back</Link>
-                        <Link to='/addSpecification' className='btn btn-primary ms-5 mt-3' style={{width:'120px',borderRadius:'20px'}}>Add Specs</Link>
+                        {/* <Link to='/addSpecification'  className='btn btn-primary ms-5 mt-3' style={{width:'120px',borderRadius:'20px'}}>Add Specs</Link> */}
+                        {/* <button type='submit' className='btn btn-primary ms-5 mt-3' onClick={addSpec()} style={{width:'120px',borderRadius:'20px'}}>Add Specs</button> */}
                         </form>
                 </div>
                 <div className='col-md-3'></div>
             </div>
+            </SideBar>
         </div>
     );
 }

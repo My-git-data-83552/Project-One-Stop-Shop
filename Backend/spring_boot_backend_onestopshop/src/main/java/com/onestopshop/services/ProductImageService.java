@@ -11,6 +11,7 @@ import com.onestopshop.entities.ProductImage;
 public interface ProductImageService {
 	ProductImage addProductImage(MultipartFile file , ProductImageDTO dto) throws IOException;
 	byte[] getProductImageByFileName(String fileName) throws IOException ;
-	List<ProductImage> getAllProductImage();
-	
+	List<ProductImage> getAllProductImages() throws IOException ;
+	byte[] getCoverImageByProductId(Long productId) throws IOException ;
+	 List<ProductImage> getImageByProductId(Long productId) throws IOException;
 }

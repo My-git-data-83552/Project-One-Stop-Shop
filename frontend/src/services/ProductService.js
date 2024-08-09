@@ -43,15 +43,15 @@ export const getCategories = async () => {
   }
 };
 
-// export const editProduct = async (product, id) => {
-//   try {
-//     const response = await axios.put(`${BASE_URL}/${id}`, product);
-//     return response.data;
-//   } catch (error) {
-//     console.log(error);
-//     toast.error("Could not Update Data...");
-//   }
-// };
+export const EditProduct = async (product, id) => {
+  try {
+    const response = await axios.put(`${BASE_URL}/${id}`, product);
+    return response.data;
+  } catch (error) {
+    console.log(error);
+    throw error;
+  }
+};
 
 
 export const editProduct = async (id,product) => {

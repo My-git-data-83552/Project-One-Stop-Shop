@@ -14,11 +14,11 @@ export default function Navigation_bar() {
             backgroundColor:'darkviolet',
             backgroundSize: "cover",
             backgroundPosition: "center",
-            width:'99vw'
-            // height: "100vh",
-            // width: "100vw",
+            marginTrim:'100%',
+            width:'99vw',
+            borderRadius:'30px',
+            
         }}> 
-  {/* bg-info-subtle */}
   <div className="container-fluid">
     <img src={logo} style={{width:"60px"}}/>
     <button className="navbar-toggler" type="button" data-bs-toggle="collapse"  aria-disabled="true">

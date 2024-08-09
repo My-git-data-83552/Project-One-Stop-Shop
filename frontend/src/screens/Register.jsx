@@ -2,6 +2,7 @@ import { Link, useNavigate } from "react-router-dom";
 import bg from "../productImages/register.jpg";
 import { useState } from "react";
 import { toast } from "react-toastify";
+import { RegisterService } from "../services/UserService";
 
 // Dummy register function (replace with your actual API call)
 const register = async (firstName, lastName, email, password, phone) => {
@@ -10,6 +11,14 @@ const register = async (firstName, lastName, email, password, phone) => {
 };
 
 export default function Register() {
+  const[user,setUser]=useState({
+    firstName:"",
+    lastName:"",
+    email:"",
+    password:"",
+    phone:"",
+    role:"",
+  });
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [email, setEmail] = useState("");
@@ -36,17 +45,19 @@ export default function Register() {
     } else if (password !== confirmPassword) {
       toast.error("Passwords do not match");
     } else {
-      // Call the register API
-      const result = await register(
+      
+      const result = await RegisterService(
         firstName,
         lastName,
         email,
         password,
-        phone
+        phone,
+        role
       );
+      console.log(user)
       if (result["status"] === "success") {
         toast.success("Successfully registered a new user");
-        navigate("/login");
+        navigate("/home");
       } else {
         toast.error(result["error"]);
       }
@@ -148,40 +159,40 @@ export default function Register() {
             </div>
             <hr />
             <div className="mb-3 d-flex justify-content-evenly">
-              <div class="form-check">
+              <div className="form-check">
                 <input
-                  class="form-check-input"
+                  className="form-check-input"
                   type="radio"
                   name="flexRadioDefault"
                   id="flexRadioDefault1"
                   onChange={(e) => setRole(e.target.value)}
                 />
-                <label class="form-check-label d-flex" for="flexRadioDefault1">
+                <label className="form-check-label d-flex" htmlFor="flexRadioDefault1">
                   Admin
                 </label>
               </div>
-              <div class="form-check ">
+              <div className="form-check ">
                 <input
-                  class="form-check-input"
+                  className="form-check-input"
                   type="radio"
                   name="flexRadioDefault"
                   id="flexRadioDefault2"
                   onChange={(e) => setRole(e.target.value)}
                   checked
                 />
-                <label class="form-check-label d-flex" for="flexRadioDefault2">
+                <label className="form-check-label d-flex" htmlFor="flexRadioDefault2">
                   Buyer
                 </label>
               </div>
-              <div class="form-check">
+              <div className="form-check">
                 <input
-                  class="form-check-input"
+                  className="form-check-input"
                   type="radio"
                   name="flexRadioDefault"
                   id="flexRadioDefault1"
                   onChange={(e) => setRole(e.target.value)}
                 />
-                <label class="form-check-label d-flex" for="flexRadioDefault1">
+                <label className="form-check-label d-flex" htmlFor="flexRadioDefault1">
                   Seller
                 </label>
               </div>

@@ -1,11 +1,22 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { toast } from "react-toastify";
 import bg from "../../productImages/vector1.jpg";
 import { addSpecification } from "../../services/SpecificationService"; // Adjust path as needed
 import "./AddSpecification.css";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
+import { addProduct } from "../../services/ProductService";
 
 const AddSpecification = () => {
+  const [product, setProduct] = useState({
+    id:undefined,
+    productName: '',
+    brand: '',
+    price: 0,
+    quantity: 0,
+    categoryId: '',
+    specificationId:'',
+});
+
   const [specification, setSpecification] = useState({
     cpuManufacturer: "",
     cpuModel: "",
@@ -41,6 +52,24 @@ const AddSpecification = () => {
     trustedSupplier: false,
   });
 
+  const location = useLocation();
+  
+  const nav=useNavigate();
+
+
+  useEffect(() => {
+    console.log('Inside Use Effect');
+    if (location.state && location.state.product) {
+      setProduct(location.state.product); // Initialize state with the passed product
+    }
+  }, [location.state]);
+  
+  useEffect(() => {
+    console.log('Product state updated:', product);
+  }, [product]);
+  
+
+
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
     setSpecification({
@@ -52,47 +81,26 @@ const AddSpecification = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await addSpecification(specification);
-      toast.success("Specification added successfully!");
-      setSpecification({
-        cpuManufacturer: "",
-        cpuModel: "",
-        cores: "",
-        threads: "",
-        speed: "",
-        gpuManufacturer: "",
-        gpuModel: "",
-        size: "",
-        resolution: "",
-        refreshRate: "",
-        touchScreen: false,
-        description: "",
-        ramSize: "",
-        ramType: "",
-        storageSize: "",
-        storageType: "",
-        color: "",
-        os: "",
-        wifi: "",
-        bluetooth: "",
-        weight: "",
-        dimensions: "",
-        ethernetPort: false,
-        usbPorts: "",
-        hdmiPorts: "",
-        webcam: "",
-        speakers: "",
-        battery: "",
-        warranty: "",
-        sevenDayReplacement: false,
-        freeDelivery: false,
-        trustedSupplier: false,
-      });
+      const result= await addSpecification(specification);
+
+      product.specificationId = result.id
+
+      console.log(result);
+      console.log('result id = ', result.id);
+      console.log('inside submit ',product);
+      console.log('specificationId = ',product.specificationId);
+      const data=await addProduct(product);
+      console.log('product id = ',data.id)
+
+      toast.success("Product added successfully!");
+      nav(`/addProductImage/${data.id}`);
+  
     } catch (error) {
-        console.log(error);
-      toast.error("Failed to add specification. Please try again.");
+      console.log(error);
+      toast.error("Failed to add product. Please try again.");
     }
   };
+  
 
   return (
     <div
@@ -111,6 +119,7 @@ const AddSpecification = () => {
       <form onSubmit={handleSubmit} className="container col-8">
       <h3 className="d-flex">CPU Details</h3>
       <hr />
+      <div>
         <div className="d-flex justify-content-evenly">
 
           <div className="mb-3 " style={{ width: "49%" }}>
@@ -499,6 +508,7 @@ const AddSpecification = () => {
             />
             <label className="form-check-label d-flex">Trusted Supplier</label>
           </div>
+        </div>
         </div>
         <button type="submit" className="btn btn-primary mb-3 me-4" style={{borderRadius:'20px'}}>
           Add Specification

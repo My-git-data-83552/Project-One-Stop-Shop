@@ -1,9 +1,10 @@
 import { useEffect, useState } from "react";
-import { useNavigate, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import { editCategories, getCategoryById } from "../../services/CategoryService";
 import bg from "../../productImages/addProduct.jpg";
 import Navigation_bar from "../../components/Navigation_bar";
 import { toast } from "react-toastify";
+import SideBar from "../../components/SideBar";
 
 export default function EditCategory() {
   const { id } = useParams();
@@ -45,11 +46,11 @@ export default function EditCategory() {
         width: "100vw",
       }}
     >
-      <Navigation_bar />
+      <SideBar>
       <div className="row">
         <div className="col-4"></div>
         <div className="col-4">
-          <h1 className="mb-4">Add Category</h1>
+        <br />  <h1 className="mb-4">Edit Category</h1> <hr />
           <form onSubmit={handleSubmit}>
             <label about="categoryName" className="col-form-label">
               Category Name
@@ -67,11 +68,13 @@ export default function EditCategory() {
               style={{ backgroundColor: "transparent" }}
               required
             />
-            <input type="submit" className="btn btn-primary mt-4"  style={{borderRadius:'20px'}}/>
+            <input type="submit" className="btn btn-primary mt-4 me-3"  style={{borderRadius:'20px'}}/>
+            <Link to='/category'className="btn btn-warning mt-4"  style={{borderRadius:'20px'}}>Go Back</Link>
           </form>
         </div>
         <div className="col-4"></div>
       </div>
+      </SideBar>
     </div>
   );
 }

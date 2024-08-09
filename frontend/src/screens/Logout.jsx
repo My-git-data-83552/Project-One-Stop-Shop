@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import bg from "../productImages/logout.jpg";
+import SideBar from "../components/SideBar";
 
 export default function Logout(){
     return (
@@ -13,6 +14,7 @@ export default function Logout(){
             height: "100vh",
             width: "100vw",
         }}>
+            <SideBar>
             <br />
             <h1>Logout Success!!!</h1>    
             <hr />
@@ -22,7 +24,7 @@ export default function Logout(){
             <Link to='/home' className="btn btn-primary" style={{
                 borderRadius:'20px'
             }}>Keep Browsing</Link>
-            
+            </SideBar>
         </div>
     )
 }

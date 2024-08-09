@@ -4,6 +4,7 @@ import { toast } from "react-toastify";
 import bg from "../../productImages/addProduct.jpg";
 import { Link, useNavigate } from "react-router-dom";
 import Navigation_bar from "../../components/Navigation_bar";
+import SideBar from "../../components/SideBar";
 
 export const Products = () => {
   const [products, setProducts] = useState([]);
@@ -35,6 +36,8 @@ export const Products = () => {
     }
   };
 
+  
+
   return (
     <div
       className="container-fluid"
@@ -46,7 +49,7 @@ export const Products = () => {
         width: "100vw",
       }}
     >
-      <Navigation_bar />
+      <SideBar>
       <h2 style={{ padding: "10px" }}>Products Available</h2>
       <div className="container">
         <Link
@@ -98,6 +101,7 @@ export const Products = () => {
           </tbody>
         </table>
       </div>
+      </SideBar>
     </div>
   );
 };

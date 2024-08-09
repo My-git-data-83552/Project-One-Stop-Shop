@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import bg from "../productImages/addProduct.jpg";
+import SideBar from "../components/SideBar";
 
 export default function Address() {
   const [userId, setUserId] = useState("");
@@ -79,6 +80,7 @@ export default function Address() {
         width: "100vw",
       }}
     >
+      <SideBar>
       <h2 className="mb-1">Add Address</h2>
       <div className="row">
         <div className="col-2"></div>
@@ -259,7 +261,7 @@ export default function Address() {
         </div>
         <div className="col-4"></div>
       </div>
-      <ToastContainer />
+      </SideBar>
     </div>
   );
 }

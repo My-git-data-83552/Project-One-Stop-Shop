@@ -20,8 +20,8 @@ public class SpecificationController {
     private SpecificationService specificationService;
 
     @PostMapping
-    public ResponseEntity<SpecificationDTO> addSpecification(@RequestBody SpecificationDTO specificationDTO) {
-        SpecificationDTO createdSpecification = specificationService.addSpecification(specificationDTO);
+    public ResponseEntity<Specification> addSpecification(@RequestBody SpecificationDTO specificationDTO) {
+        Specification createdSpecification = specificationService.addSpecification(specificationDTO);
         return ResponseEntity.status(HttpStatus.CREATED).body(createdSpecification);
     }
 

@@ -6,7 +6,7 @@ import com.onestopshop.dtos.SpecificationDTO;
 import com.onestopshop.entities.Specification;
 
 public interface SpecificationService {
-    SpecificationDTO addSpecification(SpecificationDTO specificationDTO);
+    Specification addSpecification(SpecificationDTO dto);
     SpecificationDTO getSpecificationById(Long id);
     List<Specification> getAllSpecifications();
 }
