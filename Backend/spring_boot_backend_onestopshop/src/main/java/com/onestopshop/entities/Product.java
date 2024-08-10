@@ -31,8 +31,8 @@ public class Product extends BaseEntity {
     @Column(name = "price")
     private double price;
 
-    @Column(name = "quantity")
-    private int quantity;
+    @Column(name = "inventory")
+    private int inventory;
 
     //MANY TO ONE RELATION BI-DIRECTION
     @ManyToOne(fetch = FetchType.EAGER)

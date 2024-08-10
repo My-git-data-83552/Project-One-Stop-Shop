@@ -13,7 +13,7 @@ public class OrderItemDTO {
     private Integer quantity;
 
 //    @NotNull
-    private Double price;
+    private Double total_price;
 
 //    @NotNull
     private Long productId;

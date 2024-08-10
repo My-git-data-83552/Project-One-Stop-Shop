@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.onestopshop.dtos.ProductInventoryDTO;
 import com.onestopshop.dtos.ProductUpdateDTO;
 import com.onestopshop.entities.Category;
 import com.onestopshop.entities.Product;
@@ -67,5 +68,12 @@ public class ProductController {
     public ResponseEntity<?> updateProduct(@PathVariable Long id, @RequestBody ProductUpdateDTO productDTO) {
         return ResponseEntity.ok(productService.updateProduct(id, productDTO));
     }
+    
+    @PutMapping()
+    public ResponseEntity<?> updateInventory(ProductInventoryDTO dto){
+    	return ResponseEntity.ok(productService.updateInventory(dto));
+    }
+    
+    
 
 }

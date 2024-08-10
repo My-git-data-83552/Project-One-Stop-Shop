@@ -11,6 +11,8 @@ import org.springframework.stereotype.Service;
 import com.onestopshop.daos.CategoryRepository;
 import com.onestopshop.daos.ProductRepository;
 import com.onestopshop.daos.SpecificationRepository;
+import com.onestopshop.dtos.ApiResponse;
+import com.onestopshop.dtos.ProductInventoryDTO;
 import com.onestopshop.dtos.ProductUpdateDTO;
 import com.onestopshop.entities.Category;
 import com.onestopshop.entities.Product;
@@ -44,22 +46,22 @@ public class ProductServiceImpl implements ProductService {
 
 	@Override
 	public Product saveProduct(ProductUpdateDTO dto) {
-	    Category category = categoryRepository.findById(dto.getCategoryId())
-	            .orElseThrow(() -> new RuntimeException("Category not found"));
+		Category category = categoryRepository.findById(dto.getCategoryId())
+				.orElseThrow(() -> new RuntimeException("Category not found"));
 
-	    Specification specification = specificationRepository.findById(dto.getSpecificationId())
-	            .orElseThrow(() -> new ResourceNotFoundException("Specifications not found..."));
-	    
-	    // Make sure the specification is managed by the persistence context
-	    specification = specificationRepository.save(specification);
+		Specification specification = specificationRepository.findById(dto.getSpecificationId())
+				.orElseThrow(() -> new ResourceNotFoundException("Specifications not found..."));
 
-	    Product product = modelMapper.map(dto, Product.class);
-	    product.setSpecification(specification);
-	    
-	    category.addProduct(product);
-	    product.setCategory(category);
-	    
-	    return productRepository.save(product);
+		// Make sure the specification is managed by the persistence context
+		specification = specificationRepository.save(specification);
+
+		Product product = modelMapper.map(dto, Product.class);
+		product.setSpecification(specification);
+
+		category.addProduct(product);
+		product.setCategory(category);
+
+		return productRepository.save(product);
 	}
 
 	@Override
@@ -96,5 +98,20 @@ public class ProductServiceImpl implements ProductService {
 	public void deleteProduct(Long id) {
 		productRepository.deleteById(id);
 	}
-	
+
+	@Override
+	public ApiResponse updateInventory(ProductInventoryDTO dto) {
+		Product product = productRepository.findById(dto.getProductId())
+				.orElseThrow(() -> new ResourceNotFoundException("Product not found..."));
+
+		if (dto.getQuantity() < product.getInventory()) {
+			int updatedInventory = product.getInventory() - dto.getQuantity();
+			product.setInventory(updatedInventory);
+			productRepository.save(product);
+			return new ApiResponse("Inventory updated successful!!!");
+		} else {
+			return new ApiResponse("Sorry. We dont have Enough items in out inventory...");
+		}
+	}
+
 }

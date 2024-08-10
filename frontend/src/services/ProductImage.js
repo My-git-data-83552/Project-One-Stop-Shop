@@ -1,11 +1,16 @@
-import axios from 'axios';
+import axios from "axios";
 
-const API_URL = 'http://localhost:8080/api/productImage';
+const API_URL = "http://localhost:8080/api/productImage";
 
 export const getCoverImageByProductId = async (productId) => {
-  const response = await axios.get(`${API_URL}/cover/${productId}`, { responseType: 'arraybuffer' });
+  const response = await axios.get(`${API_URL}/cover/${productId}`, {
+    responseType: "arraybuffer",
+  });
   return `data:image/jpeg;base64,${btoa(
-    new Uint8Array(response.data).reduce((data, byte) => data + String.fromCharCode(byte), '')
+    new Uint8Array(response.data).reduce(
+      (data, byte) => data + String.fromCharCode(byte),
+      ""
+    )
   )}`;
 };
 
@@ -14,6 +19,20 @@ export const getAllImages = async () => {
     const response = await axios.get(`${API_URL}/all`);
     return response.data;
   } catch (error) {
-    throw new Error('Error fetching cover images');
+    throw new Error("Error fetching cover images");
+  }
+};
+
+export const saveImage = async (productId, formData) => {
+  try {
+    const response = await axios.post(`${API_URL}/${productId}`, formData, {
+      headers: {
+        "Content-Type": "multipart/formdata",
+      },
+    });
+    return response.data;
+  } catch (error) {
+    console.log(error);
+    throw error;
   }
 };

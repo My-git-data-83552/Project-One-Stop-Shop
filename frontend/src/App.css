@@ -12,11 +12,11 @@
 }
 
 .hoverEffect {
-  background-color:  transparent
+  background-color:  transparent,
 }
 
 .hoverEffect:hover {
-  background-color: olive
+  background-color: midnightblue
 }
 
 @media (prefers-reduced-motion: no-preference) {

@@ -12,6 +12,7 @@ import com.onestopshop.daos.OrderItemRepository;
 import com.onestopshop.daos.OrderRepository;
 import com.onestopshop.daos.ProductRepository;
 import com.onestopshop.dtos.OrderItemDTO;
+import com.onestopshop.dtos.ProductInventoryDTO;
 import com.onestopshop.entities.Order;
 import com.onestopshop.entities.OrderItem;
 import com.onestopshop.entities.Product;
@@ -33,10 +34,12 @@ public class OrderItemServiceImpl implements OrderItemService{
 	@Autowired
 	private ModelMapper modelMapper;
 	
+	@Autowired
+	private ProductService productService;
+	
 
 	 @Override
 	    public OrderItem saveOrderItem(OrderItemDTO dto) {
-		 System.out.println(dto);
 	        Product product = productRepository.findById(dto.getProductId())
 	                .orElseThrow(() -> new ResourceNotFoundException("Product not found"));
 
@@ -46,7 +49,11 @@ public class OrderItemServiceImpl implements OrderItemService{
 	        OrderItem orderItem = modelMapper.map(dto, OrderItem.class);
 	        orderItem.setProduct(product);
 	        order.addOrderItem(orderItem);
-
+	        
+	        ProductInventoryDTO inventoryDTO=new ProductInventoryDTO();
+	        inventoryDTO.setProductId(dto.getProductId());
+	        inventoryDTO.setQuantity(dto.getQuantity());
+	        productService.updateInventory(inventoryDTO);
 	        return orderItemRepository.save(orderItem);
 	    }
 	

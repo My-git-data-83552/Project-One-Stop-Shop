@@ -24,21 +24,25 @@ import lombok.Setter;
 public class Order extends BaseEntity {
 
 	@Column(name = "status", nullable = false)
-    private String status;
+	private Status status;
 
-    @Column(name = "total_amount", nullable = false)
-    private double totalAmount;
+	@Column(name = "total_amount", nullable = false)
+	private double totalAmount;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "user_id", nullable = false)
-    private User user;
+	@ManyToOne
+    @JoinColumn(name = "billing_address", nullable=false)
+	private Address billingAddress;
 
-    @OneToMany(mappedBy = "order", cascade = CascadeType.ALL, orphanRemoval = true)
-    @JsonManagedReference
-    private List<OrderItem> orderItems = new ArrayList<>();
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "user_id", nullable = false)
+	private User user;
 
-    public void addOrderItem(OrderItem orderItem) {
-        this.orderItems.add(orderItem);
-        orderItem.setOrder(this);
-    }
+	@OneToMany(mappedBy = "order", cascade = CascadeType.ALL, orphanRemoval = true)
+	@JsonManagedReference
+	private List<OrderItem> orderItems = new ArrayList<>();
+
+	public void addOrderItem(OrderItem orderItem) {
+		this.orderItems.add(orderItem);
+		orderItem.setOrder(this);
+	}
 }

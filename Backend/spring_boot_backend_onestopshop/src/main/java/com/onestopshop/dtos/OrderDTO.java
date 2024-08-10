@@ -1,19 +1,21 @@
 package com.onestopshop.dtos;
 
-import java.util.List;
-
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 
+import com.onestopshop.entities.Status;
+
 import lombok.Getter;
 import lombok.Setter;
+import lombok.ToString;
 
 @Getter
 @Setter
+@ToString
 public class OrderDTO {
 
     @NotEmpty
-    private String status;
+    private Status status;
 
     @NotNull
     private Double totalAmount;
@@ -21,5 +23,6 @@ public class OrderDTO {
     @NotNull
     private Long userId;
 
-    private List<OrderItemDTO> orderItems;
+    private Long addressId;
+    
 }

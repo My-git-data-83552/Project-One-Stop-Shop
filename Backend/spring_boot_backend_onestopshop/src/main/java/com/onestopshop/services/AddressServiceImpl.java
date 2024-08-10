@@ -35,7 +35,7 @@ public class AddressServiceImpl implements AddressService {
     public Optional<Address> getAddressById(Long id) {
         return addressRepository.findById(id);
     }
-    
+       
     public List<Address> getAddressByUserId(Long userId) {    	
     	User user=userRepository.findById(userId).orElseThrow(()->new ResourceNotFoundException("Address not found..."));
     	return addressRepository.findByUser(user);

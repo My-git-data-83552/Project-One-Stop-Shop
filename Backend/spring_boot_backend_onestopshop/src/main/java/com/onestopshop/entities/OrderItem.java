@@ -16,8 +16,8 @@ public class OrderItem extends BaseEntity {
     @Column(name = "quantity", nullable = false)
     private int quantity;
 
-    @Column(name = "price", nullable = false)
-    private double price;
+    @Column(name = "total_price", nullable = false)
+    private double totalPrice;
 
     @ManyToOne
     @JoinColumn(name = "product_id", nullable = false)

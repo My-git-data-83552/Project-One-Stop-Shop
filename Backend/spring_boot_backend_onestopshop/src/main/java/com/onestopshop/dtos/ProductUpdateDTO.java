@@ -11,7 +11,7 @@ public class ProductUpdateDTO {
     private String productName;
     private String brand;
     private double price;
-    private int quantity;
+    private int inventory;
     private Long categoryId;
     private Long specificationId;
 }

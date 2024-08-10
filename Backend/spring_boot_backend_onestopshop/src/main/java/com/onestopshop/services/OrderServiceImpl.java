@@ -7,9 +7,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.onestopshop.daos.AddressRepository;
 import com.onestopshop.daos.OrderRepository;
 import com.onestopshop.daos.UserRepository;
 import com.onestopshop.dtos.OrderDTO;
+import com.onestopshop.entities.Address;
 import com.onestopshop.entities.Order;
 import com.onestopshop.entities.User;
 import com.onestopshop.exceptionhandling.ResourceNotFoundException;
@@ -20,10 +22,11 @@ public class OrderServiceImpl implements OrderService {
 
 	@Autowired
 	private OrderRepository orderDao;
-
 	@Autowired
-	private ModelMapper modelMapper;
+	private AddressRepository addressRepository;
 	
+	@Autowired
+	private ModelMapper modelMapper;	
 	@Autowired
 	private UserRepository userDao;
 
@@ -32,8 +35,11 @@ public class OrderServiceImpl implements OrderService {
 		
 		User user= userDao.findById(dto.getUserId())
 				.orElseThrow(() -> new ResourceNotFoundException("Invalid ID"));
+		Address address=addressRepository.findById(dto.getAddressId())
+				.orElseThrow(() -> new ResourceNotFoundException("Invalid ID"));
 		Order order = modelMapper.map(dto, Order.class);
 		order.setUser(user);
+		order.setBillingAddress(address);
 		return orderDao.save(order);
 	}
 

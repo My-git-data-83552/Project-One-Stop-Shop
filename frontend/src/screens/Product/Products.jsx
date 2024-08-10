@@ -1,40 +1,4 @@
-import { useEffect, useState } from "react";
-import { deleteProduct, getAllProducts } from "../../services/ProductService";
-import { toast } from "react-toastify";
-import bg from "../../productImages/addProduct.jpg";
-import { Link, useNavigate } from "react-router-dom";
-import Navigation_bar from "../../components/Navigation_bar";
-import SideBar from "../../components/SideBar";
 
-export const Products = () => {
-  const [products, setProducts] = useState([]);
-
-  useEffect(() => {
-    const fetchProducts = async () => {
-      const data = await getAllProducts();
-      setProducts(data);
-      try {
-        const data = await getAllProducts();
-        setProducts(data);
-      } catch (error) {
-        console.log("Could not fetch products  ", error);
-        toast.error("Could not fetch products");
-      }
-    };
-    fetchProducts();
-  }, []);
-
-  const handleDelete = async (id) => {
-    try {
-      await deleteProduct(id);
-      setProducts(products.filter((products) => products.id !== null));
-      window.location.reload();
-      toast.success("Deletion Successful!!!");
-    } catch (error) {
-      toast.error("Deletion Failed...");
-      window.location.reload();
-    }
-  };
 
   
 
@@ -69,7 +33,7 @@ export const Products = () => {
               <th>Sr. No.</th>
               <th>Product Name</th>
               <th>Brand</th>
-              <th>Quantity Name</th>
+              <th>Inventory</th>
               <th>Price</th>
               <th>Actions</th>
             </tr>
@@ -80,7 +44,7 @@ export const Products = () => {
                 <td>{product.id}</td>
                 <td>{product.productName}</td>
                 <td>{product.brand}</td>
-                <td>{product.quantity}</td>                
+                <td>{product.inventory}</td>                
                 <td>{product.price}</td>
                 <td>
                   <Link

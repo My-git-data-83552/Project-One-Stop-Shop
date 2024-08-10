@@ -15,18 +15,18 @@ import com.onestopshop.entities.User;
 @Service
 public class UserServiceImpl implements UserService {
 
-	@Autowired
-	private ModelMapper modelMapper;
-	
+    @Autowired
+    private ModelMapper modelMapper;
+
     private final UserRepository userRepository;
-    
+
     public UserServiceImpl(UserRepository userRepository) {
         this.userRepository = userRepository;
     }
 
     @Override
     public User addUser(UserDto dto) {
-    	User user= modelMapper.map(dto, User.class);
+        User user = modelMapper.map(dto, User.class);
         return userRepository.save(user);
     }
 
@@ -34,10 +34,12 @@ public class UserServiceImpl implements UserService {
     public Optional<User> getUserById(Long id) {
         return userRepository.findById(id);
     }
+
     @Override
     public List<User> getAllUsers() {
         return userRepository.findAll();
     }
+
     @Override
     public Optional<User> login(LoginDTO loginDTO) {
         Optional<User> user = userRepository.findByEmail(loginDTO.getEmail());
@@ -47,3 +49,4 @@ public class UserServiceImpl implements UserService {
         return Optional.empty();
     }
 }
+	

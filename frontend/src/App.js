@@ -21,6 +21,8 @@ import FeaturedProducts from "./screens/FeaturedProducts/FeaturedProducts.jsx";
 import AddSpecification from "./screens/Specification/AddSpecification.jsx";
 import ProductDetails from "./screens/Product/ProductDetails.jsx";
 import {AddProductImage} from "./screens/ProductImage/AddProductImage.jsx";
+import CartPage from "./screens/Cart.jsx";
+import ShowAddress from "./screens/Address/ShowAddress.jsx";
 
 function App() {
   return (
@@ -44,6 +46,8 @@ function App() {
         <Route path="/featuredProducts" element={<FeaturedProducts />} />
         <Route path="/addSpecification" element={<AddSpecification />} />    
         <Route path="/AddProductImage/:id" element={<AddProductImage />} />    
+        <Route path="/cart" element={<CartPage />} />  
+        <Route path="/pickAddress" element={<ShowAddress />} />   
       </Routes>
       <ToastContainer
         position="top-center"

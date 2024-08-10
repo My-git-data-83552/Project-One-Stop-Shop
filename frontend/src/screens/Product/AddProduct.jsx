@@ -3,7 +3,6 @@ import { addProduct } from '../../services/ProductService';
 import { getCategories } from '../../services/CategoryService';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import bg from "../../productImages/addProduct.jpg";
-import Navigation_bar from "../../components/Navigation_bar"
 import { Link, useNavigate } from 'react-router-dom';
 import SideBar from '../../components/SideBar';
 
@@ -12,7 +11,7 @@ export default function AddProduct() {
         productName: '',
         brand: '',
         price: 0,
-        quantity: 0,
+        inventory: 0,
         categoryId: '',
         specificationId:'',
     });
@@ -110,15 +109,15 @@ export default function AddProduct() {
                             />
                         </div>
                         <div className="form-group">
-                            <label htmlFor="quantity">Quantity</label>
+                            <label htmlFor="inventory">inventory</label>
                             <input
                                 type="number"
                                 className="form-control mb-3"
-                                id="quantity"
-                                name="quantity"
-                                value={product.quantity}
+                                id="inventory"
+                                name="inventory"
+                                value={product.inventory}
                                 onChange={handleChange}
-                                placeholder="Quantity"
+                                placeholder="inventory"
                                 style={{backgroundColor:"transparent" , borderColor:"lightgray" }}
                                 // required
                             />

@@ -36,13 +36,13 @@ export default function Login() {
       <div className="row">
         <div className="col-6"></div>
         <div
-          className="col-5 mt-5 shadow-lg p-3 "
-          style={{ backgroundColor: "lightcyan", borderRadius: "5%" }}
+          className="col-5 mt-5 shadow-lg p-3" //shadow-lg p-3
+          style={{ backgroundColor: "tranparent", borderRadius: "5%" }}
         >
-          <h1 className="mb-4 mt-4">Welcome Back!</h1>
+          <h1 className="mb-4 mt-4" >Welcome Back!</h1>
           <form>
             <div className="mb-3">
-              <label htmlFor="exampleInputEmail1" className="form-label">
+              <label  htmlFor="exampleInputEmail1" className="d-flex ms-1 form-label">
                 Email address
               </label>
               <input
@@ -52,13 +52,17 @@ export default function Login() {
                 className="form-control transparent-input"
                 id="email"
                 aria-describedby="emailHelp"
+                style={{
+                  backgroundColor:'transparent',
+                  borderColor:'white'
+                }}
               />
-              <div id="emailHelp" className="form-text">
+              <div id="emailHelp" className="form-text" >
                 We'll never share your email with anyone else.
               </div>
             </div>
             <div className="mb-4">
-              <label htmlFor="exampleInputPassword1" className="form-label">
+              <label htmlFor="exampleInputPassword1" className="d-flex ms-1 form-label">
                 Password
               </label>
               <input
@@ -69,28 +73,37 @@ export default function Login() {
                 className="form-control"
                 placeholder="*****************"
                 id="exampleInputPassword1"
+                style={{
+                  backgroundColor:'transparent',
+                  borderColor:'white'
+                }}
               />
             </div>
-            <p>
+            <p style={{color:'white'}}>
               Don't have an Account?
               <Link to="/register" className="ms-2">
-                Register here
+                Create an account
               </Link>
             </p>
+            <br />
             <div className="d-grid gap-2">
               <button
                 onClick={onLogin}
-                className="btn btn-primary mb-3"
+                className="btn btn-outline-success  mb-3"
                 type="button"
-                style={{ borderRadius: "100px" }}
+                style={{ borderRadius: "100px",
+                  borderColor:'transparent'
+                 }}
               >
                 Login
               </button>
               <Link
-                className="btn btn-warning mb-4"
+                className="btn btn-outline-warning mb-4"
                 to="/home"
                 type="button"
-                style={{ borderRadius: "100px" }}
+                style={{ borderRadius: "100px",
+                  borderColor:'transparent'
+                 }}
               >
                 Go Home
               </Link>

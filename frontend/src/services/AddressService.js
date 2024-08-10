@@ -26,9 +26,21 @@ export const getAllAddresses = async () => {
 };
 
 // Get an address by ID
+export const getAddressByUserId = async (userId) => {
+    try {
+        const response = await axios.get(`${BASE_URL}/user/${userId}`);
+        console.log(response);
+        return response.data;
+    } catch (error) {
+        console.error(`Error fetching address with ID  = ${userId}`, error);
+        throw error;
+    }
+};
+
 export const getAddressById = async (id) => {
     try {
         const response = await axios.get(`${BASE_URL}/${id}`);
+        console.log(response);
         return response.data;
     } catch (error) {
         console.error(`Error fetching address with ID ${id}`, error);

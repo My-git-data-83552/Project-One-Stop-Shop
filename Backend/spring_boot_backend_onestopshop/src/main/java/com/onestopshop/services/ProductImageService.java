@@ -5,11 +5,12 @@ import java.util.List;
 
 import org.springframework.web.multipart.MultipartFile;
 
+import com.onestopshop.dtos.ApiResponse;
 import com.onestopshop.dtos.ProductImageDTO;
 import com.onestopshop.entities.ProductImage;
 
 public interface ProductImageService {
-	ProductImage addProductImage(MultipartFile file , ProductImageDTO dto) throws IOException;
+	ApiResponse addProductImage(MultipartFile file , ProductImageDTO dto) throws IOException;
 	byte[] getProductImageByFileName(String fileName) throws IOException ;
 	List<ProductImage> getAllProductImages() throws IOException ;
 	byte[] getCoverImageByProductId(Long productId) throws IOException ;
