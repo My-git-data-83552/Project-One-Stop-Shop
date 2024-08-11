@@ -4,7 +4,7 @@ import logo from "../productImages/Logo.png";
 import "bootstrap/dist/css/bootstrap.min.css";
 import bg from "../productImages/sidebar3.jpeg";
 
-const SideBar = ({ children }) => {
+const AdminSidebar = ({ children }) => {
   return (
     <div className="d-flex">
       <div
@@ -72,7 +72,26 @@ const SideBar = ({ children }) => {
                 borderColor: "black",
                 borderRadius: "100px",
               }}
-            >
+            >              
+              <li className="nav-item">
+                <Link
+                  to="/users"
+                  className="nav-link"
+                  style={{ color: "white", fontSize: "120%" }}
+                >
+                  <strong>Users</strong>
+                </Link>
+              </li>
+            </div>
+            <div
+              className="hoverEffect"
+              style={{
+                height: "60px",
+                backgroundPosition: "center",
+                borderColor: "black",
+                borderRadius: "100px",
+              }}
+            >              
               <li className="nav-item">
                 <Link
                   to="/products"
@@ -102,7 +121,7 @@ const SideBar = ({ children }) => {
                 </Link>
               </li>
             </div>
-            <div
+            {/* <div
               className="hoverEffect"
               style={{
                 height: "60px",
@@ -120,7 +139,7 @@ const SideBar = ({ children }) => {
                   <strong>Address</strong>
                 </Link>
               </li>
-            </div>
+            </div> */}
             <div
               className="hoverEffect"
               style={{
@@ -140,8 +159,7 @@ const SideBar = ({ children }) => {
                 </Link>
               </li>
             </div>
-
-            <div
+            {/* <div
               className="hoverEffect"
               style={{
                 height: "60px",
@@ -159,7 +177,7 @@ const SideBar = ({ children }) => {
                   <strong>View Cart</strong>
                 </Link>
               </li>
-            </div>
+            </div> */}
 
             <div
               className="hoverEffect"
@@ -181,13 +199,14 @@ const SideBar = ({ children }) => {
               </li>
             </div>
           </ul>
+          <hr />
+          <h1 style={{color:'white'}}>Admin</h1>
         </div>
       </div>
-
       {/* Main Content */}
       <div className="flex-grow-1 p-3">{children}</div>
     </div>
   );
 };
 
-export default SideBar;
+export default AdminSidebar;

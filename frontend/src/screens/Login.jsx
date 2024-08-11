@@ -37,7 +37,7 @@ export default function Login() {
         <div className="col-6"></div>
         <div
           className="col-5 mt-5 shadow-lg p-3" //shadow-lg p-3
-          style={{ backgroundColor: "tranparent", borderRadius: "5%" }}
+          style={{ backgroundColor: "beige", borderRadius: "5%" }}
         >
           <h1 className="mb-4 mt-4" >Welcome Back!</h1>
           <form>
@@ -53,8 +53,8 @@ export default function Login() {
                 id="email"
                 aria-describedby="emailHelp"
                 style={{
-                  backgroundColor:'transparent',
-                  borderColor:'white'
+                  backgroundColor:'lightcyan',
+                  borderColor:'black'
                 }}
               />
               <div id="emailHelp" className="form-text" >
@@ -71,15 +71,15 @@ export default function Login() {
                   setPassword(e.target.value);
                 }}
                 className="form-control"
-                placeholder="*****************"
+                placeholder="Password"
                 id="exampleInputPassword1"
                 style={{
-                  backgroundColor:'transparent',
+                  backgroundColor:'lightcyan',
                   borderColor:'white'
                 }}
               />
             </div>
-            <p style={{color:'white'}}>
+            <p style={{color:'black'}}>
               Don't have an Account?
               <Link to="/register" className="ms-2">
                 Create an account
@@ -89,20 +89,20 @@ export default function Login() {
             <div className="d-grid gap-2">
               <button
                 onClick={onLogin}
-                className="btn btn-outline-success  mb-3"
+                className="btn btn-success  mb-3"
                 type="button"
                 style={{ borderRadius: "100px",
-                  borderColor:'transparent'
+                  // borderColor:'transparent'
                  }}
               >
                 Login
               </button>
               <Link
-                className="btn btn-outline-warning mb-4"
+                className="btn btn-warning mb-4"
                 to="/home"
                 type="button"
                 style={{ borderRadius: "100px",
-                  borderColor:'transparent'
+                  // borderColor:'transparent'
                  }}
               >
                 Go Home

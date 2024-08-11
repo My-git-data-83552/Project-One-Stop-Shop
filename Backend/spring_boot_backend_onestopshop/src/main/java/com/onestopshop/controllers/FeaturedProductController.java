@@ -22,7 +22,7 @@ import com.onestopshop.services.FeaturedProductService;
 
 
 @RestController
-@RequestMapping("/api/featuredProducts")
+@RequestMapping("/admin/featuredProducts")
 @CrossOrigin(origins = "http://localhost:3000")
 public class FeaturedProductController {
 

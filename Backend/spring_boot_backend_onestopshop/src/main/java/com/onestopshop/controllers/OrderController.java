@@ -43,5 +43,10 @@ public class OrderController {
 			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e);
 		}
 	}
+	
+	@GetMapping("/user/{userId}")
+	public ResponseEntity<?> getOrdersByUserId(@PathVariable Long userId){
+		return ResponseEntity.ok(orderService.getOrdersByUserId(userId));
+	}
 
 }

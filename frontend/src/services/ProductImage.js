@@ -1,9 +1,9 @@
 import axios from "axios";
 
-const API_URL = "http://localhost:8080/api/productImage";
+const URL = "http://localhost:8080/api/productImage";
 
 export const getCoverImageByProductId = async (productId) => {
-  const response = await axios.get(`${API_URL}/cover/${productId}`, {
+  const response = await axios.get(`${URL}/cover/${productId}`, {
     responseType: "arraybuffer",
   });
   return `data:image/jpeg;base64,${btoa(
@@ -16,7 +16,7 @@ export const getCoverImageByProductId = async (productId) => {
 
 export const getAllImages = async () => {
   try {
-    const response = await axios.get(`${API_URL}/all`);
+    const response = await axios.get(`${URL}/all`);
     return response.data;
   } catch (error) {
     throw new Error("Error fetching cover images");
@@ -25,7 +25,7 @@ export const getAllImages = async () => {
 
 export const saveImage = async (productId, formData) => {
   try {
-    const response = await axios.post(`${API_URL}/${productId}`, formData, {
+    const response = await axios.post(`${URL}/${productId}`, formData, {
       headers: {
         "Content-Type": "multipart/formdata",
       },

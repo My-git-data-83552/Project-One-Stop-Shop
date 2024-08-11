@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const URL = "http://localhost:8080/api/featuredProducts";
+const URL = "http://localhost:8080/admin/featuredProducts";
 
 export const AddFeaturedProduct = async (formData) => {
   try {

@@ -3,7 +3,7 @@ import { DeleteFeaturedProduct, FetchFeaturedProducts } from "../../services/Fea
 import { Link } from "react-router-dom";
 import bg from "../../productImages/addProduct.jpg";
 import { toast } from "react-toastify";
-import SideBar from "../../components/SideBar";
+import AdminSidebar from "../../components/AdminSidebar";
 
 const FeaturedProducts = () => {
   const [featuredProducts, setFeaturedProducts] = useState([]);
@@ -47,7 +47,7 @@ const FeaturedProducts = () => {
         width: "100vw",
       }}
     >
-      <SideBar>
+      <AdminSidebar>
       <br />
       <h1>Featured Products</h1>
       <hr />
@@ -77,7 +77,7 @@ const FeaturedProducts = () => {
               <td className="col-3">{featuredProduct.title}</td>
               <td className="col-5">{featuredProduct.description}</td>
               <td className="col">
-                <a href={`http://localhost:8080/api/featuredProducts/${featuredProduct.fileName}`} target="_blank" rel="noopener noreferrer">
+                <a href={`http://localhost:8080/admin/featuredProducts/${featuredProduct.fileName}`} target="_blank" rel="noopener noreferrer">
                     View Image
                   </a>
               </td>
@@ -95,7 +95,7 @@ const FeaturedProducts = () => {
       <Link className="btn btn-warning mt-4 me-4" to="/home" style={{borderRadius:'100px', width:'100px'}}>
         Go Back
       </Link>
-      </SideBar>
+      </AdminSidebar>
     </div>
   );
 };

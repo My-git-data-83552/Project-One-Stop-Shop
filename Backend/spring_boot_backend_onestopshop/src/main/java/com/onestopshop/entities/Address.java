@@ -7,9 +7,10 @@ import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import lombok.Getter;
 import lombok.Setter;
-
 
 @Getter
 @Setter
@@ -18,6 +19,7 @@ import lombok.Setter;
 public class Address extends BaseEntity {
 
 	@OneToOne(fetch = FetchType.LAZY)
+	@JsonIgnore
 	@JoinColumn(name = "user_id")
 	private User user;
 

@@ -1,11 +1,11 @@
 import axios from "axios";
 import { toast } from "react-toastify";
 
-const CATEGORY_URL = "http://localhost:8080/api/categories"; // Adjust the URL as needed
+const URL = "http://localhost:8080/all"; // Adjust the URL as needed
 
 export const getCategories = async () => {
   try {
-    const response = await axios.get(CATEGORY_URL);
+    const response = await axios.get(`${URL}/categories`);
     return response.data;
   } catch (error) {
     console.error("Error getting categories:", error);
@@ -15,7 +15,7 @@ export const getCategories = async () => {
 
 export const getCategoryById = async (id) => {
   try {
-    const response = await axios.get(`${CATEGORY_URL}/${id}`);
+    const response = await axios.get(`${URL}/categories/${id}`);
     return response.data;
   } catch (error) {
     console.log(error);
@@ -26,7 +26,7 @@ export const getCategoryById = async (id) => {
 
 export const addCategories = async (category) => {
   try {
-    const response = await axios.post(CATEGORY_URL, category, {
+    const response = await axios.post(`${URL}/categories/admin`, category, {
       headers: {
         "Content-Type": "application/json",
       },
@@ -41,7 +41,7 @@ export const addCategories = async (category) => {
 
 export const editCategories = async (id, category) => {
   try {
-    const response = await axios.put(`${CATEGORY_URL}/${id}`, category, {
+    const response = await axios.put(`${URL}/categories/admin/${id}`, category, {
       headers: { "Content-Type": "application/json" },
     });
     return response.data;
@@ -53,7 +53,7 @@ export const editCategories = async (id, category) => {
 
 export const deleteCategory = async (id) => {
   try {
-    const response = await axios.delete(`${CATEGORY_URL}/${id}`);
+    const response = await axios.delete(`${URL}/categories/admin/${id}`);
     return response.data;
   } catch (error) {
     console.log("Could not delete in service React layer => ", error);

@@ -23,6 +23,9 @@ import ProductDetails from "./screens/Product/ProductDetails.jsx";
 import {AddProductImage} from "./screens/ProductImage/AddProductImage.jsx";
 import CartPage from "./screens/Cart.jsx";
 import ShowAddress from "./screens/Address/ShowAddress.jsx";
+import PaymentGateway from "./screens/PaymentGateway.jsx";
+import OrderPlaced from "./screens/orderPlaced.jsx";
+import OrderTable from "./screens/Order/Orders.jsx";
 
 function App() {
   return (
@@ -47,7 +50,12 @@ function App() {
         <Route path="/addSpecification" element={<AddSpecification />} />    
         <Route path="/AddProductImage/:id" element={<AddProductImage />} />    
         <Route path="/cart" element={<CartPage />} />  
-        <Route path="/pickAddress" element={<ShowAddress />} />   
+        <Route path="/pickAddress/:id" element={<ShowAddress />} />  
+        <Route path="/payment" element={<PaymentGateway />} />    
+        <Route path="/orderPlaced" element={<OrderPlaced />} />   
+        <Route path="/orders" element={<OrderTable />} />   
+
+        
       </Routes>
       <ToastContainer
         position="top-center"

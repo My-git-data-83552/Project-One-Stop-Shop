@@ -5,7 +5,7 @@ import { AddFeaturedProduct } from "../../services/FeaturedProductsService";
 import { toast } from "react-toastify";
 import bg from '../../productImages/addProduct.jpg';
 import { Link } from "react-router-dom";
-import SideBar from "../../components/SideBar";
+import AdminSidebar from "../../components/AdminSidebar";
 
 export const AddFeaturedProducts = () => {
   const [title, setTitle] = useState("");
@@ -46,7 +46,7 @@ export const AddFeaturedProducts = () => {
         width: "100vw",
       }}
     >
-      <SideBar>
+      <AdminSidebar>
       <br />
       <h1 className="mb-4">Add Featured Product Details</h1>
       <div className="container mt-3">
@@ -92,7 +92,7 @@ export const AddFeaturedProducts = () => {
             </div>
           </form>
         </div>
-      </div></SideBar>
+      </div></AdminSidebar>
     </div>
   );
 };

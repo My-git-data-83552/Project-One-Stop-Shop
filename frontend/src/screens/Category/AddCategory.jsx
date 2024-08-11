@@ -5,7 +5,7 @@ import Navigation_bar from "../../components/Navigation_bar";
 import { addCategories } from "../../services/CategoryService";
 import { toast } from "react-toastify";
 import { Link } from "react-router-dom";
-import SideBar from "../../components/SideBar";
+import AdminSidebar from "../../components/AdminSidebar";
 
 export default function AddCategory() {
     const [category,setCategory] = useState({
@@ -36,7 +36,7 @@ export default function AddCategory() {
         width: "100vw",
       }}
     >
-      <SideBar>
+      <AdminSidebar>
       <div className="row">
         <div className="col-4"></div>
         <div className="col-4">
@@ -64,7 +64,7 @@ export default function AddCategory() {
         </div>
         <div className="col-4"></div>
       </div>
-      </SideBar>
+      </AdminSidebar>
     </div>
   );
 }

@@ -2,9 +2,8 @@ import { useEffect, useState } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import { editCategories, getCategoryById } from "../../services/CategoryService";
 import bg from "../../productImages/addProduct.jpg";
-import Navigation_bar from "../../components/Navigation_bar";
 import { toast } from "react-toastify";
-import SideBar from "../../components/SideBar";
+import AdminSidebar from "../../components/AdminSidebar";
 
 export default function EditCategory() {
   const { id } = useParams();
@@ -46,7 +45,7 @@ export default function EditCategory() {
         width: "100vw",
       }}
     >
-      <SideBar>
+      <AdminSidebar>
       <div className="row">
         <div className="col-4"></div>
         <div className="col-4">
@@ -74,7 +73,7 @@ export default function EditCategory() {
         </div>
         <div className="col-4"></div>
       </div>
-      </SideBar>
+      </AdminSidebar>
     </div>
   );
 }

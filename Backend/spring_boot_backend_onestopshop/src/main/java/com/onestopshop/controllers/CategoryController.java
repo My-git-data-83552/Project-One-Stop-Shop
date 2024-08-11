@@ -20,37 +20,37 @@ import com.onestopshop.services.CategoryService;
 
 
 @RestController
-@RequestMapping("/api/categories")
+@RequestMapping("/all")
 @CrossOrigin(origins = "http://localhost:3000")
 public class CategoryController {
 
     @Autowired
     private CategoryService categoryService;
 
-    @GetMapping
+    @GetMapping("/categories")
     public ResponseEntity<List<Category>> getAllCategories() {
         return ResponseEntity.ok(categoryService.getAllCategories());
     }
 
-    @GetMapping("/{id}")
+    @GetMapping("/categories/{id}")
     public ResponseEntity<Category> getCategoryById(@PathVariable Long id) {
         return categoryService.getCategoryById(id)
                              .map(ResponseEntity::ok)
                              .orElse(ResponseEntity.notFound().build());
     }
 
-    @PostMapping
+    @PostMapping("/categories/admin")
     public ResponseEntity<Category> createCategory(@RequestBody CategoryDTO dto) {
         return ResponseEntity.ok(categoryService.saveCategory(dto));
     }
 
-    @DeleteMapping("/{id}")
+    @DeleteMapping("/categories/admin/{id}")
     public ResponseEntity<Void> deleteCategory(@PathVariable Long id) {
         categoryService.deleteCategory(id);
         return ResponseEntity.noContent().build();
     }
     
-    @PutMapping("/{id}")
+    @PutMapping("/categories/admin/{id}")
     @CrossOrigin(origins = "http://localhost:3000")
     public ResponseEntity<?> putMethodName(@PathVariable Long id, @RequestBody Category entity) {        
         return ResponseEntity.ok(categoryService.updateCategory(id));

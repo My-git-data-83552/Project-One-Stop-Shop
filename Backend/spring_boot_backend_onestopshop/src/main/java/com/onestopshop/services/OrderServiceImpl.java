@@ -24,18 +24,18 @@ public class OrderServiceImpl implements OrderService {
 	private OrderRepository orderDao;
 	@Autowired
 	private AddressRepository addressRepository;
-	
+
 	@Autowired
-	private ModelMapper modelMapper;	
+	private ModelMapper modelMapper;
 	@Autowired
 	private UserRepository userDao;
 
 	@Override
 	public Order createOrder(OrderDTO dto) {
-		
-		User user= userDao.findById(dto.getUserId())
+
+		User user = userDao.findById(dto.getUserId())
 				.orElseThrow(() -> new ResourceNotFoundException("Invalid ID"));
-		Address address=addressRepository.findById(dto.getAddressId())
+		Address address = addressRepository.findById(dto.getAddressId())
 				.orElseThrow(() -> new ResourceNotFoundException("Invalid ID"));
 		Order order = modelMapper.map(dto, Order.class);
 		order.setUser(user);
@@ -45,14 +45,20 @@ public class OrderServiceImpl implements OrderService {
 
 	@Override
 	public Order getOrderById(Long id) {
-		return orderDao.findById(id)
-				.orElseThrow(() -> new ResourceNotFoundException("Invalid ID"));
+		return orderDao.findById(id).orElseThrow(() -> new ResourceNotFoundException("Invalid ID"));
 	}
 
 	@Override
 	public List<Order> getAllOrders() {
-		
+
 		return orderDao.findAll();
+	}
+
+	public List<Order> getOrdersByUserId(Long userId) {
+		User user = userDao.findById(userId)
+				.orElseThrow(() -> new ResourceNotFoundException("Invalid ID"));
+		return orderDao.findByUser(user);
+
 	}
 
 }

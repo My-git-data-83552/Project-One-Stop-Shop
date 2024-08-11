@@ -2,6 +2,7 @@ package com.onestopshop.entities;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -29,15 +30,15 @@ public class Order extends BaseEntity {
 	@Column(name = "total_amount", nullable = false)
 	private double totalAmount;
 
-	@ManyToOne
-    @JoinColumn(name = "billing_address", nullable=false)
+	@ManyToOne(fetch = FetchType.EAGER)
+	@JoinColumn(name = "billing_address", nullable = false)
 	private Address billingAddress;
 
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "user_id", nullable = false)
 	private User user;
 
-	@OneToMany(mappedBy = "order", cascade = CascadeType.ALL, orphanRemoval = true)
+	@OneToMany(mappedBy = "order",fetch = FetchType.EAGER, cascade = CascadeType.ALL, orphanRemoval = true)
 	@JsonManagedReference
 	private List<OrderItem> orderItems = new ArrayList<>();
 
@@ -45,4 +46,5 @@ public class Order extends BaseEntity {
 		this.orderItems.add(orderItem);
 		orderItem.setOrder(this);
 	}
+
 }

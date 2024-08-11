@@ -1,4 +1,39 @@
+import { useEffect, useState } from "react";
+import { deleteProduct, getAllProducts } from "../../services/ProductService";
+import { toast } from "react-toastify";
+import bg from "../../productImages/addProduct.jpg";
+import { Link } from "react-router-dom";
+import SideBar from "../../components/SideBar";
 
+export const Products = () => {
+  const [products, setProducts] = useState([]);
+
+  useEffect(() => {
+    const fetchProducts = async () => {
+      const data = await getAllProducts();
+      setProducts(data);
+      try {
+        const data = await getAllProducts();
+        setProducts(data);
+      } catch (error) {
+        console.log("Could not fetch products  ", error);
+        toast.error("Could not fetch products");
+      }
+    };
+    fetchProducts();
+  }, []);
+
+  const handleDelete = async (id) => {
+    try {
+      await deleteProduct(id);
+      setProducts(products.filter((products) => products.id !== null));
+      window.location.reload();
+      toast.success("Deletion Successful!!!");
+    } catch (error) {
+      toast.error("Deletion Failed...");
+      window.location.reload();
+    }
+  };
 
   
 
