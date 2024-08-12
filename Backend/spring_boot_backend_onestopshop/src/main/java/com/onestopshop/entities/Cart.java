@@ -1,10 +1,12 @@
 package com.onestopshop.entities;
 
-
 import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import java.util.HashSet;
 import java.util.Set;
 
@@ -15,14 +17,20 @@ import java.util.Set;
 public class Cart extends BaseEntity {
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "user_id", nullable = false)
+    @JsonIgnore
+    @JoinColumn(name = "user_id")
     private User user;
 
-    @ManyToMany(fetch = FetchType.EAGER)
-    @JoinTable(
-        name = "cart_products",
-        joinColumns = @JoinColumn(name = "cart_id"),
-        inverseJoinColumns = @JoinColumn(name = "product_id")
-    )
-    private Set<Product> products = new HashSet<>();
+    @OneToMany(mappedBy = "cart", cascade = CascadeType.ALL, fetch = FetchType.EAGER, orphanRemoval = true)
+    @JsonManagedReference
+    @JsonIgnore
+    private Set<CartProduct> cartProducts = new HashSet<>();
+
+    public void addProduct(Product product, int quantity) {
+        CartProduct cartProduct = new CartProduct();
+        cartProduct.setProduct(product);
+        cartProduct.setQuantity(quantity);
+        cartProduct.setCart(this);
+        this.cartProducts.add(cartProduct);
+    }
 }

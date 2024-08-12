@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const BASE_URL = 'http://localhost:8080/api/addresses';
+const BASE_URL = 'http://localhost:8080/buyer/address';
 
 export const addAddress = async (addressDTO) => {
     try {

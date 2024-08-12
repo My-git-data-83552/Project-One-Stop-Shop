@@ -3,27 +3,9 @@ import bg from "../productImages/addProduct.jpg";
 import { Link } from "react-router-dom";
 import SideBar from "../components/SideBar";
 
-const CartPage = () => {
+const Cart = () => {
   const [cartItems, setCartItems] = useState([]);
 
-  useEffect(() => {
-    // Retrieve the cart from local storage
-    const storedCart = JSON.parse(localStorage.getItem("cart")) || [];
-    setCartItems(storedCart);
-  }, []);
-
-  const removeFromCart = (productId) => {
-    // Filter out the item with the given productId
-    const updatedCart = cartItems.filter((item) => item.id !== productId);
-
-    // Update the state
-    setCartItems(updatedCart);
-
-    // Update the local storage
-    localStorage.setItem("cart", JSON.stringify(updatedCart));
-
-    console.log("Product removed from cart:", productId);
-  };
 
   return (
     <div
@@ -107,4 +89,4 @@ const CartPage = () => {
   );
 };
 
-export default CartPage;
+export default Cart;

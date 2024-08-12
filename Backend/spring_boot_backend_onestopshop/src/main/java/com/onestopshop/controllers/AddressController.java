@@ -24,7 +24,7 @@ import com.onestopshop.services.UserService;
 
 
 @RestController
-@RequestMapping("/api/addresses")
+@RequestMapping("/buyer/address")
 @CrossOrigin(origins = "http://localhost:3000")
 public class AddressController {
 	 
@@ -34,7 +34,6 @@ public class AddressController {
     @Autowired
     private UserService userService;
     
-    @CrossOrigin(origins = "http://localhost:3000") 
     @PostMapping
     public ResponseEntity<Address> addAddress(@RequestBody AddressDTO addressDTO) {
         Optional<User> userOptional = userService.getUserById(addressDTO.getUserId());
@@ -72,7 +71,6 @@ public class AddressController {
             .collect(Collectors.toList());
         return new ResponseEntity<>(addressDTOs, HttpStatus.OK);
     }
-    @CrossOrigin(origins = "http://localhost:3000") 
     @GetMapping("/{id}")
     public ResponseEntity<AddressResponseDTO> getAddressById(@PathVariable Long id) {
         Optional<Address> address = addressService.getAddressById(id);

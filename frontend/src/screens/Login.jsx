@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import { toast } from "react-toastify";
 import { Link, useNavigate } from "react-router-dom";
 import SideBar from "../components/SideBar";
+import { login } from "../services/UserService";
 
 export default function Login() {
   const [email, setEmail] = useState("");
@@ -12,14 +13,36 @@ export default function Login() {
 
   const onLogin = async () => {
     if (email.length === 0) {
-      toast.warn("Please enter email");
+        toast.warn("Enter email");
     } else if (password.length === 0) {
-      toast.warn("Please enter password");
+        toast.warn("Enter password");
     } else {
-      // call login API and check its success
-      navigate("/home");
+        try{
+        
+        const result=await login(email, password);
+        console.log(result)
+            const { jwt, customer } = result.data; 
+            sessionStorage.setItem('token', jwt);
+            sessionStorage.setItem('customer', JSON.stringify(customer));
+            
+            toast.success("Logged in successfully");
+            if(customer.role=="ADMIN"){
+                navigate('/home');
+            }
+            if(customer.role=="SELLER"){
+              navigate('/product');
+          }
+            else{
+                navigate('/featuredProducts');
+            }
+        //}
+    }catch{
+    
+        toast.error("Login failed");
     }
-  };
+        
+    }
+};
 
   return (
     <div

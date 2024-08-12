@@ -168,7 +168,7 @@ export default function Register() {
                   type="radio"
                   name="role"
                   id="admin"
-                  value="Admin"
+                  value="ADMIN"
                   onChange={handleChange}
                 />
                 <label className="form-check-label d-flex" htmlFor="admin">
@@ -181,9 +181,9 @@ export default function Register() {
                   type="radio"
                   name="role"
                   id="buyer"
-                  value="Buyer"
+                  value="BUYER"
                   onChange={handleChange}
-                  checked={user.role === "Buyer"}
+                  checked={user.role === "BUYER"}
                 />
                 <label className="form-check-label d-flex" htmlFor="buyer">
                   Buyer
@@ -195,7 +195,7 @@ export default function Register() {
                   type="radio"
                   name="role"
                   id="seller"
-                  value="Seller"
+                  value="SELLER"
                   onChange={handleChange}
                 />
                 <label className="form-check-label d-flex" htmlFor="seller">

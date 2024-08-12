@@ -7,7 +7,7 @@ import Register from "./screens/Register";
 import Home from "./screens/Home";
 import Logout from "./screens/Logout";
 import Address from "./screens/Address";
-import { ToastContainer, Zoom } from "react-toastify";
+import { Flip, ToastContainer, Zoom } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import AddProduct from "./screens/Product/AddProduct";
 import AddCategory from "./screens/Category/AddCategory.jsx";
@@ -21,11 +21,13 @@ import FeaturedProducts from "./screens/FeaturedProducts/FeaturedProducts.jsx";
 import AddSpecification from "./screens/Specification/AddSpecification.jsx";
 import ProductDetails from "./screens/Product/ProductDetails.jsx";
 import {AddProductImage} from "./screens/ProductImage/AddProductImage.jsx";
-import CartPage from "./screens/Cart.jsx";
+
 import ShowAddress from "./screens/Address/ShowAddress.jsx";
 import PaymentGateway from "./screens/PaymentGateway.jsx";
 import OrderPlaced from "./screens/orderPlaced.jsx";
 import OrderTable from "./screens/Order/Orders.jsx";
+import UserList from "./screens/UserList.jsx";
+import Cart from "./screens/Order/Cart.jsx";
 
 function App() {
   return (
@@ -48,28 +50,29 @@ function App() {
         <Route path="/addFeaturedProducts" element={<AddFeaturedProducts />} />
         <Route path="/featuredProducts" element={<FeaturedProducts />} />
         <Route path="/addSpecification" element={<AddSpecification />} />    
-        <Route path="/AddProductImage/:id" element={<AddProductImage />} />    
-        <Route path="/cart" element={<CartPage />} />  
+        <Route path="/AddProductImage/:id" element={<AddProductImage />} />
         <Route path="/pickAddress/:id" element={<ShowAddress />} />  
         <Route path="/payment" element={<PaymentGateway />} />    
         <Route path="/orderPlaced" element={<OrderPlaced />} />   
-        <Route path="/orders" element={<OrderTable />} />   
+        <Route path="/orders" element={<OrderTable />} />      
+        <Route path="/cart" element={<Cart />} />   
+        <Route path="/admin" element={<UserList />} />   
 
         
       </Routes>
       <ToastContainer
-        position="top-center"
-        autoClose={5000}
-        hideProgressBar={false}
-        newestOnTop={false}
-        closeOnClick
-        rtl={false}
-        pauseOnFocusLoss
-        draggable
-        pauseOnHover
-        theme="dark"
-        transition={Zoom}
-      />
+position="bottom-right"
+autoClose={5000}
+hideProgressBar={false}
+newestOnTop
+closeOnClick
+rtl
+pauseOnFocusLoss={false}
+draggable
+pauseOnHover
+theme="colored"
+transition= {Flip}
+/>
     </div>
   );
 }

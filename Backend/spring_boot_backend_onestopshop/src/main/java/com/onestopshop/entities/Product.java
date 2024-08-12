@@ -20,6 +20,7 @@ import lombok.ToString;
 @Entity
 @Table(name = "products")
 @ToString
+//@JsonSerialize(using = ProductSerializer.class)
 public class Product extends BaseEntity {
 
     @Column(name = "product_name")
