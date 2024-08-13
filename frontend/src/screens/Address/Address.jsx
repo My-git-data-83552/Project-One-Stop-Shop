@@ -1,10 +1,10 @@
 import React, { useState } from "react";
-import { addAddress } from "../services/AddressService";
+import { addAddress } from "../../services/AddressService";
 import { Link } from "react-router-dom";
-import { ToastContainer, toast } from "react-toastify";
+import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import bg from "../productImages/addProduct.jpg";
-import SideBar from "../components/SideBar";
+import bg from "../../productImages/addProduct.jpg";
+import SideBar from "../../components/SideBar";
 
 export default function Address() {
   const [userId, setUserId] = useState("");

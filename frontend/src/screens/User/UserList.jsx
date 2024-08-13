@@ -1,6 +1,6 @@
 // src/components/UsersList.js
 import React, { useEffect, useState } from "react";
-import { getAllUsers } from "../services/UserService";
+import { getAllUsers } from "../../services/UserService";
 
 const UsersList = () => {
   const [users, setUsers] = useState([]);

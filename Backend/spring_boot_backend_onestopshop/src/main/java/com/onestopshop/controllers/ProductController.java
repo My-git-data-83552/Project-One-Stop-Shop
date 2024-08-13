@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.onestopshop.dtos.ProductDTO;
 import com.onestopshop.dtos.ProductInventoryDTO;
 import com.onestopshop.dtos.ProductUpdateDTO;
 import com.onestopshop.entities.Category;
@@ -50,7 +51,7 @@ public class ProductController {
     }
 
     @PostMapping
-    public ResponseEntity<?> saveProduct(@RequestBody ProductUpdateDTO productDTO) {   	
+    public ResponseEntity<?> saveProduct(@RequestBody ProductDTO productDTO) {   	
         return ResponseEntity.status(HttpStatus.CREATED).body(productService.saveProduct(productDTO));
     }
 
@@ -67,7 +68,9 @@ public class ProductController {
     
     @PutMapping("/{id}")
     public ResponseEntity<?> updateProduct(@PathVariable Long id, @RequestBody ProductUpdateDTO productDTO) {
-        return ResponseEntity.ok(productService.updateProduct(id, productDTO));
+     System.out.println(id);
+     System.out.println(productDTO);
+    	return ResponseEntity.ok(productService.updateProduct(id, productDTO));
     }
     
     @PutMapping()

@@ -2,11 +2,7 @@ import React from "react";
 import { Route, Routes } from "react-router-dom";
 import "./App.css";
 
-import Login from "./screens/Login";
-import Register from "./screens/Register";
 import Home from "./screens/Home";
-import Logout from "./screens/Logout";
-import Address from "./screens/Address";
 import { Flip, ToastContainer, Zoom } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import AddProduct from "./screens/Product/AddProduct";
@@ -21,13 +17,16 @@ import FeaturedProducts from "./screens/FeaturedProducts/FeaturedProducts.jsx";
 import AddSpecification from "./screens/Specification/AddSpecification.jsx";
 import ProductDetails from "./screens/Product/ProductDetails.jsx";
 import {AddProductImage} from "./screens/ProductImage/AddProductImage.jsx";
-
 import ShowAddress from "./screens/Address/ShowAddress.jsx";
-import PaymentGateway from "./screens/PaymentGateway.jsx";
-import OrderPlaced from "./screens/orderPlaced.jsx";
 import OrderTable from "./screens/Order/Orders.jsx";
-import UserList from "./screens/UserList.jsx";
 import Cart from "./screens/Order/Cart.jsx";
+import UsersList from "./screens/User/UserList.jsx";
+import Login from "./screens/User/Login.jsx";
+import Register from "./screens/User/Register.jsx";
+import Logout from "./screens/User/Logout.jsx";
+import Address from "./screens/Address/Address.jsx";
+import PaymentGateway from "./screens/Order/PaymentGateway.jsx"
+import OrderPlaced from "./screens/Order/OrderPlaced.jsx";
 
 function App() {
   return (
@@ -56,8 +55,7 @@ function App() {
         <Route path="/orderPlaced" element={<OrderPlaced />} />   
         <Route path="/orders" element={<OrderTable />} />      
         <Route path="/cart" element={<Cart />} />   
-        <Route path="/admin" element={<UserList />} />   
-
+        <Route path="/admin" element={<UsersList />} />  
         
       </Routes>
       <ToastContainer

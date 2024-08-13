@@ -1,9 +1,9 @@
-import bg from "../productImages/loginBackgroundImage.jpg";
+import bg from "../../productImages/loginBackgroundImage.jpg";
 import React, { useState } from "react";
 import { toast } from "react-toastify";
 import { Link, useNavigate } from "react-router-dom";
-import SideBar from "../components/SideBar";
-import { login } from "../services/UserService";
+import SideBar from "../../components/SideBar";
+import { login } from "../../services/UserService";
 
 export default function Login() {
   const [email, setEmail] = useState("");

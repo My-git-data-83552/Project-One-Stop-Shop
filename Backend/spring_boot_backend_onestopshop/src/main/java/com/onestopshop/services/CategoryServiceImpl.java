@@ -47,7 +47,8 @@ public class CategoryServiceImpl implements CategoryService {
     
     @Override
     public Category updateCategory(Long id) {
-    Category category=categoryRepository.findById(id).orElseThrow(()->new ResourceNotFoundException("Category not Found"));
+    Category category=categoryRepository.findById(id)
+    		.orElseThrow(()->new ResourceNotFoundException("Category not Found"));
     	return categoryRepository.save(category);
     }
 }

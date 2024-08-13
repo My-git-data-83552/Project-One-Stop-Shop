@@ -1,11 +1,8 @@
 package com.onestopshop.dtos;
 
-import lombok.*;
+import lombok.Data;
 
-@Getter
-@Setter
-@NoArgsConstructor
-@AllArgsConstructor
+@Data
 public class CategoryDTO {
     private String name;
 //  private List<Product> categoriesList;

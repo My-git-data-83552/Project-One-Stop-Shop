@@ -2,13 +2,17 @@ import axios from 'axios';
 
 const URL = "http://localhost:8080/buyer/cart";
 
-export const purchaseAllProducts = (userId) => {
-    return axios.post(`${URL}/purchase`, null, {
-        params: { userId }
+export const purchaseAllProducts = async (userId, addressId) => {
+  try {
+    const response = await axios.post(`${URL}/purchase`, null, {
+      params: { userId, addressId },
     });
-
-    
+    return response.data;
+  } catch (error) {
+    throw error;
+  }
 };
+
 export const addProductToCart = async (cartItemDTO) => {
     const requestBody = {
         userId: cartItemDTO.userId,

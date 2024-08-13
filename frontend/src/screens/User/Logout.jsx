@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
-import bg from "../productImages/logout.jpg";
-import SideBar from "../components/SideBar";
+import bg from "../../productImages/logout.jpg";
+import SideBar from "../../components/SideBar";
 
 export default function Logout(){
     return (

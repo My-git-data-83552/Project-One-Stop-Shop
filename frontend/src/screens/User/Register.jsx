@@ -1,8 +1,8 @@
 import { Link, useNavigate } from "react-router-dom";
-import bg from "../productImages/register.jpg";
+import bg from "../../productImages/addProduct.jpg";
 import { useState } from "react";
 import { toast } from "react-toastify";
-import { RegisterService } from "../services/UserService";
+import { RegisterService } from "../../services/UserService";
 
 export default function Register() {
   const [user, setUser] = useState({

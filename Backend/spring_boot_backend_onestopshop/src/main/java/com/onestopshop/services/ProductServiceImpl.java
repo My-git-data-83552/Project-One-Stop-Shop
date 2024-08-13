@@ -12,6 +12,7 @@ import com.onestopshop.daos.CategoryRepository;
 import com.onestopshop.daos.ProductRepository;
 import com.onestopshop.daos.SpecificationRepository;
 import com.onestopshop.dtos.ApiResponse;
+import com.onestopshop.dtos.ProductDTO;
 import com.onestopshop.dtos.ProductInventoryDTO;
 import com.onestopshop.dtos.ProductUpdateDTO;
 import com.onestopshop.entities.Category;
@@ -24,13 +25,13 @@ public class ProductServiceImpl implements ProductService {
 
 	@Autowired
 	private ProductRepository productRepository;
-
+	
 	@Autowired
 	private CategoryRepository categoryRepository;
-
+	
 	@Autowired
 	private SpecificationRepository specificationRepository;
-
+	
 	@Autowired
 	private ModelMapper modelMapper;
 
@@ -45,54 +46,47 @@ public class ProductServiceImpl implements ProductService {
 	}
 
 	@Override
-	public Product saveProduct(ProductUpdateDTO dto) {
+	public Product saveProduct(ProductDTO dto) {
 		Category category = categoryRepository.findById(dto.getCategoryId())
 				.orElseThrow(() -> new RuntimeException("Category not found"));
 
 		Specification specification = specificationRepository.findById(dto.getSpecificationId())
 				.orElseThrow(() -> new ResourceNotFoundException("Specifications not found..."));
 
-		// Make sure the specification is managed by the persistence context
 		specification = specificationRepository.save(specification);
 
 		Product product = modelMapper.map(dto, Product.class);
 		product.setSpecification(specification);
 
-		category.addProduct(product);
 		product.setCategory(category);
 
 		return productRepository.save(product);
 	}
 
 	@Override
-	public Product updateProduct(Long id, ProductUpdateDTO productDTO) {
-		// Check if id is null
-		if (id == null) {
-			throw new IllegalArgumentException("Product ID must not be null");
-		}
+	public Product updateProduct(Long id, ProductUpdateDTO dto) {
+	    // Check if id is null
+	    if (id == null) {
+	        throw new IllegalArgumentException("Your Product ID must not be null");
+	    }
 
-		// Fetch existing product by id
-		Product product = productRepository.findById(id)
-				.orElseThrow(() -> new ResourceNotFoundException("Product not found..."));
+	    Product product = productRepository.findById(id)
+	            .orElseThrow(() -> new ResourceNotFoundException("Product not found..."));
 
-		// Map the productDTO to product entity
-		modelMapper.map(productDTO, product);
+	    modelMapper.map(dto, product);
+	    
+	    Category category = categoryRepository.findById(dto.getCategoryId())
+				.orElseThrow(() -> new RuntimeException("Category not found"));
 
-		// Fetch the category
-		Category category = categoryRepository.findById(productDTO.getCategoryId())
-				.orElseThrow(() -> new ResourceNotFoundException("Category not found..."));
+	    Specification specification = specificationRepository.findById(dto.getSpecificationId())
+	            .orElseThrow(() -> new ResourceNotFoundException("Specifications not found..."));
 
-		Specification specification = specificationRepository.findById(productDTO.getSpecificationId())
-				.orElseThrow(() -> new ResourceNotFoundException("Category not found..."));
-
-		// Update the product entity
-		category.addProduct(product);
-		product.setSpecification(specification);
-		product.setUpdatedOn(LocalDateTime.now());
-
-		// Save and return the updated product
-		return productRepository.save(product);
+	    product.setSpecification(specification);
+	    product.setUpdatedOn(LocalDateTime.now());
+	    
+	    return productRepository.save(product);
 	}
+
 
 	@Override
 	public void deleteProduct(Long id) {

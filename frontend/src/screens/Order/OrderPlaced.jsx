@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import checkmark from '../productImages/checkMark.jpeg';
+import checkmark from '../../productImages/checkMark.jpeg';
 
 const OrderPlaced = () => {
   return (

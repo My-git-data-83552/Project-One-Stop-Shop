@@ -2,17 +2,12 @@ package com.onestopshop.dtos;
 
 import lombok.*;
 
-@Getter
-@Setter
-@NoArgsConstructor
-@AllArgsConstructor
-@ToString
+@Data
 public class ProductDTO {
-    private Long id;
     private String productName;
-    private String description;
+    private String brand;
     private double price;
-    private int quantity;
+    private int inventory;
     private Long categoryId;
     private Long specificationId;
 }
