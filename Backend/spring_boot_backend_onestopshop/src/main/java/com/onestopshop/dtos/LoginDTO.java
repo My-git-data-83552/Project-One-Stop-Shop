@@ -1,11 +1,9 @@
 package com.onestopshop.dtos;
 
-import lombok.Getter;
-import lombok.Setter;
+import lombok.Data;
 
 
-@Getter
-@Setter
+@Data
 public class LoginDTO {
     private String email;
     private String password;

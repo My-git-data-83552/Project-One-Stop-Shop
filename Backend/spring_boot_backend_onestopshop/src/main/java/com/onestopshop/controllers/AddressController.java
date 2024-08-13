@@ -22,12 +22,11 @@ import com.onestopshop.entities.User;
 import com.onestopshop.services.AddressService;
 import com.onestopshop.services.UserService;
 
-
 @RestController
 @RequestMapping("/buyer/address")
 @CrossOrigin(origins = "http://localhost:3000")
 public class AddressController {
-	 
+	
     @Autowired
     private AddressService addressService;
 

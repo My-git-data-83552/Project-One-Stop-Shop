@@ -8,8 +8,9 @@ import AdminSidebar from "../../components/AdminSidebar";
 export default function EditCategory() {
   const { id } = useParams();
   const [category, setCategory] = useState({
-    name: "",
+    name: "", // Ensure this matches the CategoryDTO structure
   });
+  
 
   const navigate=useNavigate();
 
@@ -21,17 +22,17 @@ export default function EditCategory() {
     fetchCategories();
   }, [id]);
 
-  const handleSubmit=async (e)=>{
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    try{
-        await editCategories(id,category);
-        toast.success('Category updated successfully!!!');
-        navigate('/category');
-    }
-    catch(error){
-        toast.error('Something went Wrong...');
+    try {
+      await editCategories(id, category); // Send the category object
+      toast.success('Category updated successfully!!!');
+      navigate('/category');
+    } catch (error) {
+      toast.error('Something went Wrong...');
     }
   }
+  
 
 
   return (
@@ -56,9 +57,8 @@ export default function EditCategory() {
             </label>
             <input
               type="text"
-              onChange={(e) => {
-                setCategory(e.target.value);
-              }}
+              onChange={(e)=>{setCategory({ name: e.target.value });
+            }}
               className="form-control"
               name="categoryName"
               id="categoryName"

@@ -15,7 +15,6 @@ const API_URL = "http://localhost:8080/user";
 export const login = async (email, password) => {
   const body = { email, password };
   try {
-    debugger;
     const response = await axios.post(`${API_URL}/login`, body);
     return response;
   } catch (ex) {

@@ -21,7 +21,7 @@ import com.onestopshop.services.CategoryService;
 
 @RestController
 @RequestMapping("/all")
-@CrossOrigin(origins = "http://localhost:3000")
+@CrossOrigin(origins = "*")
 public class CategoryController {
 
     @Autowired
@@ -51,8 +51,7 @@ public class CategoryController {
     }
     
     @PutMapping("/categories/admin/{id}")
-    @CrossOrigin(origins = "http://localhost:3000")
-    public ResponseEntity<?> putMethodName(@PathVariable Long id, @RequestBody Category entity) {        
-        return ResponseEntity.ok(categoryService.updateCategory(id));
+    public ResponseEntity<?> putMethodName(@PathVariable Long id, @RequestBody CategoryDTO dto) {        
+        return ResponseEntity.ok(categoryService.updateCategory(id,dto));
     }
 }

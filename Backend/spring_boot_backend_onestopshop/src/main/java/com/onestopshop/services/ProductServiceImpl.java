@@ -87,11 +87,11 @@ public class ProductServiceImpl implements ProductService {
 	    return productRepository.save(product);
 	}
 
-
-	@Override
-	public void deleteProduct(Long id) {
-		productRepository.deleteById(id);
-	}
+//
+//	@Override
+//	public void deleteProduct(Long id) {
+//		productRepository.deleteById(id);
+//	}
 
 	@Override
 	public ApiResponse updateInventory(ProductInventoryDTO dto) {

@@ -13,7 +13,7 @@ public interface ProductService {
     List<Product> getAllProducts();
     Optional<Product> getProductById(Long id);
     Product saveProduct(ProductDTO productDTO);
-    void deleteProduct(Long id);
+//    void deleteProduct(Long id);
     Product updateProduct(Long id,ProductUpdateDTO productDTO);
     ApiResponse updateInventory(ProductInventoryDTO dto);
 }

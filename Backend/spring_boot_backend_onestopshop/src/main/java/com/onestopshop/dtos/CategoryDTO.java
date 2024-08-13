@@ -5,5 +5,15 @@ import lombok.Data;
 @Data
 public class CategoryDTO {
     private String name;
-//  private List<Product> categoriesList;
+
+    // No-argument constructor (Lombok should generate this)
+    public CategoryDTO() {
+    }
+
+    // Parameterized constructor for convenience
+    public CategoryDTO(String name) {
+        this.name = name;
+    }
 }
+
+

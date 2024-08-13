@@ -46,7 +46,8 @@ export default function AddCategory() {
             <label about="name" className="col-form-label">Category Name</label>
             <input
               type="text"
-              onChange={(e)=>{setCategory(e.target.value)}}
+              onChange={(e)=>{setCategory({ name: e.target.value });
+            }}
               className="form-control"
               name="name"
               id="name"

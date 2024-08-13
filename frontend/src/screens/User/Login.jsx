@@ -13,36 +13,40 @@ export default function Login() {
 
   const onLogin = async () => {
     if (email.length === 0) {
-        toast.warn("Enter email");
+      toast.warn("Enter email");
     } else if (password.length === 0) {
-        toast.warn("Enter password");
+      toast.warn("Enter password");
     } else {
-        try{
+      try {
+        const result = await login(email, password);
+        console.log('Login Response:', result); // Log the entire response
         
-        const result=await login(email, password);
-        console.log(result)
-            const { jwt, customer } = result.data; 
-            sessionStorage.setItem('token', jwt);
-            sessionStorage.setItem('customer', JSON.stringify(customer));
-            
-            toast.success("Logged in successfully");
-            if(customer.role=="ADMIN"){
-                navigate('/home');
-            }
-            if(customer.role=="SELLER"){
-              navigate('/product');
+        const customer = result.data;  // Assuming result.data contains the user object
+        console.log('Customer Object:', customer); // Log the customer object
+        
+        // Ensure the customer object has an id field
+        if (customer && customer.id) {
+          sessionStorage.setItem("userId", customer.id);
+          toast.success("Logged in successfully");
+          
+          if (customer.role === "ROLE_BUYER") {
+            navigate('/home');
+          } else if (customer.role === "ROLE_SELLER") {
+            navigate('/product');
+          } else {
+            navigate('/featuredProducts');
           }
-            else{
-                navigate('/featuredProducts');
-            }
-        //}
-    }catch{
-    
+        } else {
+          toast.error("User ID not found");
+        }
+      } catch (error) {
         toast.error("Login failed");
+      }
     }
-        
-    }
-};
+  };
+  
+  
+
 
   return (
     <div

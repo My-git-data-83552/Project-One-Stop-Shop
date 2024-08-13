@@ -56,11 +56,14 @@ public class UserController {
 
 	@PostMapping("/login")
 	public ResponseEntity<?> login(@RequestBody LoginDTO loginDTO) {
-		Optional<User> user = userService.login(loginDTO);
-		if (user.isPresent()) {
-			return ResponseEntity.ok(user);
-		} else {
-			return ResponseEntity.status(401).body("Invalid email or password");
-		}
+	    Optional<User> user = userService.login(loginDTO);
+	    if (user.isPresent()) {
+	        // Return a DTO instead of the full User entity
+	        UserDto userDTO = new UserDto(user.get());
+	        return ResponseEntity.ok(userDTO);
+	    } else {
+	        return ResponseEntity.status(401).body("Invalid email or password");
+	    }
 	}
+
 }

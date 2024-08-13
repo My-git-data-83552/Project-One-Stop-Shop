@@ -30,8 +30,8 @@ public class Product extends BaseEntity {
 	@Column(name = "inventory")
 	private int inventory;
 	
-	@Column(name = "is_deleted")
-	private boolean isDeleted;
+//	@Column(name = "is_deleted")
+//	private boolean isDeleted;
 
 //  MANY TO ONE RELATION UNIDIRECTIONAL
 	@ManyToOne

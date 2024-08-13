@@ -12,9 +12,9 @@ import org.springframework.stereotype.Repository;
 public interface ProductRepository extends JpaRepository<Product, Long> {
 
     // Find all non-deleted products
-    List<Product> findByIsDeletedFalse();
+//    List<Product> findByIsDeletedFalse();
 
     // Find a product by ID that is not deleted
-    Optional<Product> findByIdAndIsDeletedFalse(Long id);
+//    Optional<Product> findByIdAndIsDeletedFalse(Long id);
     
 }

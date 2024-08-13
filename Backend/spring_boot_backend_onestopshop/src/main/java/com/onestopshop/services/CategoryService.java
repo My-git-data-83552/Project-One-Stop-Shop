@@ -11,5 +11,5 @@ public interface CategoryService {
     Optional<Category> getCategoryById(Long id);
     Category saveCategory(CategoryDTO dto);
     void deleteCategory(Long id);
-    Category updateCategory(Long id);
+    Category updateCategory(Long id,CategoryDTO dto);
 }
