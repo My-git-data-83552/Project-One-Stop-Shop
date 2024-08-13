@@ -142,10 +142,8 @@ export default function AddProduct() {
                                 ))}
                             </select>
                         </div>
-                        <button type="submit" className="btn btn-primary mt-3" style={{width:'120px',borderRadius:'20px'}}>Add Product</button>
+                        <button type="submit" className="btn btn-primary mt-3" style={{width:'120px',borderRadius:'20px'}}>Add SPecs</button>
                         <Link to='/Products' className='btn btn-warning ms-5 mt-3' style={{width:'120px',borderRadius:'20px'}}>Go Back</Link>
-                        {/* <Link to='/addSpecification'  className='btn btn-primary ms-5 mt-3' style={{width:'120px',borderRadius:'20px'}}>Add Specs</Link> */}
-                        {/* <button type='submit' className='btn btn-primary ms-5 mt-3' onClick={addSpec()} style={{width:'120px',borderRadius:'20px'}}>Add Specs</button> */}
                         </form>
                 </div>
                 <div className='col-md-3'></div>

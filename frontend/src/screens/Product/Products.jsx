@@ -10,8 +10,6 @@ export const Products = () => {
 
   useEffect(() => {
     const fetchProducts = async () => {
-      const data = await getAllProducts();
-      setProducts(data);
       try {
         const data = await getAllProducts();
         setProducts(data);

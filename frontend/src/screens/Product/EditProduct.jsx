@@ -13,8 +13,11 @@ export const EditProduct = () => {
     brand: "",
     price: "",
     inventory: "",
-    categoryId
+    specificationId:"",
+    categoryId:"",
+
   });
+  // const [product, setProduct] = useState([]);
 
   const navigate = useNavigate();
 
@@ -22,13 +25,9 @@ export const EditProduct = () => {
     const fetchProduct = async () => {
       try {
         const response = await getProductById(id);
-        setProduct({
-          id: response.id,
-          productName: response.productName,
-          brand: response.brand,
-          price: response.price,
-          inventory: response.inventory,
-        });
+        console.log('response - ',response);
+        setProduct(response);
+
       } catch (error) {
         console.error("Error fetching product:", error.response ? error.response.data : error.message);
       }
@@ -44,24 +43,32 @@ export const EditProduct = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
+      console.log('product obj - ',product);
       const productToUpdate = {
         id: product.id,
         productName: product.productName,
         brand: product.brand,
         price: product.price,
         inventory: product.inventory,
+        specificationId:product.specification.id,
+        categoryId:product.category.id,
       };
-
+  
       console.log("Product data to be updated:", productToUpdate);
-
+  
       await editProduct(id, productToUpdate);
       toast.success("Data Updated Successfully!!!");
-      navigate("/products");
+  
+      // Navigate to the EditSpecification page and pass the product object in state
+      navigate(`/editSpecification/${product.specification.id}`, {
+        state: { product: productToUpdate },
+      });
     } catch (error) {
       console.error("Error updating product:", error.response ? error.response.data : error.message);
       toast.error("Could not update the product...");
     }
   };
+  
 
   return (
     <div
@@ -81,7 +88,6 @@ export const EditProduct = () => {
           <div className="col-md-6">
             <form onSubmit={handleSubmit}>
               <div className="form-group">
-                <label htmlFor="productId">Product ID</label>
                 <input
                   type="text"
                   className="form-control mb-3"
@@ -170,7 +176,7 @@ export const EditProduct = () => {
                 className="btn btn-primary mt-3"
                 style={{ borderRadius: "20px" }}
               >
-                Edit Product
+                Edit Specs
               </button>
               <Link
                 to="/Products"

@@ -1,10 +1,8 @@
 package com.onestopshop.dtos;
 
-import lombok.Getter;
-import lombok.Setter;
+import lombok.Data;
 
-@Getter
-@Setter
+@Data
 public class SpecificationDTO {
     private String cpuManufacturer;
     private String cpuModel;

@@ -3,10 +3,49 @@ import { getAllProducts } from "../services/ProductService";
 import { getCoverImageByProductId } from "../services/ProductImage";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Link, useNavigate } from "react-router-dom";
-import { toast } from "react-toastify";
 import AddToCartButton from "./AddToCartButton";
 
 export default function Product() {
+  const [products, setProducts] = useState([]);
+  const userId=1;
+  const [error, setError] = useState("");
+  const [coverImages, setCoverImages] = useState([]);
+
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    const fetchProducts = async () => {
+      try {
+        const data = await getAllProducts();
+        setProducts(data);
+
+        const coverImages = await Promise.all(
+          data.map(async (product) => {
+            const coverImage = await getCoverImageByProductId(product.id);
+            return { productId: product.id, coverImage };
+          })
+        );
+
+        const coverImagesMap = coverImages.reduce(
+          (acc, { productId, coverImage }) => {
+            acc[productId] = coverImage;
+            return acc;
+          },
+          {}
+        );
+
+        setCoverImages(coverImagesMap);
+      } catch (error) {
+        setError("Error fetching products");
+      }
+    };
+
+    fetchProducts();
+  }, []);
+
+  const buyProduct = (id) => {
+    navigate(`/pickAddress/${id}`);
+  };
 
   return (
     <div className="container">

@@ -8,5 +8,6 @@ import com.onestopshop.entities.Specification;
 public interface SpecificationService {
     Specification addSpecification(SpecificationDTO dto);
     SpecificationDTO getSpecificationById(Long id);
-    List<Specification> getAllSpecifications();
+    List<Specification> getAllSpecifications(); SpecificationDTO updateSpecification(Long id, SpecificationDTO specificationDTO);
+
 }

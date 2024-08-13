@@ -34,6 +34,18 @@ public class SpecificationServiceImpl implements SpecificationService {
                 .orElseThrow(() -> new RuntimeException("Specification not found"));
         return modelMapper.map(specification, SpecificationDTO.class);
     }
+    
+    @Override
+    public SpecificationDTO updateSpecification(Long id, SpecificationDTO specificationDTO) {
+        Specification specification = specificationRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Specification not found for id: " + id));
+        
+        modelMapper.map(specificationDTO, specification);
+        
+        Specification updatedSpecification = specificationRepository.save(specification);
+        
+        return modelMapper.map(updatedSpecification, SpecificationDTO.class);
+    }
 
     @Override
     public List<Specification> getAllSpecifications() {

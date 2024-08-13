@@ -12,7 +12,7 @@ import com.onestopshop.entities.Specification;
 import com.onestopshop.services.SpecificationService;
 
 @RestController
-@RequestMapping("/specifications")
+@RequestMapping("/seller/specifications")
 @CrossOrigin(origins = "http://localhost:3000")
 public class SpecificationController {
 
@@ -35,5 +35,14 @@ public class SpecificationController {
     public ResponseEntity<List<Specification>> getAllSpecifications() {
         List<Specification> specifications = specificationService.getAllSpecifications();
         return ResponseEntity.ok(specifications);
+    }
+    
+    @PutMapping("/{id}")
+    public ResponseEntity<SpecificationDTO> updateSpecification(
+            @PathVariable Long id, 
+            @RequestBody SpecificationDTO specificationDTO) {
+        
+        SpecificationDTO updatedSpecification = specificationService.updateSpecification(id, specificationDTO);
+        return ResponseEntity.ok(updatedSpecification);
     }
 }

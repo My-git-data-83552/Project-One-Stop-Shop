@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const API_URL = "http://localhost:8080/specifications";
+const API_URL = "http://localhost:8080/seller/specifications";
 
 export const addSpecification = async (specification) => {
   try {
@@ -26,5 +26,15 @@ export const getAllSpecifications = async () => {
     return response.data;
   } catch (error) {
     throw new Error("Error fetching specifications: " + error.message);
+  }
+};
+
+export const updateSpecification = async (id, specificationData) => {
+  try {
+    const response = await axios.put(`${API_URL}/${id}`, specificationData);
+    return response.data;
+  } catch (error) {
+    console.error('Error updating specification:', error);
+    throw error;
   }
 };

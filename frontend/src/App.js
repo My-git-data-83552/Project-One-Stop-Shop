@@ -27,6 +27,7 @@ import Logout from "./screens/User/Logout.jsx";
 import Address from "./screens/Address/Address.jsx";
 import PaymentGateway from "./screens/Order/PaymentGateway.jsx"
 import OrderPlaced from "./screens/Order/OrderPlaced.jsx";
+import EditSpecification from "./screens/Specification/EditSpecification.jsx";
 
 function App() {
   return (
@@ -56,6 +57,7 @@ function App() {
         <Route path="/orders" element={<OrderTable />} />      
         <Route path="/cart" element={<Cart />} />   
         <Route path="/admin" element={<UsersList />} />  
+        <Route path="/editSpecification/:id" element={<EditSpecification />} />  
         
       </Routes>
       <ToastContainer
