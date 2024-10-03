@@ -77,22 +77,22 @@ const FeaturedProducts = () => {
               <td className="col-3">{featuredProduct.title}</td>
               <td className="col-5">{featuredProduct.description}</td>
               <td className="col">
-                <a href={`http://localhost:8080/admin/featuredProducts/${featuredProduct.fileName}`} target="_blank" rel="noopener noreferrer">
+                <a href={`http://localhost:8080/Images/featuredProducts/${featuredProduct.fileName}`} target="_blank" rel="noopener noreferrer">
                     View Image
                   </a>
               </td>
               <td className="col">
-                <Link className="btn btn-primary btn-sm me-3" to={`/featuredProduct/${featuredProduct.id}`} style={{borderRadius:'100px', width:'60px'}}>Edit</Link>
-                <Link className="btn btn-danger btn-sm" onClick={() => handleDelete(featuredProduct.id)} style={{borderRadius:'100px', width:'60px'}}>Delete</Link>
+                <Link className="button-blue me-3" to={`/featuredProduct/${featuredProduct.id}`} style={{borderRadius:'100px', width:'60px'}}>Edit</Link>
+                <Link className="button-gold" onClick={() => handleDelete(featuredProduct.id)} style={{borderRadius:'100px', width:'60px'}}>Delete</Link>
               </td>
             </tr>
           ))}
         </tbody>
       </table>
-      <Link className="btn btn-success mt-4 me-4 "to="/addFeaturedProducts" style={{borderRadius:'100px', width:'100px'}}>
+      <Link className="button-blue mt-4 me-4 "to="/addFeaturedProducts" style={{ width:'100px'}}>
         Add
       </Link>
-      <Link className="btn btn-warning mt-4 me-4" to="/home" style={{borderRadius:'100px', width:'100px'}}>
+      <Link className="button-gold mt-4 me-4" to="/home" style={{ width:'100px'}}>
         Go Back
       </Link>
       </AdminSidebar>

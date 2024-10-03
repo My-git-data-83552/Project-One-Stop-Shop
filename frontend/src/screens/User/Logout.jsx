@@ -1,7 +1,6 @@
 import { useEffect } from "react";
 import { Link } from "react-router-dom";
 import bg from "../../productImages/logout.jpg";
-import SideBar from "../../components/SideBar";
 
 export default function Logout() {
     useEffect(() => {
@@ -20,7 +19,6 @@ export default function Logout() {
                 width: "100vw",
             }}
         >
-            <SideBar>
                 <br />
                 <h1>Logout Success!!!</h1>
                 <hr />
@@ -42,7 +40,6 @@ export default function Logout() {
                 >
                     Keep Browsing
                 </Link>
-            </SideBar>
         </div>
     );
 }

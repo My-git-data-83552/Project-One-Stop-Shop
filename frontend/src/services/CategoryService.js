@@ -2,10 +2,16 @@ import axios from "axios";
 import { toast } from "react-toastify";
 
 const URL = "http://localhost:8080/all"; // Adjust the URL as needed
+const token = sessionStorage.getItem('token');
 
 export const getCategories = async () => {
   try {
-    const response = await axios.get(`${URL}/categories`);
+
+    const response = await axios.get(`${URL}/categories`, {      
+      headers:{
+        Authorization: `Bearer ${token}`,
+       } ,
+  });
     return response.data;
   } catch (error) {
     console.error("Error getting categories:", error);
@@ -15,7 +21,11 @@ export const getCategories = async () => {
 
 export const getCategoryById = async (id) => {
   try {
-    const response = await axios.get(`${URL}/categories/${id}`);
+    const response = await axios.get(`${URL}/categories/${id}`, {      
+      headers:{
+        Authorization: `Bearer ${token}`,
+       } ,
+  });
     return response.data;
   } catch (error) {
     console.log(error);
@@ -26,9 +36,10 @@ export const getCategoryById = async (id) => {
 
 export const addCategories = async (category) => {
   try {
-    const response = await axios.post(`${URL}/categories/admin`, category, {
+    const response = await axios.post(`http://localhost:8080/admin-seller/categories`, category, {
       headers: {
-        "Content-Type": "application/json",
+        ContentType: "application/json",
+        Authorization: `Bearer ${token}`,
       },
     });
 
@@ -42,7 +53,9 @@ export const addCategories = async (category) => {
 export const editCategories = async (id, category) => {
   try {
     const response = await axios.put(`${URL}/categories/admin/${id}`, category, {
-      headers: { "Content-Type": "application/json" },
+      headers: { "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+       },
     });
     return response.data;
   } catch (error) {
@@ -53,7 +66,11 @@ export const editCategories = async (id, category) => {
 
 export const deleteCategory = async (id) => {
   try {
-    const response = await axios.delete(`${URL}/categories/admin/${id}`);
+    const response = await axios.delete(`${URL}/categories/admin/${id}`, {      
+      headers:{
+        Authorization: `Bearer ${token}`,
+       } ,
+  });
     return response.data;
   } catch (error) {
     console.log("Could not delete in service React layer => ", error);

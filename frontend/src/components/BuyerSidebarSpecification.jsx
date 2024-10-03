@@ -4,7 +4,7 @@ import logo from "../productImages/Logo.png"
 import 'bootstrap/dist/css/bootstrap.min.css';
 import bg from '../productImages/sidebar3.jpeg'
 
-const BuyerSidebar = ({ children }) => {
+const BuyerSidebarSpecification = ({ children }) => {
   return (
     <div className="d-flex">
      <div
@@ -15,13 +15,17 @@ const BuyerSidebar = ({ children }) => {
           backgroundImage: `url(${bg})`,
           backgroundSize: "cover",
           backgroundPosition: "center",
-          position: "relative", 
-          left: "0",          
-          top: "0",           
-          borderColor: 'black',
-          zIndex: 1000,       
+          position: "fixed",  // Ensures the sidebar is fixed to the left
+          left: "0",          // Aligns it to the left edge
+          top: "0",           // Aligns it to the top edge
+          borderColor: 'darkblue',
+          zIndex: 1000,       // Ensures it stays above other content
         }}
       >
+
+{/* <img src={logo} alt="" style={{width:'170px'}}/> <hr /> */}
+         
+
       <div className="p-3" style={{color:'white',fontSize:'120%'}}>
       <ul className="nav flex-column">
             <li className="nav-item">
@@ -38,6 +42,24 @@ const BuyerSidebar = ({ children }) => {
                     </Link>
                 </li>
             </div>
+            {/* <div className='hoverEffect' style={{height:'60px',backgroundPosition:'center',borderColor:'black',
+              borderRadius:'100px'
+            }}>
+                <li className="nav-item">
+                    <Link to="/products" className="nav-link" style={{color:'white',fontSize:'120%'}}>
+                        <strong>Products</strong>
+                    </Link>
+                </li>
+            </div> */}
+            {/* <div className='hoverEffect' style={{height:'60px',backgroundPosition:'center',borderColor:'black',
+              borderRadius:'100px'
+            }}>
+                <li className="nav-item">
+                    <Link to="/category" className="nav-link" style={{color:'white',fontSize:'120%'}}>
+                        <strong>Category</strong>
+                    </Link>
+                </li>
+            </div> */}
             <div className='hoverEffect' style={{height:'60px',backgroundPosition:'center',borderColor:'black',
               borderRadius:'100px'
             }}>
@@ -48,7 +70,7 @@ const BuyerSidebar = ({ children }) => {
                 </li>
             </div>
             <div className='hoverEffect' style={{height:'60px',backgroundPosition:'center',borderColor:'black',
-              borderRadius:'50px'
+              borderRadius:'100px'
             }}>
                 <li className="nav-item">
                     <Link to="/orders" className="nav-link" style={{color:'white',fontSize:'120%'}}>
@@ -83,6 +105,8 @@ const BuyerSidebar = ({ children }) => {
          
         </div>
       </div>
+
+      {/* Main Content */}
       <div className="flex-grow-1 p-3">
         {children}
       </div>
@@ -90,4 +114,4 @@ const BuyerSidebar = ({ children }) => {
   );
 };
 
-export default BuyerSidebar;
+export default BuyerSidebarSpecification;

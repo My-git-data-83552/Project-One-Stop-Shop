@@ -17,7 +17,7 @@ const AdminSidebar = ({ children }) => {
           backgroundSize: "cover",
           backgroundPosition: "center",
           // opacity:'20%',
-          borderRadius: "40px",
+          //borderRadius: "40px",
           borderColor: "black",
           borderColor: "darkblue",
         }}
@@ -28,8 +28,8 @@ const AdminSidebar = ({ children }) => {
           <ul className="nav flex-column">
             <li className="nav-item">
               <Link
-                to="/home"
-                className="nav-link"
+                to="/admin"
+                className="mynav-link"
                 style={{ color: "white", fontSize: "120%" }}
               >
                 <img
@@ -47,18 +47,12 @@ const AdminSidebar = ({ children }) => {
             </li>
             <div
               className="hoverEffect"
-              style={{
-                height: "60px",
-                backgroundPosition: "center",
-                borderColor: "black",
-                borderRadius: "100px",
-              }}
+              
             >
               <li className="nav-item">
                 <Link
                   to="/login"
-                  className="nav-link"
-                  style={{ color: "white", fontSize: "120%" }}
+                  className="mynav-link"
                 >
                   <strong>Login</strong>
                 </Link>
@@ -66,133 +60,53 @@ const AdminSidebar = ({ children }) => {
             </div>
             <div
               className="hoverEffect"
-              style={{
-                height: "60px",
-                backgroundPosition: "center",
-                borderColor: "black",
-                borderRadius: "100px",
-              }}
+              
             >              
               <li className="nav-item">
                 <Link
                   to="/users"
-                  className="nav-link"
-                  style={{ color: "white", fontSize: "120%" }}
+                  className="mynav-link"
                 >
                   <strong>Users</strong>
                 </Link>
               </li>
             </div>
+           
             <div
               className="hoverEffect"
-              style={{
-                height: "60px",
-                backgroundPosition: "center",
-                borderColor: "black",
-                borderRadius: "100px",
-              }}
-            >              
-              <li className="nav-item">
-                <Link
-                  to="/products"
-                  className="nav-link"
-                  style={{ color: "white", fontSize: "120%" }}
-                >
-                  <strong>Products</strong>
-                </Link>
-              </li>
-            </div>
-            <div
-              className="hoverEffect"
-              style={{
-                height: "60px",
-                backgroundPosition: "center",
-                borderColor: "black",
-                borderRadius: "100px",
-              }}
+              
             >
               <li className="nav-item">
                 <Link
                   to="/category"
-                  className="nav-link"
-                  style={{ color: "white", fontSize: "120%" }}
+                  className="mynav-link"
+                 
                 >
                   <strong>Category</strong>
                 </Link>
               </li>
             </div>
-            {/* <div
-              className="hoverEffect"
-              style={{
-                height: "60px",
-                backgroundPosition: "center",
-                borderColor: "black",
-                borderRadius: "100px",
-              }}
-            >
-              <li className="nav-item">
-                <Link
-                  to="/address"
-                  className="nav-link"
-                  style={{ color: "white", fontSize: "120%" }}
-                >
-                  <strong>Address</strong>
-                </Link>
-              </li>
-            </div> */}
             <div
               className="hoverEffect"
-              style={{
-                height: "60px",
-                backgroundPosition: "center",
-                borderColor: "black",
-                borderRadius: "100px",
-              }}
+              
             >
               <li className="nav-item">
                 <Link
                   to="/featuredProducts"
-                  className="nav-link"
-                  style={{ color: "white", fontSize: "120%" }}
+                  className="mynav-link"
                 >
                   <strong>Cover Image</strong>
                 </Link>
               </li>
             </div>
-            {/* <div
-              className="hoverEffect"
-              style={{
-                height: "60px",
-                backgroundPosition: "center",
-                borderColor: "black",
-                borderRadius: "100px",
-              }}
-            >
-              <li className="nav-item">
-                <Link
-                  to="/cart"
-                  className="nav-link"
-                  style={{ color: "white", fontSize: "120%" }}
-                >
-                  <strong>View Cart</strong>
-                </Link>
-              </li>
-            </div> */}
-
             <div
               className="hoverEffect"
-              style={{
-                height: "60px",
-                backgroundPosition: "center",
-                borderColor: "black",
-                borderRadius: "100px",
-              }}
+              
             >
               <li className="nav-item">
                 <Link
                   to="/logout"
-                  className="nav-link"
-                  style={{ color: "white", fontSize: "120%" }}
+                  className="mynav-link"
                 >
                   <strong>Logout</strong>
                 </Link>
@@ -200,10 +114,9 @@ const AdminSidebar = ({ children }) => {
             </div>
           </ul>
           <hr />
-          <h1 style={{color:'white'}}>Admin</h1>
+          {/* <h1 style={{color:'white'}}>Admin</h1> */}
         </div>
       </div>
-      {/* Main Content */}
       <div className="flex-grow-1 p-3">{children}</div>
     </div>
   );

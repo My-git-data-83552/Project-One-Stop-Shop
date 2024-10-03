@@ -4,7 +4,13 @@ const BASE_URL = 'http://localhost:8080/buyer/address';
 
 export const addAddress = async (addressDTO) => {
     try {
-        const response = await axios.post(BASE_URL, addressDTO);
+        const token = sessionStorage.getItem('token');
+        const response = await axios.post(BASE_URL, addressDTO, {
+      
+            headers:{
+              Authorization: `Bearer ${token}`,
+             } ,
+        });
         return response.data;
     } catch (error) {
         console.error("Error adding address", error);
@@ -14,7 +20,12 @@ export const addAddress = async (addressDTO) => {
 
 export const getAllAddresses = async () => {
     try {
-        const response = await axios.get(BASE_URL);
+        const token = sessionStorage.getItem('token');
+        const response = await axios.get(BASE_URL, {      
+            headers:{
+              Authorization: `Bearer ${token}`,
+             } ,
+        });
         return response.data;
     } catch (error) {
         console.error("Error fetching addresses", error);
@@ -24,8 +35,12 @@ export const getAllAddresses = async () => {
 
 export const getAddressByUserId = async (userId) => {
     try {
-        const response = await axios.get(`${BASE_URL}/user/${userId}`);
-        console.log(response);
+        const token = sessionStorage.getItem('token');
+        const response = await axios.get(`${BASE_URL}/user/${userId}`, {      
+            headers:{
+              Authorization: `Bearer ${token}`,
+             } ,
+        });
         return response.data;
     } catch (error) {
         console.error(`Error fetching address with ID  = ${userId}`, error);
@@ -35,8 +50,12 @@ export const getAddressByUserId = async (userId) => {
 
 export const getAddressById = async (id) => {
     try {
-        const response = await axios.get(`${BASE_URL}/${id}`);
-        console.log(response);
+        const token = sessionStorage.getItem('token');
+        const response = await axios.get(`${BASE_URL}/${id}`, {      
+            headers:{
+              Authorization: `Bearer ${token}`,
+             } ,
+        });
         return response.data;
     } catch (error) {
         console.error(`Error fetching address with ID ${id}`, error);

@@ -3,6 +3,7 @@ import { getCartItems, purchaseAllProducts } from "../../services/CartService";
 import bg from "../../productImages/addProduct.jpg";
 import { Link, useNavigate } from "react-router-dom";
 import { toast } from 'react-toastify';
+import BuyerSideBar from "../../components/BuyerSidebar";
 
 const Cart = () => {
   const [cartItems, setCartItems] = useState([]);
@@ -54,6 +55,7 @@ const Cart = () => {
       height: "100vh",
       width: "100vw",
   }}>
+    <BuyerSideBar>
     <div className="container">
     <br />
       <h2 className="mb-4">Cart Items</h2>
@@ -97,6 +99,7 @@ const Cart = () => {
         Go Back
       </Link>
       </div>
+      </BuyerSideBar>
     </div>
   );
 };

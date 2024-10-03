@@ -7,17 +7,23 @@ import lombok.Data;
 
 @Data
 public class UserDto {
-	private Long id;
     private String firstName;
     private String lastName;
     private String email;
+    private String password;
     private Role role;
+    private String phoneNumber;
+    
+    public UserDto() {
+		// TODO Auto-generated constructor stub
+	}
 
     public UserDto(User user) {
-    	this.id=user.getId();
         this.firstName = user.getFirstName();
         this.lastName = user.getLastName();
         this.email = user.getEmail();
+        this.password=user.getPassword();
         this.role = user.getRole();
+        this.phoneNumber=user.getPhoneNumber();
     }
 }

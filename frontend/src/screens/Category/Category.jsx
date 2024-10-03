@@ -45,7 +45,7 @@ const Categories = () => {
       <AdminSidebar>
       <div className="container mt-3 col-6">        
         <h1 className="mb-4">Category List</h1>
-        <Link to="/addCategory" className="btn btn-light"  style={{borderRadius:'100px'}}>Add Category</Link>
+        <Link to="/addCategory" className="button-gold"  style={{width:'20rem'}}>Add Category</Link>
         <hr />
         {error && <div className="alert alert-danger">{error}</div>}
         <table className="table table-responsive">

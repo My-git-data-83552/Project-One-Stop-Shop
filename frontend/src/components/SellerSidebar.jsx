@@ -10,23 +10,18 @@ const SellerSideBar = ({ children }) => {
       <div className=" border" style={{ 
         width: '250px', 
         height: '100vh' , 
-        // backgroundColor:'beige',
         backgroundImage:`url(${bg})`,
         backgroundSize: "cover",
         backgroundPosition: "center",
-        // opacity:'20%',
         borderRadius:'40px',
         borderColor:'black',
         borderColor:'darkblue'
        }}>
 
-{/* <img src={logo} alt="" style={{width:'170px'}}/> <hr /> */}
-         
-
       <div className="p-3" style={{color:'white',fontSize:'120%'}}>
       <ul className="nav flex-column">
             <li className="nav-item">
-                <Link to="/home" className="nav-link" style={{color:'white',fontSize:'120%'}}>
+                <Link to="/products" className="nav-link" style={{color:'white',fontSize:'120%'}}>
                     <img src={logo} alt="" style={{width:'170px',opacity:'100%',backgroundColor:'transparent',borderRadius:'60px'}}/> <hr />
                 </Link>
             </li>
@@ -48,45 +43,6 @@ const SellerSideBar = ({ children }) => {
                     </Link>
                 </li>
             </div>
-            <div className='hoverEffect' style={{height:'60px',backgroundPosition:'center',borderColor:'black',
-              borderRadius:'100px'
-            }}>
-                <li className="nav-item">
-                    <Link to="/category" className="nav-link" style={{color:'white',fontSize:'120%'}}>
-                        <strong>Category</strong>
-                    </Link>
-                </li>
-            </div>
-            <div className='hoverEffect' style={{height:'60px',backgroundPosition:'center',borderColor:'black',
-              borderRadius:'100px'
-            }}>
-                <li className="nav-item">
-                    <Link to="/address" className="nav-link" style={{color:'white',fontSize:'120%'}}>
-                        <strong>Address</strong>
-                    </Link>
-                </li>
-            </div>
-            <div className='hoverEffect' style={{height:'60px',backgroundPosition:'center',borderColor:'black',
-              borderRadius:'100px'
-            }}>
-                <li className="nav-item">
-                    <Link to="/featuredProducts" className="nav-link" style={{color:'white',fontSize:'120%'}}>
-                        <strong>Cover Image</strong>
-                    </Link>
-                </li>
-                
-            </div>
-
-            <div className='hoverEffect' style={{height:'60px',backgroundPosition:'center',borderColor:'black',
-              borderRadius:'100px'
-            }}>
-                <li className="nav-item">
-                    <Link to="/cart" className="nav-link" style={{color:'white',fontSize:'120%'}}>
-                        <strong>View Cart</strong>
-                    </Link>
-                </li>
-                
-            </div>
 
             <div className='hoverEffect' style={{height:'60px',backgroundPosition:'center',borderColor:'black',
               borderRadius:'100px'
@@ -99,7 +55,7 @@ const SellerSideBar = ({ children }) => {
             </div>
         </ul>
           <hr />
-          <h1 style={{color:'white'}}>Seller</h1>
+          {/* <h1 style={{color:'white'}}>Seller</h1> */}
         </div>
       </div>
 

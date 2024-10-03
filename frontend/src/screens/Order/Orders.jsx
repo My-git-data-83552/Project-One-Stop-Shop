@@ -3,6 +3,7 @@ import { getOrdersByUserId } from '../../services/OrderService'; // Import the c
 import { Link } from 'react-router-dom'; // For navigation
 import axios from 'axios';
 import bg from "../../productImages/addProduct.jpg";
+import BuyerSideBar from "../../components/BuyerSidebar";
 
 const OrderTable = () => {
   const [orders, setOrders] = useState([]);
@@ -37,14 +38,15 @@ const OrderTable = () => {
       height: "100vh",
       width: "100vw",
   }}>
-    <br /><br />
+    
+    <BuyerSideBar><br /><br />
     <div className="container ">
       <h2>Order History</h2>
       <hr />
       <table className='table table-striped table-info'>
         <thead>
           <tr>
-            <th>ID</th>
+            <th>Order ID</th>
             <th>Status</th>
             <th>Total Amount</th>
             <th>Ordered On</th>
@@ -64,14 +66,12 @@ const OrderTable = () => {
         </tbody>
       </table>
       <div className="mt-4">
-        <Link to="/" className="btn btn-secondary btn-lg" style={{
-          borderRadius: '100px',
-          backgroundColor:"darkmagenta"
-        }}>
+        <Link to="/home" className="button-blue" style={{width:'120px'}}>
           Go Home
         </Link>
       </div>
     </div>
+    </BuyerSideBar>
     </div>
   );
 };

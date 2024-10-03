@@ -17,7 +17,10 @@ export default function Product() {
     const fetchProducts = async () => {
       try {
         const data = await getAllProducts();
-        setProducts(data);
+      
+        // Manually filter products where deleted is false
+        const filteredProducts = data.filter(product => product.deleted === false);
+        setProducts(filteredProducts);
 
         const coverImages = await Promise.all(
           data.map(async (product) => {
@@ -68,7 +71,10 @@ export default function Product() {
                     style={{ height: "300px" }}
                   />
                 </Link>
-                <div className="card-body">
+                <div className="card-body" style={{
+                  height:'14rem',
+                  backgroundColor:'white',
+                }}>
                   <h5 className="card-title"> {product.productName}</h5>
                   <p className="card-text">
                     <span>Brand: </span>
@@ -83,12 +89,13 @@ export default function Product() {
                     </div>
                   )}
                   {product.inventory > 0 && (
+                  
                     <div>
                       <button
-                        onClick={() => buyProduct(product.id)} // Pass a function reference
-                        className="btn btn-success me-3"
-                        style={{ borderRadius: "20px" }}
-                      >
+                        onClick={() => buyProduct(product.id)} 
+                        className="button-blue me-3" style={{
+                          width:'100px',
+                        }}>
                         Buy Now
                       </button>
                       

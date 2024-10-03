@@ -24,14 +24,19 @@ export const AddFeaturedProducts = () => {
     formData.append("description", description);
 
     try {
-      await AddFeaturedProduct(formData);
+      const response=await AddFeaturedProduct(formData);
       toast.success("Featured Product Added Successfully!!!");
       // Reset form fields
       setTitle("");
       setDescription("");
       setFile(null);
     } catch (error) {
-      toast.error("Could not Add Featured Product...");
+      if (error.response) {
+        //console.error('Error :', error);
+        toast.error(error.response.data.message);
+      }else{
+      toast.error("Something went wrong");
+      }
     }
   };
 
@@ -87,7 +92,7 @@ export const AddFeaturedProducts = () => {
                 type="submit"
                 className="btn btn-outline-success mb-4 btn-lg" style={{borderRadius:'100px'}}
               />
-              <Link className="btn btn-outline-primary mb-4 btn-lg" style={{borderRadius:'100px'}} to='/home'>Go Back</Link>
+              <Link className="btn btn-outline-primary mb-4 btn-lg" style={{borderRadius:'100px'}} to='/featuredProducts'>Go Back</Link>
               
             </div>
           </form>

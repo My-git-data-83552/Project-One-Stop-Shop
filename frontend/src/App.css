@@ -2,9 +2,96 @@
   text-align: center;
 }
 
-.btn {
-  border-radius:1000px
+.mycard {
+  border-radius: 1rem;
+  width: 20rem;
+  height: 10rem;
+  background-color: beige;
+  text-align: center;
+  justify-content: center;
+  line-height: 10rem;
+  cursor: pointer;
+  font-size: 2rem;
+  
 }
+.mycard:hover{
+  border-color: #61dafb;
+  background-color: darkslategray;
+  color: white;
+  text-decoration: wavy;
+  transition-duration: 0.5s;
+  border-radius: 2rem;
+  box-shadow: 0 0 0 2px beige;
+}
+
+.mycard-danger {
+  border-radius: 1rem;
+  width: 20rem;
+  height: 10rem;
+  background-color: beige;
+  text-align: center;
+  justify-content: center;
+  line-height: 10rem;
+  cursor: pointer;
+  font-size: 2rem;
+}
+
+.mycard-danger:hover{
+  border-color: red;
+  background-color: darkred;
+  color: white;
+  text-decoration: wavy;
+  transition-duration: 0.5s;
+  border-radius: 2rem;
+}
+
+.button-blue {
+  border-radius:100px;
+  background-color: darkblue;
+  color: white;
+  border-color: darkblue;
+  height: 40px;
+  line-height: 40px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  transition-duration: 0.4s;
+  cursor: pointer;
+}
+
+.button-blue:hover {
+  background-color: black; /* Steel Blue */
+  color: white;
+  border-color: black;
+  margin: 4px 2px;
+}
+
+
+.button-gold {
+  border-radius:100px;
+  background-color: gold;
+  color: black;
+  border-color: gold;
+  height: 40px;
+  text-align: center;
+  line-height: 40px;
+  text-shadow: #282c34;
+  text-decoration: dashed;
+  display: inline-block;
+  font-size: 16px;
+  
+  transition-duration: 0.4s;
+  cursor: pointer;
+}
+
+.button-gold:hover {
+  background-color: #f9f6f2; /* Pale Ivory */
+  color: black;
+  border-color: #f9f6f2;
+  margin: 4px 2px;
+}
+
 
 .App-logo {
   height: 40vmin;
@@ -12,11 +99,37 @@
 }
 
 .hoverEffect {
-  background-color:  transparent,
+  background-color:  transparent;
+  color: white;
+  height: 4rem;
+  background-position: center;
+  border-color: black;
+  border-radius: 0%;
+}
+.custom-container {
+  background-size: cover;
+  background-position: center;
+  height: 100vh;
+  width: 100vw;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  overflow: hidden;
 }
 
 .hoverEffect:hover {
-  background-color: midnightblue
+  background-color: black;
+  box-shadow: 0 0 0 2px white;
+  border-radius: 1rem;
+  .mynav-link{
+    color: white;
+  }  
+}
+
+.mynav-link {
+  color: white;
+  text-decoration: none;
+  font-size: 1.5rem;
 }
 
 @media (prefers-reduced-motion: no-preference) {

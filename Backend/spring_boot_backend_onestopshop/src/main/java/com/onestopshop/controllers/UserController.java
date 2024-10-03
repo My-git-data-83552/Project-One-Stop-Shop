@@ -54,16 +54,25 @@ public class UserController {
 		return new ResponseEntity<>(users, HttpStatus.OK);
 	}
 
-	@PostMapping("/login")
-	public ResponseEntity<?> login(@RequestBody LoginDTO loginDTO) {
-	    Optional<User> user = userService.login(loginDTO);
-	    if (user.isPresent()) {
-	        // Return a DTO instead of the full User entity
-	        UserDto userDTO = new UserDto(user.get());
-	        return ResponseEntity.ok(userDTO);
-	    } else {
-	        return ResponseEntity.status(401).body("Invalid email or password");
-	    }
-	}
+//	@PostMapping("/login")
+//	public ResponseEntity<?> login(@RequestBody LoginDTO loginDTO) {
+//	    Optional<User> user = userService.login(loginDTO);
+//	    if (user.isPresent()) {
+//	        // Return a DTO instead of the full User entity
+//	        
+//	        return ResponseEntity.ok(validUser);
+//	    } else {
+//	        return ResponseEntity.status(401).body("Invalid email or password");
+//	    }
+//	}
 
+	 @PostMapping("/login")
+	    public ResponseEntity<User> login(@RequestBody LoginDTO loginDTO) {
+	        Optional<User> user = userService.login(loginDTO);
+	        if (user.isPresent()) {
+	            return ResponseEntity.ok(user.get());
+	        } else {
+	            return ResponseEntity.status(401).build();
+	        }
+	    }
 }

@@ -34,7 +34,7 @@ const Cart = () => {
                 <th>Quantity</th>
                 <th>Price</th>
                 <th>Total</th>
-                <th>Actions</th> {/* New column for the remove button */}
+                <th>Actions</th>
               </tr>
             </thead>
             <tbody>
@@ -70,7 +70,7 @@ const Cart = () => {
         <div className="d-flex justify-content-center">
         <Link className="btn btn-success mt-2 me-3" 
           style={{ width: "100px",
-            borderRadius:"100px"
+          borderRadius:"100px"
            }}>
             Buy All
           </Link>

@@ -3,7 +3,7 @@ import { Link, useNavigate, useParams } from "react-router-dom";
 import bg from "../../productImages/addProduct.jpg";
 import { editProduct, getProductById } from "../../services/ProductService";
 import { toast } from "react-toastify";
-import SideBar from "../../components/SideBar";
+import SellerSideBar from "../../components/SellerSidebar";
 
 export const EditProduct = () => {
   const { id } = useParams();
@@ -25,7 +25,7 @@ export const EditProduct = () => {
     const fetchProduct = async () => {
       try {
         const response = await getProductById(id);
-        console.log('response - ',response);
+        //console.log('response - ',response);
         setProduct(response);
 
       } catch (error) {
@@ -81,7 +81,7 @@ export const EditProduct = () => {
         width: "100vw",
       }}
     >
-      <SideBar>
+      <SellerSideBar>
         <h1 className="mb-4">Edit Product</h1>
         <div className="row">
           <div className="col-md-3"></div>
@@ -173,15 +173,15 @@ export const EditProduct = () => {
               </div>
               <button
                 type="submit"
-                className="btn btn-primary mt-3"
-                style={{ borderRadius: "20px" }}
+                className="button-blue mt-3"
+                style={{ width:'100px' }}
               >
                 Edit Specs
               </button>
               <Link
                 to="/Products"
-                className="btn btn-warning ms-5 mt-3"
-                style={{ borderRadius: "20px" }}
+                className="button-gold ms-5 mt-3"
+                style={{ width:'100px' }}
               >
                 Go Back
               </Link>
@@ -189,7 +189,7 @@ export const EditProduct = () => {
           </div>
           <div className="col-md-3"></div>
         </div>
-      </SideBar>
+      </SellerSideBar>
     </div>
   );
 };

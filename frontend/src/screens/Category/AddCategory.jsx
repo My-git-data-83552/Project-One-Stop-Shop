@@ -58,9 +58,9 @@ export default function AddCategory() {
             />
             <input
               type="submit"
-              className="btn btn-primary mt-4"  style={{borderRadius:'100px'}}             
+              className="button-blue mt-4"  style={{width:'100px',marginTop:'10px'}}             
             />
-             <Link to='/Category' className='btn btn-warning ms-3 mt-4' style={{borderRadius:'100px'}}>Go Back</Link>    
+             <Link to='/Category' className='button-gold ms-3 mt-4' style={{width:'100px'}}>Go Back</Link>    
           </form>                         
         </div>
         <div className="col-4"></div>

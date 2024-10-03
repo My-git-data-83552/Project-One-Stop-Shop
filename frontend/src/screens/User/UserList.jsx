@@ -1,13 +1,14 @@
 // src/components/UsersList.js
 import React, { useEffect, useState } from "react";
 import { getAllUsers } from "../../services/UserService";
+import AdminSidebar from "../../components/AdminSidebar";
+import bg from "../../productImages/addProduct.jpg";
+import { Link } from "react-router-dom";
 
 const UsersList = () => {
   const [users, setUsers] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-
-  const userId=1;
 
   useEffect(() => {
     const fetchUsers = async () => {
@@ -28,8 +29,17 @@ const UsersList = () => {
   if (error) return <p>{error}</p>;
 
   return (
+    <div className="container-fluid" style={{
+      backgroundImage: `url(${bg})`, 
+      backgroundSize: "cover",
+      backgroundPosition: "center",
+      height: "100vh",
+      width: "100vw",
+  }}>
+      <AdminSidebar>
     <div className="container mt-4">
-      <h2 className="mb-4">Users List</h2>
+      <h2 className="mb-4"><strong>Users List</strong></h2>
+      <hr />
       <table className="table table-striped">
         <thead>
           <tr>
@@ -50,6 +60,11 @@ const UsersList = () => {
           ))}
         </tbody>
       </table>
+      <Link to='/featuredProducts' className="button-gold mt-3" style={{
+        width:'20rem'
+      }}>Go Back!</Link>
+      </div>
+      </AdminSidebar>
     </div>
   );
 };

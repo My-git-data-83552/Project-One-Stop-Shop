@@ -1,12 +1,16 @@
 import axios from "axios";
 
-const URL = "http://localhost:8080/api/orders";
+const URL = "http://localhost:8080/buyer/orders";
+const token = sessionStorage.getItem('token');
 
-// Function to save orders
 export const SaveOrders = async (formData) => {
   try {
-    const response = await axios.post(URL, formData);
-    console.log("Order saved successfully:", response);
+    const response = await axios.post(URL, formData,{
+      headers:{
+          Authorization:`Bearer ${token}`,
+      }
+  });
+   
     return response.data;
   } catch (error) {
     console.error("Error saving the order:", error);
@@ -18,7 +22,11 @@ export const SaveOrders = async (formData) => {
 export const getOrderById = async (id) => {
   try {
     const response = await axios.get(`${URL}/${id}`);
-    console.log("Order fetched successfully:", response);
+    console.log("Order fetched successfully:", response,{
+      headers:{
+          Authorization:`Bearer ${token}`,
+      }
+  });
     return response.data;
   } catch (error) {
     console.error("Error fetching the order:", error);
@@ -28,7 +36,11 @@ export const getOrderById = async (id) => {
 
 export const getOrdersByUserId = async (userId) => {
   try {
-    const response = await axios.get(`${URL}/user/${userId}`);
+    const response = await axios.get(`${URL}/user/${userId}`,{
+      headers:{
+          Authorization:`Bearer ${token}`,
+      }
+  });
     return response.data;
   } catch (error) {
     console.log(error);

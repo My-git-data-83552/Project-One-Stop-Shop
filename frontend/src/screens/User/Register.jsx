@@ -1,5 +1,5 @@
 import { Link, useNavigate } from "react-router-dom";
-import bg from "../../productImages/addProduct.jpg";
+import bg from "../../productImages/signup.jpeg";
 import { useState } from "react";
 import { toast } from "react-toastify";
 import { RegisterService } from "../../services/UserService";
@@ -12,7 +12,7 @@ export default function Register() {
     password: "",
     confirmPassword: "",
     phone: "",
-    role: "Buyer", // Default role
+    role: "ROLE_BUYER", // Default role
   });
 
   const navigate = useNavigate();
@@ -39,7 +39,7 @@ export default function Register() {
 
       if (result["status"] === "success") {
         toast.success("Successfully registered a new user");
-        navigate("/home");
+        navigate("/login");
       } else {
         toast.error(result["error"]);
       }
@@ -62,18 +62,29 @@ export default function Register() {
       }}
     >
       <div className="row">
-        <div className="col-1"></div>
+        <div className="col-7"
+        style={{
+          // backgroundColor: "beige",
+          backgroundImage: `url(${bg})`,
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+          height:"100vh"
+        }}>
+          
+        </div>
         <div
-          className="col-5 mt-5"
+          className="col-5"
           style={{
-            backgroundColor: "beige",
-            padding: "20px",
-            borderRadius: "8px",
+            backgroundColor: "white",
+            height:"100vh"
           }}
         >
-          <form style={{ width: "100%" }} onSubmit={onRegister}>
-            <h1 className="mb-3" style={{ color: "brown" }}>
-              Register Here!
+          <div className="row mt-4" style={{width:"100%",
+          justifyContent:'center',
+          }}>
+          <form style={{ width: "70%" }} onSubmit={onRegister}>
+            <h1 className="mb-3" style={{ color: "darkblue" }}>
+            <u> <strong> Register Here!</strong></u>
             </h1>
             <div className="mb-3">
               <label htmlFor="firstName" className="d-flex ms-2">
@@ -100,7 +111,7 @@ export default function Register() {
                 id="lastName"
                 name="lastName"
                 value={user.lastName}
-                onChange={handleChange}
+                onChange={handleChange}                
               />
             </div>
             <div className="mb-3">
@@ -168,7 +179,7 @@ export default function Register() {
                   type="radio"
                   name="role"
                   id="admin"
-                  value="ADMIN"
+                  value="ROLE_ADMIN"
                   onChange={handleChange}
                 />
                 <label className="form-check-label d-flex" htmlFor="admin">
@@ -181,7 +192,7 @@ export default function Register() {
                   type="radio"
                   name="role"
                   id="buyer"
-                  value="BUYER"
+                  value="ROLE_BUYER"
                   onChange={handleChange}
                   checked={user.role === "BUYER"}
                 />
@@ -195,7 +206,7 @@ export default function Register() {
                   type="radio"
                   name="role"
                   id="seller"
-                  value="SELLER"
+                  value="ROLE_SELLER"
                   onChange={handleChange}
                 />
                 <label className="form-check-label d-flex" htmlFor="seller">
@@ -203,15 +214,22 @@ export default function Register() {
                 </label>
               </div>
             </div>
-
             <button
               type="submit"
-              className="btn btn-primary me-5 mt-3 mb-3"
-              style={{ borderRadius: "100px" }}
+              className="button-blue mt-3 mb-3"
+              style={{
+                width:"400px",
+                justifyContent:"center"
+               }}
             >
               Register
             </button>
-            <Link to="/home" className="btn btn-warning" style={{ borderRadius: "100px" }}>
+            <br />
+            <Link to="/home" className="button-gold mb-3"
+            style={{
+              width:"400px",
+              justifyContent:"center"
+             }}>
               Go Back!
             </Link>
             <div>
@@ -223,6 +241,7 @@ export default function Register() {
               </p>
             </div>
           </form>
+          </div>
         </div>
         <div className="col-6"></div>
       </div>

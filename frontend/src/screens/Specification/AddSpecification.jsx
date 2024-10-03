@@ -5,6 +5,7 @@ import { addSpecification } from "../../services/SpecificationService"; // Adjus
 import "./AddSpecification.css";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { addProduct } from "../../services/ProductService";
+import SellerSideBar from "../../components/SellerSidebar";
 
 const AddSpecification = () => {
   const [product, setProduct] = useState({
@@ -17,40 +18,40 @@ const AddSpecification = () => {
     specificationId:'',
 });
 
-  const [specification, setSpecification] = useState({
-    cpuManufacturer: "",
-    cpuModel: "",
-    cores: "",
-    threads: "",
-    speed: "",
-    gpuManufacturer: "",
-    gpuModel: "",
-    size: "",
-    resolution: "",
-    refreshRate: "",
-    touchScreen: false,
-    description: "",
-    ramSize: "",
-    ramType: "",
-    storageSize: "",
-    storageType: "",
-    color: "",
-    os: "",
-    wifi: "",
-    bluetooth: "",
-    weight: "",
-    dimensions: "",
-    ethernetPort: false,
-    usbPorts: "",
-    hdmiPorts: "",
-    webcam: "",
-    speakers: "",
-    battery: "",
-    warranty: "",
-    sevenDayReplacement: false,
-    freeDelivery: false,
-    trustedSupplier: false,
-  });
+const [specification, setSpecification] = useState({
+  cpuManufacturer: "Intel",
+  cpuModel: "Core i7-12700H",
+  cores: 14,
+  threads: 20,
+  speed: 2.3,
+  gpuManufacturer: "NVIDIA",
+  gpuModel: "GeForce RTX 3060",
+  size: "15.6 inches",
+  resolution: "1920x1080",
+  refreshRate: 144,
+  touchScreen: false,
+  description: "Powerful gaming laptop with excellent performance",
+  ramSize: "16GB",
+  ramType: "DDR5",
+  storageSize: "512GB SSD",
+  storageType: "NVMe",
+  color: "Black",
+  os: "Windows 11 Home",
+  wifi: "Wi-Fi 6E",
+  bluetooth: "5.2",
+  weight: 2.2,
+  dimensions: "356 x 259 x 23 mm",
+  ethernetPort: false,
+  usbPorts: 3,
+  hdmiPorts: 1,
+  webcam: "720p",
+  speakers: "Stereo speakers",
+  battery: "60Wh",
+  warranty: "1 year",
+  sevenDayReplacement: false,
+  freeDelivery: false,
+  trustedSupplier: false,
+});
 
   const location = useLocation();
   
@@ -113,10 +114,11 @@ const AddSpecification = () => {
         // width: "100vw",
       }}
     >
+      {/* <SellerSideBar> */}
       <br />
       <h2>Add Specification</h2>
       <hr />
-      <form onSubmit={handleSubmit} className="container col-8">
+      <form onSubmit={handleSubmit} className="container">
       <h3 className="d-flex">CPU Details</h3>
       <hr />
       <div>
@@ -513,9 +515,10 @@ const AddSpecification = () => {
         <button type="submit" className="btn btn-primary mb-3 me-4" style={{borderRadius:'20px'}}>
           Add Specification
         </button>
-        <Link to='/home' className="btn btn-light mb-3" style={{borderRadius:'20px'}}>Go Back</Link>
+        <Link to='/products' className="btn btn-light mb-3" style={{borderRadius:'20px'}}>Go Back</Link>
         <br />
       </form>
+      {/* </SellerSideBar> */}
     </div>
   );
 };

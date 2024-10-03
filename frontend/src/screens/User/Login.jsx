@@ -1,8 +1,8 @@
-import bg from "../../productImages/loginBackgroundImage.jpg";
+import bg from "../../productImages/LoginPage.jpg";
+import lbg from "../../productImages/LoginPage1.jpg";
 import React, { useState } from "react";
 import { toast } from "react-toastify";
 import { Link, useNavigate } from "react-router-dom";
-import SideBar from "../../components/SideBar";
 import { login } from "../../services/UserService";
 
 export default function Login() {
@@ -19,22 +19,20 @@ export default function Login() {
     } else {
       try {
         const result = await login(email, password);
-        console.log('Login Response:', result); // Log the entire response
-        
-        const customer = result.data;  // Assuming result.data contains the user object
-        console.log('Customer Object:', customer); // Log the customer object
-        
-        // Ensure the customer object has an id field
-        if (customer && customer.id) {
-          sessionStorage.setItem("userId", customer.id);
+
+        const customer = result.data;
+        if (customer && customer.customer.id) {
+          sessionStorage.setItem("token", customer.jwt);
+          sessionStorage.setItem("userId", customer.customer.id);
+          sessionStorage.setItem("role", customer.customer.role);
           toast.success("Logged in successfully");
-          
-          if (customer.role === "ROLE_BUYER") {
-            navigate('/home');
-          } else if (customer.role === "ROLE_SELLER") {
-            navigate('/product');
+
+          if (customer.customer.role === "ROLE_BUYER") {
+            navigate("/home");
+          } else if (customer.customer.role === "ROLE_SELLER") {
+            navigate("/products");
           } else {
-            navigate('/featuredProducts');
+            navigate("/admin");
           }
         } else {
           toast.error("User ID not found");
@@ -44,9 +42,21 @@ export default function Login() {
       }
     }
   };
-  
-  
 
+  const browse = () => {
+    if (sessionStorage.getItem("token") != null){
+      sessionStorage.clear();
+      toast.info("!!!you are Logged Out");
+    }
+    <div class="alert alert-primary d-flex align-items-center" role="alert">
+      <svg class="bi flex-shrink-0 me-2" role="img" aria-label="Info:">
+        {/* <use xlink:href="#info-fill" /> */}
+      </svg>
+      <div>You will be logged out</div>
+    </div>
+   
+    navigate("/home");
+  };
 
   return (
     <div
@@ -59,87 +69,127 @@ export default function Login() {
         width: "100vw",
       }}
     >
-      <SideBar>
       <div className="row">
-        <div className="col-6"></div>
         <div
-          className="col-5 mt-5 shadow-lg p-3" //shadow-lg p-3
-          style={{ backgroundColor: "beige", borderRadius: "5%" }}
+          className="col-3" //shadow-lg p-3
+          style={{
+            // backgroundImage: `url${lbg}`,
+            backgroundColor: "black",
+            backgroundSize: "cover",
+            backgroundPosition: "center",
+            // opacity:'70%',
+            color: "white",
+            borderRadius: "0%",
+            height: "100vh",
+            width: "50%",
+          }}
         >
-          <h1 className="mb-4 mt-4" >Welcome Back!</h1>
-          <form>
-            <div className="mb-3">
-              <label  htmlFor="exampleInputEmail1" className="d-flex ms-1 form-label">
-                Email address
-              </label>
-              <input
-                type="email"
-                placeholder="Email"
-                onChange={(e) => setEmail(e.target.value)}
-                className="form-control transparent-input"
-                id="email"
-                aria-describedby="emailHelp"
-                style={{
-                  backgroundColor:'lightcyan',
-                  borderColor:'black'
-                }}
-              />
-              <div id="emailHelp" className="form-text" >
-                We'll never share your email with anyone else.
-              </div>
+          <br />
+          <br />
+          <br />
+          <h1 className="mb-4 mt-4">
+            <strong>Welcome Back!</strong>
+          </h1>
+          <div
+            className="row"
+            style={{
+              justifyContent: "center",
+            }}
+          >
+            <div className="col-8">
+              <form>
+                <div className="mb-3">
+                  <label
+                    htmlFor="exampleInputEmail1"
+                    className="d-flex ms-1 form-label"
+                  >
+                    Email address
+                  </label>
+                  <input
+                    type="email"
+                    placeholder="Email"
+                    onChange={(e) => setEmail(e.target.value)}
+                    className="form-control transparent-input"
+                    id="email"
+                    aria-describedby="emailHelp"
+                    style={{
+                      backgroundColor: "white",
+                      borderColor: "black",
+                    }}
+                  />
+                  <div
+                    id="emailHelp"
+                    className="form-text"
+                    style={{
+                      color: "white",
+                    }}
+                  >
+                    We'll never share your email with anyone else.
+                  </div>
+                </div>
+                <div className="mb-4">
+                  <label
+                    htmlFor="exampleInputPassword1"
+                    className="d-flex ms-1 form-label"
+                  >
+                    Password
+                  </label>
+                  <input
+                    type="password"
+                    onChange={(e) => {
+                      setPassword(e.target.value);
+                    }}
+                    className="form-control"
+                    placeholder="Password"
+                    id="exampleInputPassword1"
+                    style={{
+                      backgroundColor: "white",
+                      borderColor: "black",
+                    }}
+                  />
+                </div>
+                <p style={{ color: "white" }}>
+                  Don't have an Account?
+                  <Link to="/register" className="ms-2">
+                    Create an account
+                  </Link>
+                </p>
+                <br />
+                <div className="d-grid gap-2">
+                  <Link
+                    onClick={onLogin}
+                    className="button-blue mb-3"
+                    type="button"
+                  >
+                    Login
+                  </Link>
+                  <button
+                    className="button-gold mb-4"
+                    onClick={browse}
+                    type="button"
+                  >
+                    Browse Without login
+                  </button>
+                </div>
+              </form>
             </div>
-            <div className="mb-4">
-              <label htmlFor="exampleInputPassword1" className="d-flex ms-1 form-label">
-                Password
-              </label>
-              <input
-                type="password"
-                onChange={(e) => {
-                  setPassword(e.target.value);
-                }}
-                className="form-control"
-                placeholder="Password"
-                id="exampleInputPassword1"
-                style={{
-                  backgroundColor:'lightcyan',
-                  borderColor:'white'
-                }}
-              />
-            </div>
-            <p style={{color:'black'}}>
-              Don't have an Account?
-              <Link to="/register" className="ms-2">
-                Create an account
-              </Link>
-            </p>
-            <br />
-            <div className="d-grid gap-2">
-              <button
-                onClick={onLogin}
-                className="btn btn-success  mb-3"
-                type="button"
-                style={{ borderRadius: "100px",
-                  // borderColor:'transparent'
-                 }}
-              >
-                Login
-              </button>
-              <Link
-                className="btn btn-warning mb-4"
-                to="/home"
-                type="button"
-                style={{ borderRadius: "100px",
-                  // borderColor:'transparent'
-                 }}
-              >
-                Go Home
-              </Link>
-            </div>
-          </form>
+          </div>
         </div>
-        <div className="col-1 mb-5"></div>
+        <div
+          className="col-4"
+          style={{
+            backgroundImage: `url(${lbg})`,
+            // backgroundColor:'red',
+            backgroundSize: "cover",
+            backgroundPosition: "center",
+            // opacity:'70%',
+            borderRadius: "0%",
+            height: "100vh",
+            width: "50%",
+          }}
+        ></div>
       </div>
-      </SideBar>
+      {/* </SideBar> */}
     </div>
   );
 }

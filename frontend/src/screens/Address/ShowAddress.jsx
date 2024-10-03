@@ -2,11 +2,12 @@ import { useEffect, useState } from "react";
 import bg from "../../productImages/addProduct.jpg";
 import { toast } from "react-toastify";
 import { getAddressByUserId } from "../../services/AddressService";
-import SideBar from "../../components/SideBar";
-import { Link, useLocation, useNavigate, useParams } from "react-router-dom";
+import BuyerSidebar from "../../components/BuyerSidebar";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import { SaveOrders } from "../../services/OrderService";
 import { SaveOrderItems } from "../../services/OrderItemsService";
 import { getProductById } from "../../services/ProductService";
+
 const ShowAddress = () => {
   const { id } = useParams();
   const [addresses, setAddresses] = useState([]);
@@ -28,44 +29,46 @@ const ShowAddress = () => {
   useEffect(() => {
     const fetchAddresses = async () => {
       try {
-        const userId = 1; //hardcoded for now
-        const addressData = await getAddressByUserId(userId);
+        const userId = sessionStorage.getItem("userId");
 
+        if (!userId) {
+          toast.error("User not logged in. Please login first.");
+          navigate("/login"); // Redirect to login page or any other appropriate page
+          return;
+        }
+
+        const addressData = await getAddressByUserId(userId);
         setAddresses(addressData);
-        // console.log("address data:", addressData);
+
         const productData = await getProductById(id);
         setProduct(productData);
-        // console.log("Product data:", productData);
       } catch (error) {
         toast.error("Could not fetch addresses");
       }
     };
     fetchAddresses();
-  }, []);
+  }, [id, navigate]);
 
   const selectAddress = async (addressId) => {
     try {
-      orders.totalAmount = product.price; //as single product buying so this
+      orders.totalAmount = product.price; // as single product buying so this
       orders.status = 0;
-      orders.userId = 1;
-      orders.addressId=addressId;
-      // console.log("before axios", orders);
+      orders.userId = sessionStorage.getItem("userId"); // Ensure userId is set from sessionStorage
+      orders.addressId = addressId;
 
       const data = await SaveOrders(orders);
-      // console.log("save orders", data);
 
       orderItems.quantity = 1;
       orderItems.productId = product.id;
       orderItems.orderId = data.id;
       orderItems.totalPrice = product.price;
 
-      const orderItemsData = await SaveOrderItems(orderItems);
-      // console.log("save orderItems ", orderItemsData);
+      await SaveOrderItems(orderItems);
 
-      toast.success("Order Placed Thank you!");
+      toast.success("Order Placed. Thank you!");
       navigate("/payment");
-    } catch (er) {
-      toast.error("Something went wrong.Order Not Placed... try Again");
+    } catch (error) {
+      toast.error("Something went wrong. Order not placed. Please try again.");
     }
   };
 
@@ -80,7 +83,7 @@ const ShowAddress = () => {
         width: "100vw",
       }}
     >
-      <SideBar>
+      <BuyerSidebar>
         <div className="container">
           <h1>Choose Where you want the product to be Shipped</h1>
           <table className="table table-striped">
@@ -96,7 +99,7 @@ const ShowAddress = () => {
             </thead>
             <tbody>
               {addresses.map((address, index) => (
-                <tr>
+                <tr key={index}>
                   <td>{index + 1}</td>
                   <td>{address.addressLine1}</td>
                   <td>{address.addressLine2}</td>
@@ -119,8 +122,9 @@ const ShowAddress = () => {
             </tbody>
           </table>
         </div>
-      </SideBar>
+      </BuyerSidebar>
     </div>
   );
 };
+
 export default ShowAddress;

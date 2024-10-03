@@ -39,8 +39,13 @@ export const AddProductImage = () => {
       const data = await saveImage(id, formData);
       console.log("After Axios - ", data);
       toast.success("Product Image Added Successfully!");
-    } catch (er) {
-      toast.error("Image not added...");
+    } catch (error) {
+      if (error.response) {
+        toast.error(error.response.data.message);
+      }
+      else{
+        toast.error("Something went wrong...");
+      }
     }
   };
 
@@ -111,7 +116,7 @@ export const AddProductImage = () => {
               <Link
                 className="btn btn-outline-primary mb-4 btn-lg"
                 style={{ borderRadius: "100px" }}
-                to="/home"
+                to="/products"
               >
                 Go Back
               </Link>

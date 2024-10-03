@@ -1,10 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import { addProduct } from '../../services/ProductService';
 import { getCategories } from '../../services/CategoryService';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import bg from "../../productImages/addProduct.jpg";
 import { Link, useNavigate } from 'react-router-dom';
-import SideBar from '../../components/SideBar';
+import SellerSideBar from '../../components/SellerSidebar';
 
 export default function AddProduct() {
     const [product, setProduct] = useState({
@@ -57,8 +56,8 @@ export default function AddProduct() {
             height: "100vh",
             width: "100vw",
         }}>
-            <br />
-            <SideBar>
+           
+            <SellerSideBar> <br />
             <h1 className="mb-4">Add Product</h1>
             {message && <div className="alert alert-success">{message}</div>}
             {error && <div className="alert alert-danger">{error}</div>}
@@ -142,13 +141,13 @@ export default function AddProduct() {
                                 ))}
                             </select>
                         </div>
-                        <button type="submit" className="btn btn-primary mt-3" style={{width:'120px',borderRadius:'20px'}}>Add SPecs</button>
-                        <Link to='/Products' className='btn btn-warning ms-5 mt-3' style={{width:'120px',borderRadius:'20px'}}>Go Back</Link>
+                        <button type="submit" className="button-blue mt-3" style={{width:'120px',borderRadius:'20px'}}>Add Specs</button>
+                        <Link to='/Products' className='button-gold ms-5 mt-3' style={{width:'120px',borderRadius:'20px'}}>Go Back</Link>
                         </form>
                 </div>
                 <div className='col-md-3'></div>
             </div>
-            </SideBar>
+            </SellerSideBar>
         </div>
     );
 }

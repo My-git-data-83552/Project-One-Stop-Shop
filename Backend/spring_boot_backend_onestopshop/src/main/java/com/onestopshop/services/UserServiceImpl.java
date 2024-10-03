@@ -41,6 +41,14 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
+//    public Optional<User> login(LoginDTO loginDTO) {
+//        Optional<User> user = userRepository.findByEmail(loginDTO.getEmail());
+//        if (user.isPresent() && user.get().getPassword().equals(loginDTO.getPassword())) {
+//            return user;
+//        }
+//        return Optional.empty();
+//    }
+    
     public Optional<User> login(LoginDTO loginDTO) {
         Optional<User> user = userRepository.findByEmail(loginDTO.getEmail());
         if (user.isPresent() && user.get().getPassword().equals(loginDTO.getPassword())) {

@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate, useLocation } from 'react-router-dom';
 import { getSpecificationById, updateSpecification } from '../../services/SpecificationService';
 import { toast } from 'react-toastify';
+import bg from "../../productImages/addProduct.jpg";
 
 const EditSpecification = () => {
   const { id } = useParams();
@@ -78,8 +79,20 @@ const EditSpecification = () => {
   };
 
   return (
-    <div className="container mt-5">
-      <h2>Edit Specification</h2>
+    <div
+      className="container-fluid"
+      style={{
+        backgroundImage: `url(${bg})`,
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+        height: "100vh",
+        width: "100vw",
+      }}
+    >
+      <div className='container'>
+        <br />
+      <h2>Edit Specifications</h2>
+      <hr />
       <form onSubmit={handleSubmit}>
         <div className="row">
           <div className="col-md-4 mb-3">
@@ -120,16 +133,21 @@ const EditSpecification = () => {
         {/* Add other fields similarly */}
 
         <br />
-        <div className="d-flex justify-content-between">
-          <button type="button" onClick={() => navigate('/products')} className="btn btn-danger btn-lg">
+        <div className="d-flex justify-content-center">
+          <button type="button" onClick={() => navigate('/products')} className="button-gold me-4" style={{
+            width:'100px'
+          }}>
             Cancel
           </button>
-          <button type="submit" className="btn btn-primary btn-lg">
+          <button type="submit" className="button-blue "style={{
+            width:'100px'
+          }}>
             Save
           </button>
         </div>
       </form>
       <br />
+      </div>
     </div>
   );
 };
