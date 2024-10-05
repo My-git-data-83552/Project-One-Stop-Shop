@@ -51,26 +51,25 @@ const ShowAddress = () => {
 
   const selectAddress = async (addressId) => {
     try {
-      orders.totalAmount = product.price; // as single product buying so this
+      orders.totalAmount = product.price;
       orders.status = 0;
-      orders.userId = sessionStorage.getItem("userId"); // Ensure userId is set from sessionStorage
+      orders.userId = sessionStorage.getItem("userId");
       orders.addressId = addressId;
-
-      const data = await SaveOrders(orders);
-
-      orderItems.quantity = 1;
-      orderItems.productId = product.id;
-      orderItems.orderId = data.id;
-      orderItems.totalPrice = product.price;
-
-      await SaveOrderItems(orderItems);
-
-      toast.success("Order Placed. Thank you!");
-      navigate("/payment");
+  
+      const orderDetails = {
+        orders,
+        orderItems: {
+          quantity: 1,
+          productId: product.id,
+          totalPrice: product.price,
+        }
+      };  
+      navigate('/payment', { state: { orderDetails } });
     } catch (error) {
-      toast.error("Something went wrong. Order not placed. Please try again.");
+      toast.error("Something went wrong. Unable to proceed to payment. Please try again.");
     }
   };
+  
 
   return (
     <div
@@ -106,7 +105,7 @@ const ShowAddress = () => {
                   <td>{address.city}</td>
                   <td>{address.state}</td>
                   <td>
-                    <Link
+                    <button
                       className="btn btn-outline-success"
                       onClick={() => selectAddress(address.id)}
                       style={{
@@ -115,7 +114,7 @@ const ShowAddress = () => {
                       }}
                     >
                       Select
-                    </Link>
+                    </button>
                   </td>
                 </tr>
               ))}

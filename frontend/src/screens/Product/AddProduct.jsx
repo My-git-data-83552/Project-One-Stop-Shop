@@ -44,7 +44,6 @@ export default function AddProduct() {
 
     const handleSubmit=(e)=>{
         e.preventDefault();
-        // console.log(product);
         nav('/addSpecification', { state: { product } });
     }
 

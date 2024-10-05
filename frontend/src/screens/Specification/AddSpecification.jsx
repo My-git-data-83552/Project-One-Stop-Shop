@@ -59,7 +59,6 @@ const [specification, setSpecification] = useState({
 
 
   useEffect(() => {
-    console.log('Inside Use Effect');
     if (location.state && location.state.product) {
       setProduct(location.state.product); // Initialize state with the passed product
     }

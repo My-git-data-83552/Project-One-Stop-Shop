@@ -58,7 +58,7 @@ export const FeaturedProduct = () => {
         {featuredProducts.map((featuredProduct)=>(
           <div className="carousel-item active">
           <img
-            src={`http://localhost:8080/Images/featuredProducts/${featuredProduct.fileName}`}
+            src={`http://localhost:8080/all/featuredProducts/${featuredProduct.fileName}`}
             className="d-block w-100"
             style={{ width: "100%", height: "40rem" }}
           />

@@ -73,7 +73,7 @@ export default function Product() {
                 </Link>
                 <div className="card-body" style={{
                   height:'14rem',
-                  backgroundColor:'white',
+                  backgroundColor:'whitesmoke',
                 }}>
                   <h5 className="card-title"> {product.productName}</h5>
                   <p className="card-text">
@@ -85,7 +85,7 @@ export default function Product() {
                   </p>
                   {product.inventory === 0 && (
                     <div>
-                      <p style={{ color: "red" }}>Out of Stock</p>
+                      <strong><p style={{ color: "red" }}>Out of Stock</p></strong>
                     </div>
                   )}
                   {product.inventory > 0 && (

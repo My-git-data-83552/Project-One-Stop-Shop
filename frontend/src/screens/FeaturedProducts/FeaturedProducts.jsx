@@ -77,7 +77,7 @@ const FeaturedProducts = () => {
               <td className="col-3">{featuredProduct.title}</td>
               <td className="col-5">{featuredProduct.description}</td>
               <td className="col">
-                <a href={`http://localhost:8080/Images/featuredProducts/${featuredProduct.fileName}`} target="_blank" rel="noopener noreferrer">
+                <a href={`http://localhost:8080/all/featuredProducts/${featuredProduct.fileName}`} target="_blank" rel="noopener noreferrer">
                     View Image
                   </a>
               </td>

@@ -5,6 +5,7 @@ const token = sessionStorage.getItem('token');
 
 export const SaveOrders = async (formData) => {
   try {
+    console.log(formData);
     const response = await axios.post(URL, formData,{
       headers:{
           Authorization:`Bearer ${token}`,
