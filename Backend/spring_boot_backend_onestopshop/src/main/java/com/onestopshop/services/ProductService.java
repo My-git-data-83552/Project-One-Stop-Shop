@@ -12,8 +12,10 @@ import com.onestopshop.entities.Product;
 public interface ProductService {
     List<Product> getAllProducts();
     Optional<Product> getProductById(Long id);
-    Product saveProduct(ProductDTO productDTO);
-//    void deleteProduct(Long id);
+    Product saveProduct(ProductDTO productDTO,Long userId);
     Product updateProduct(Long id,ProductUpdateDTO productDTO);
     ApiResponse updateInventory(ProductInventoryDTO dto);
+    Product deleteProduct(Long id);
+    List<Product> getProductsByUser(Long userId, boolean deleted);
+    List<Product> getProductByName(String productName);
 }

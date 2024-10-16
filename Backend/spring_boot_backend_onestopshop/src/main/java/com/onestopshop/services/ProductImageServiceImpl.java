@@ -26,7 +26,8 @@ import com.onestopshop.exceptionhandling.ResourceNotFoundException;
 public class ProductImageServiceImpl implements ProductImageService {
 
 //	private final String PATH="E:\\PG-DAC\\PROJECT\\Backend\\spring_boot_backend_onestopshop\\src\\main\\resources\\static\\productImages\\";
-	private final String PATH = "E:\\PG-DAC\\MyGitData\\project\\Backend\\spring_boot_backend_onestopshop\\src\\main\\resources\\static\\Images\\productImages\\";
+	private final String PATH = "C:\\OneStopShop\\Images\\productImages\\";
+//	private final String PATH = "/home/ubuntu/OneStopShop/Images/productImages/";
 
 	public ProductImageServiceImpl() {
 		File directory = new File(PATH);
@@ -115,7 +116,7 @@ public class ProductImageServiceImpl implements ProductImageService {
 		} catch (Exception ex) {
 			System.out.println(ex);
 			return Files.readAllBytes(new File(
-					"E:\\PG-DAC\\MyGitData\\project\\Backend\\spring_boot_backend_onestopshop\\src\\main\\resources\\static\\Images\\productImages\\DummyImage.jpeg")
+					"src\\main\\resources\\static\\Images\\productImages\\DummyImage.jpeg")
 					.toPath());
 		}
 	}

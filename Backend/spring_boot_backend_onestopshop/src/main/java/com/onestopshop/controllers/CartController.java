@@ -10,13 +10,13 @@ import com.onestopshop.services.CartService;
 
 @RestController
 @RequestMapping("/buyer/cart")
-@CrossOrigin(origins = "http://localhost:3000")
+@CrossOrigin(origins = "*")
 public class CartController {
 
 	@Autowired
 	private CartService cartService;
 
-	@PostMapping("/add/{productId}")
+	@PostMapping("/{productId}")
 	public ResponseEntity<?> addProductToCart(@PathVariable Long productId, @RequestBody AddToCartDTO dto) {
 		return ResponseEntity.status(HttpStatus.CREATED)
 				.body(cartService.addProductToCart(productId, dto));
@@ -28,7 +28,7 @@ public class CartController {
 				.body(cartService.purchaseAllProductsFromCart(userId, addressId));
 	}
 
-	@GetMapping("/user/{userId}")
+	@GetMapping("/{userId}")
 	public ResponseEntity<?> showCart(@PathVariable Long userId) {
 		return ResponseEntity.ok(cartService.getCartByUser(userId));
 	}

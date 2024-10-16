@@ -5,6 +5,7 @@ import java.util.Optional;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.onestopshop.daos.UserRepository;
@@ -17,6 +18,9 @@ public class UserServiceImpl implements UserService {
 
     @Autowired
     private ModelMapper modelMapper;
+    
+	@Autowired
+	private PasswordEncoder passwordEncoder;
 
     private final UserRepository userRepository;
 
@@ -27,6 +31,7 @@ public class UserServiceImpl implements UserService {
     @Override
     public User addUser(UserDto dto) {
         User user = modelMapper.map(dto, User.class);
+        user.setPassword(passwordEncoder.encode(user.getPassword()));
         return userRepository.save(user);
     }
 
@@ -39,15 +44,6 @@ public class UserServiceImpl implements UserService {
     public List<User> getAllUsers() {
         return userRepository.findAll();
     }
-
-    @Override
-//    public Optional<User> login(LoginDTO loginDTO) {
-//        Optional<User> user = userRepository.findByEmail(loginDTO.getEmail());
-//        if (user.isPresent() && user.get().getPassword().equals(loginDTO.getPassword())) {
-//            return user;
-//        }
-//        return Optional.empty();
-//    }
     
     public Optional<User> login(LoginDTO loginDTO) {
         Optional<User> user = userRepository.findByEmail(loginDTO.getEmail());

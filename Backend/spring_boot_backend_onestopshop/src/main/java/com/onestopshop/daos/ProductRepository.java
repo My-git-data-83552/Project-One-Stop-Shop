@@ -1,12 +1,12 @@
 package com.onestopshop.daos;
 
-import com.onestopshop.entities.Product;
-
-import java.util.List;
-import java.util.Optional;
-
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
+
+import com.onestopshop.entities.Product;
+import com.onestopshop.entities.User;
+import java.util.List;
+
 
 @Repository
 public interface ProductRepository extends JpaRepository<Product, Long> {
@@ -16,5 +16,8 @@ public interface ProductRepository extends JpaRepository<Product, Long> {
 
     // Find a product by ID that is not deleted
 //    Optional<Product> findByIdAndIsDeletedFalse(Long id);
+	
+	List<Product> findByUserAndIsDeleted(User user, boolean isDeleted);
+	List<Product> findByProductName(String productName);
     
 }

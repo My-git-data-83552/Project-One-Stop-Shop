@@ -13,8 +13,10 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.onestopshop.daos.FeaturedProductRepository;
+import com.onestopshop.dtos.ApiResponse;
 import com.onestopshop.dtos.FeaturedProductDTO;
 import com.onestopshop.entities.FeaturedProduct;
+import com.onestopshop.entities.ProductImage;
 import com.onestopshop.exceptionhandling.ResourceNotFoundException;
 
 @Service
@@ -27,32 +29,36 @@ public class FeaturedProductServiceImpl implements FeaturedProductService {
 	@Autowired
 	ModelMapper modelMapper;
 
-//	private String uploadDir = "src\\main\\resources\\static\\Images\\FeaturedProducts\\";
-    private final String uploadDir = "E:\\PG-DAC\\PROJECT\\Backend\\spring_boot_backend_onestopshop\\src\\main\\resources\\static\\Images\\FeaturedProducts\\";
-
-
+//	private final String PATH = "src\\main\\resources\\static\\Images\\FeaturedProducts\\";
+	private final String PATH = "C:\\OneStopShop\\Images\\FeaturedProducts\\";
+//	private final String PATH = "/home/ubuntu/OneStopShop/Images/FeaturedProducts/";
+	
 	public FeaturedProductServiceImpl() {
-		File directory = new File(uploadDir);
+		File directory = new File(PATH);
 		if (!directory.exists()) {
 			directory.mkdirs();
 		}
 	}
 
 	@Override
-	public FeaturedProduct addFeaturedProduct(MultipartFile file, FeaturedProductDTO featuredProductDto)
+	public ApiResponse addFeaturedProduct(MultipartFile file, FeaturedProductDTO featuredProductDto)
 			throws IOException {
-		String filePath = uploadDir + file.getOriginalFilename();
-
+		String filePath = PATH + file.getOriginalFilename();
+		try {
 		// Save the file locally
 		file.transferTo(new File(filePath));
-
+		
 		// Map the DTO to the entity
 		FeaturedProduct featuredProduct = modelMapper.map(featuredProductDto, FeaturedProduct.class);
 		featuredProduct.setFilePath(filePath);
 		featuredProduct.setFileName(file.getOriginalFilename());
 
 		// Save the entity in the repository
-		return featuredProductRepository.save(featuredProduct);
+		featuredProductRepository.save(featuredProduct);
+		return new ApiResponse("File Uploaded successfully!!");
+		}catch(Exception e){
+			return new ApiResponse(e.getMessage());
+		}
 	}
 
 	@Override
@@ -60,7 +66,7 @@ public class FeaturedProductServiceImpl implements FeaturedProductService {
 		FeaturedProduct featuredProduct = featuredProductRepository.findByFileName(fileName);
 		return Files.readAllBytes(new File(featuredProduct.getFilePath()).toPath());
 	}
-	
+		
 	@Override
 	public List<FeaturedProduct> getAllFeaturedProducts() throws IOException{
 		return featuredProductRepository.findAll();

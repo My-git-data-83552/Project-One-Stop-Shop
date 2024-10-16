@@ -12,71 +12,69 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.onestopshop.dtos.ProductDTO;
 import com.onestopshop.dtos.ProductInventoryDTO;
 import com.onestopshop.dtos.ProductUpdateDTO;
-import com.onestopshop.entities.Category;
 import com.onestopshop.entities.Product;
-import com.onestopshop.services.CategoryService;
 import com.onestopshop.services.ProductService;
+import org.springframework.web.bind.annotation.RequestParam;
+
 
 @RestController
-@RequestMapping("/api/products")
-@CrossOrigin(origins = "http://localhost:3000")
+@CrossOrigin(origins = "*")
 public class ProductController {
 
     @Autowired
     private ProductService productService;
 
-    @Autowired
-    private CategoryService categoryService;
-
-    @GetMapping
+    @GetMapping("/all")
     public ResponseEntity<List<Product>> getAllProducts() {
     	List<Product> allProducts = productService.getAllProducts();
     	System.out.println(allProducts);
         return ResponseEntity.ok(allProducts);
     }
+    
+    @GetMapping("/all/user/{userId}")
+    public ResponseEntity<?> getByProductsUserId(@PathVariable Long userId){
+    	return ResponseEntity.ok(productService.getProductsByUser(userId, false));
+    }
 
-    @GetMapping("/{id}")
-    public ResponseEntity<Product> getProductById(@PathVariable String id) {
+    @GetMapping("/all/{id}")
+    public ResponseEntity<?> getProductById(@PathVariable String id) {
     	Long productId=Long.parseLong(id);
         Optional<Product> productDTO = productService.getProductById(productId);
         return productDTO.map(ResponseEntity::ok)
                 .orElseGet(() -> ResponseEntity.notFound().build());
     }
 
-    @PostMapping
-    public ResponseEntity<?> saveProduct(@RequestBody ProductDTO productDTO) {   	
-        return ResponseEntity.status(HttpStatus.CREATED).body(productService.saveProduct(productDTO));
-    }
-
-//    @DeleteMapping("/{id}")
-//    public ResponseEntity<Void> deleteProduct(@PathVariable Long id) {
-//        productService.deleteProduct(id);
-//        return ResponseEntity.noContent().build();
-//    }
-
-    @GetMapping("/categories")
-    public ResponseEntity<List<Category>> getAllCategories() {
-        return ResponseEntity.ok(categoryService.getAllCategories());
+    @PostMapping("/admin-seller/{userId}")
+    public ResponseEntity<?> saveProduct(@RequestBody ProductDTO productDTO,@PathVariable Long userId) {   	
+        return ResponseEntity.status(HttpStatus.CREATED).body(productService.saveProduct(productDTO,userId));
     }
     
-    @PutMapping("/{id}")
+    @PutMapping("/admin-seller/delete/{id}")
+    public ResponseEntity<?> deleteProduct(@PathVariable Long id){
+    	return ResponseEntity.status(HttpStatus.OK).body(productService.deleteProduct(id));
+    }
+    
+    @PutMapping("/admin-seller/{id}")
     public ResponseEntity<?> updateProduct(@PathVariable Long id, @RequestBody ProductUpdateDTO productDTO) {
-     System.out.println(id);
-     System.out.println(productDTO);
+
     	return ResponseEntity.ok(productService.updateProduct(id, productDTO));
     }
     
-    @PutMapping()
+    @PutMapping("/seller")
     public ResponseEntity<?> updateInventory(ProductInventoryDTO dto){
     	return ResponseEntity.ok(productService.updateInventory(dto));
     }
     
-    
-
+    @GetMapping("/all/name/{name}")
+    public ResponseEntity<?> getProductByProductName(@RequestParam String name){
+    	return ResponseEntity.ok(productService.getProductByName(name));
+    }
+    public String getMethodName(@RequestParam String param) {
+        return new String();
+    }
 }

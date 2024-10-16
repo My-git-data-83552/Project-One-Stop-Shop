@@ -30,10 +30,13 @@ public class Product extends BaseEntity {
 	@Column(name = "inventory")
 	private int inventory;
 	
-//	@Column(name = "is_deleted")
-//	private boolean isDeleted;
+	@Column(name="deleted_status")
+	private boolean isDeleted;
+	
+	@ManyToOne
+	@JoinColumn(name="user_id")
+	private User user;
 
-//  MANY TO ONE RELATION UNIDIRECTIONAL
 	@ManyToOne
 //  @JsonBackReference
 	@JoinColumn(name = "category_id")

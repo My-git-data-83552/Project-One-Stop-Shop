@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.onestopshop.dtos.CategoryDTO;
@@ -20,37 +19,37 @@ import com.onestopshop.services.CategoryService;
 
 
 @RestController
-@RequestMapping("/all")
+//@RequestMapping("/")
 @CrossOrigin(origins = "*")
 public class CategoryController {
 
     @Autowired
     private CategoryService categoryService;
 
-    @GetMapping("/categories")
+    @GetMapping("/all/categories")
     public ResponseEntity<List<Category>> getAllCategories() {
         return ResponseEntity.ok(categoryService.getAllCategories());
     }
 
-    @GetMapping("/categories/{id}")
+    @GetMapping("/all/categories/{id}")
     public ResponseEntity<Category> getCategoryById(@PathVariable Long id) {
         return categoryService.getCategoryById(id)
                              .map(ResponseEntity::ok)
                              .orElse(ResponseEntity.notFound().build());
     }
 
-    @PostMapping("/categories/admin")
+    @PostMapping("/admin-seller/categories")
     public ResponseEntity<Category> createCategory(@RequestBody CategoryDTO dto) {
         return ResponseEntity.ok(categoryService.saveCategory(dto));
     }
 
-    @DeleteMapping("/categories/admin/{id}")
+    @DeleteMapping("/admin-seller/categories/{id}")
     public ResponseEntity<Void> deleteCategory(@PathVariable Long id) {
         categoryService.deleteCategory(id);
         return ResponseEntity.noContent().build();
     }
     
-    @PutMapping("/categories/admin/{id}")
+    @PutMapping("/admin-seller/categories/{id}")
     public ResponseEntity<?> putMethodName(@PathVariable Long id, @RequestBody CategoryDTO dto) {        
         return ResponseEntity.ok(categoryService.updateCategory(id,dto));
     }

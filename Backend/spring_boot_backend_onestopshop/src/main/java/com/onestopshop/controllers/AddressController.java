@@ -24,7 +24,7 @@ import com.onestopshop.services.UserService;
 
 @RestController
 @RequestMapping("/buyer/address")
-@CrossOrigin(origins = "http://localhost:3000")
+@CrossOrigin(origins = "*")
 public class AddressController {
 	
     @Autowired
@@ -52,7 +52,6 @@ public class AddressController {
         Address savedAddress = addressService.addAddress(address);
         return new ResponseEntity<>(savedAddress, HttpStatus.CREATED);
     }
-    @CrossOrigin(origins = "http://localhost:3000") 
     @GetMapping
     public ResponseEntity<List<AddressResponseDTO>> getAllAddresses() {
         List<Address> addresses = addressService.getAllAddresses();
@@ -95,5 +94,7 @@ public class AddressController {
     public ResponseEntity<?> getAddressByUserId(@PathVariable Long userId) {
       return ResponseEntity.ok(addressService.getAddressByUserId(userId));      
     }
+    
+    
     
 }

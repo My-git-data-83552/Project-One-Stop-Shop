@@ -15,8 +15,8 @@ import com.onestopshop.dtos.OrderItemDTO;
 import com.onestopshop.services.OrderItemService;
 
 @RestController
-@RequestMapping("/api/orderItems")
-@CrossOrigin(origins = "http://localhost:3000")
+@RequestMapping("/buyer/orderItems")
+@CrossOrigin(origins = "*")
 public class OrderItemController {
 
 	@Autowired
@@ -36,4 +36,6 @@ public class OrderItemController {
 	public ResponseEntity<?> getOrderItemsById(@PathVariable Long id){
 		return ResponseEntity.ok(orderItemService.getAllOrderItems());
 	}
+	
+	//putmapping will be admin-seller
 }

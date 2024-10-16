@@ -16,8 +16,8 @@ import com.onestopshop.entities.Order;
 import com.onestopshop.services.OrderService;
 
 @RestController
-@RequestMapping("/api/orders")
-@CrossOrigin(origins = "http://localhost:3000")
+@RequestMapping("/buyer/orders")
+@CrossOrigin(origins = "*")
 public class OrderController {
 	@Autowired
 	private OrderService orderService;
@@ -35,9 +35,9 @@ public class OrderController {
 	@PostMapping()
 	public ResponseEntity<?> SaveOrder(@RequestBody OrderDTO dto) {
 		try {
-			System.out.println(dto);
+//			System.out.println("order controller"+dto);
 			Order orderSaved=orderService.createOrder(dto);
-			System.out.println(orderSaved);
+//			System.out.println("order saved - "+orderSaved);
 			return ResponseEntity.status(HttpStatus.CREATED).body(orderSaved);
 		} catch (Exception e) {
 			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e);

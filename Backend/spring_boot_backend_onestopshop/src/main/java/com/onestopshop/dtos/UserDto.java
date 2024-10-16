@@ -15,8 +15,7 @@ public class UserDto {
     private String phoneNumber;
     
     public UserDto() {
-		// TODO Auto-generated constructor stub
-	}
+		}
 
     public UserDto(User user) {
         this.firstName = user.getFirstName();
